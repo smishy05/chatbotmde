@@ -1,0 +1,64 @@
+Contract : Contract1
+Platform : IBM
+
+Participant{
+	Name : part1
+	List : No
+	Parameter {
+		Name : para1
+		Type : string
+		Identifier : T
+	}
+	Parameter {
+		Name : para2
+		Type : integer
+	}
+}
+
+Participant{
+	Name : part2
+	List : No
+	Parameter {
+		Name : para3
+		Type : string
+		Identifier : T
+	}
+}
+Asset
+Type : struct{
+	Name : asset1
+	List : No
+	Parameter {
+		Name : para4
+		Type : string
+	}
+	Parameter {
+		Name : para5
+		Type : string
+	}
+	Parameter {
+		Name : para6
+		Type : string
+		Identifier : T
+	}
+	Parameter {
+		Name : para7
+		Type : string
+	}
+}
+
+Transaction{
+	PreCondition {
+		Name : valcheck
+		Condition : aGb
+	}
+}{
+	Name : Transaction1
+	List : No
+	Relationship 
+	TranRel{
+		Name : part1
+		From : part1
+		To : part2
+	}
+}

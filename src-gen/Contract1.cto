@@ -1,0 +1,18 @@
+namespace Contract1
+participant Part1 identified by para1{
+o String para1
+o Integer para2
+}
+participant Part2 identified by para3{
+o String para3
+}
+asset Asset1 identified by para6 {
+o String para4
+o String para5
+o String para6
+o String para7
+}
+transaction Transaction1 {
+--> Part1 part1
+--> Part2 part2
+}

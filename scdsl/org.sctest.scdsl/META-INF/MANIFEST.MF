@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.sctest.scdsl
+Bundle-ManifestVersion: 2
+Bundle-Name: org.sctest.scdsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.sctest.scdsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.sctest.scdsl.sCDsl.impl,
+ org.sctest.scdsl,
+ org.sctest.scdsl.sCDsl,
+ org.sctest.scdsl.parser.antlr.internal,
+ org.sctest.scdsl.validation,
+ org.sctest.scdsl.sCDsl.util,
+ org.sctest.scdsl.scoping,
+ org.sctest.scdsl.services,
+ org.sctest.scdsl.parser.antlr,
+ org.sctest.scdsl.serializer,
+ org.sctest.scdsl.generator
+Import-Package: org.apache.log4j
