@@ -1,0 +1,12 @@
+Contract : cont2
+Platform : Solidity
+Participant 
+ Creator : True { 
+ Name : part2
+ List : No 
+ } 
+Asset 
+ Type : string { 
+ Name : asset2
+ List : No 
+ } 
