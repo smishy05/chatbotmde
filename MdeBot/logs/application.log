@@ -1,0 +1,33 @@
+2020-11-29 18:50:56 INFO  Using MapDB to store monitoring data
+2020-11-29 18:50:56 INFO  Starting intent recognition monitoring
+2020-11-29 18:50:57 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2020-11-29 18:50:57 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2020-11-29 18:50:57 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2020-11-29 18:50:57 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2020-11-29 18:50:57 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2020-11-29 18:50:57 INFO  Starting RegExIntentRecognitionProvider
+2020-11-29 18:50:58 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2020-11-29 18:50:58 INFO  Registered REST handler  at URI /admin (method=GET)
+2020-11-29 18:50:58 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2020-11-29 18:50:58 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2020-11-29 18:50:58 INFO  Starting ReactEventProvider
+2020-11-29 18:50:58 INFO  Starting ReactIntentProvider
+2020-11-29 18:50:58 INFO  Registering execution rule events
+2020-11-29 18:50:58 INFO  SocketIO server started at port: 5001
+2020-11-29 18:50:59 INFO  Starting XatkitServer
+2020-11-29 18:50:59 INFO  Registered REST handler  at URI /status (method=GET)
+2020-11-29 18:50:59 INFO  XatkitServer started, listening on port 5,000
+2020-11-29 18:50:59 INFO  Xatkit bot started
+2020-11-29 18:51:15 ERROR No endpoint registered for GET: /favicon.ico
+2020-11-29 18:51:28 INFO  Stopping SocketIO server
+2020-11-29 18:51:28 ERROR null
+java.net.SocketException: Socket closed
+	at java.net.PlainSocketImpl.socketAccept(Native Method) ~[?:1.8.0_275]
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409) ~[?:1.8.0_275]
+	at java.net.ServerSocket.implAccept(ServerSocket.java:560) ~[?:1.8.0_275]
+	at java.net.ServerSocket.accept(ServerSocket.java:528) ~[?:1.8.0_275]
+	at org.apache.http.impl.bootstrap.RequestListener.run(RequestListener.java:74) [httpcore-4.4.10.jar:4.4.10]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_275]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_275]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_275]
+2020-11-29 18:51:33 INFO  SocketIO server stopped
