@@ -31,3 +31,149 @@ java.net.SocketException: Socket closed
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_275]
 	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_275]
 2020-11-29 18:51:33 INFO  SocketIO server stopped
+2021-01-07 16:49:11 INFO  Using MapDB to store monitoring data
+2021-01-07 16:49:11 INFO  Starting intent recognition monitoring
+2021-01-07 16:49:12 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2021-01-07 16:49:12 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2021-01-07 16:49:12 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2021-01-07 16:49:12 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2021-01-07 16:49:12 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2021-01-07 16:49:12 INFO  Starting RegExIntentRecognitionProvider
+2021-01-07 16:49:12 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2021-01-07 16:49:12 INFO  Registered REST handler  at URI /admin (method=GET)
+2021-01-07 16:49:12 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2021-01-07 16:49:12 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2021-01-07 16:49:12 INFO  Starting ReactEventProvider
+2021-01-07 16:49:12 INFO  SocketIO server started at port: 5001
+2021-01-07 16:49:12 INFO  Starting ReactIntentProvider
+2021-01-07 16:49:12 INFO  Registering execution rule events
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 16:49:13 INFO  Starting XatkitServer
+2021-01-07 16:49:13 INFO  Registered REST handler  at URI /status (method=GET)
+2021-01-07 16:49:13 INFO  XatkitServer started, listening on port 5,000
+2021-01-07 16:49:13 INFO  Xatkit bot started
+2021-01-07 16:49:21 ERROR No endpoint registered for GET: /
+2021-01-07 16:49:34 ERROR No endpoint registered for GET: /favicon.ico
+2021-01-07 16:49:52 INFO  Stopping SocketIO server
+2021-01-07 16:49:52 ERROR null
+java.net.SocketException: Socket closed
+	at java.net.PlainSocketImpl.socketAccept(Native Method) ~[?:1.8.0_275]
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409) ~[?:1.8.0_275]
+	at java.net.ServerSocket.implAccept(ServerSocket.java:560) ~[?:1.8.0_275]
+	at java.net.ServerSocket.accept(ServerSocket.java:528) ~[?:1.8.0_275]
+	at org.apache.http.impl.bootstrap.RequestListener.run(RequestListener.java:74) [httpcore-4.4.10.jar:4.4.10]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_275]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_275]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_275]
+2021-01-07 16:49:56 INFO  SocketIO server stopped
+2021-01-07 18:42:45 INFO  Using MapDB to store monitoring data
+2021-01-07 18:42:45 INFO  Starting intent recognition monitoring
+2021-01-07 18:42:45 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2021-01-07 18:42:45 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2021-01-07 18:42:45 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2021-01-07 18:42:45 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2021-01-07 18:42:45 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2021-01-07 18:42:45 INFO  Starting RegExIntentRecognitionProvider
+2021-01-07 18:42:45 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2021-01-07 18:42:46 INFO  Registered REST handler  at URI /admin (method=GET)
+2021-01-07 18:42:46 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2021-01-07 18:42:46 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2021-01-07 18:42:46 INFO  Starting ReactEventProvider
+2021-01-07 18:42:46 INFO  SocketIO server started at port: 5001
+2021-01-07 18:42:46 INFO  Starting ReactIntentProvider
+2021-01-07 18:42:46 INFO  Registering execution rule events
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 WARN  Cannot find a mapping for the abstract entity any, returning the fallback entity ((\S)+)
+2021-01-07 18:42:46 INFO  Starting XatkitServer
+2021-01-07 18:42:46 INFO  Registered REST handler  at URI /status (method=GET)
+2021-01-07 18:42:46 INFO  XatkitServer started, listening on port 5,000
+2021-01-07 18:42:46 INFO  Xatkit bot started
+2021-01-07 18:43:34 INFO  Detected Intent CreateContract (confidence 1) from query text "I want to create a contract" (com.xatkit.execution.impl.StateContextImpl@188758e5 (configuration: {sun.cpu.isalist=, sun.desktop=gnome, sun.io.unicode.encoding=UnicodeLittle, sun.cpu.endian=little, java.vendor.url.bug=http://bugreport.sun.com/bugreport/, file.separator=/, maven.home=/usr/share/maven, java.vendor=Private Build, sun.boot.class.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes, securerandom.source=file:/dev/./urandom, java.ext.dirs=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext, java.version=1.8.0_275, java.vm.info=mixed mode, awt.toolkit=sun.awt.X11.XToolkit, user.language=en, java.specification.vendor=Oracle Corporation, sun.java.command=org.codehaus.plexus.classworlds.launcher.Launcher exec:java -Dexec.mainClass=com.xatkit.example.MdeBot, java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre, sun.arch.data.model=64, java.vm.specification.version=1.8, java.class.path=/usr/share/maven/boot/plexus-classworlds-2.x.jar, user.name=qm_shail_hash_98, file.encoding=UTF-8, java.specification.version=1.8, java.awt.printerjob=sun.print.PSPrinterJob, user.timezone=Asia/Kolkata, user.home=/home/qm_shail_hash_98, library.jansi.path=/usr/share/maven/lib/jansi-native, os.version=5.4.0-59-generic, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, java.specification.name=Java Platform API Specification, java.class.version=52.0, maven.conf=/usr/share/maven/conf, java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib, sun.jnu.encoding=UTF-8, classworlds.conf=/usr/share/maven/bin/m2.conf, os.name=Linux, java.vm.specification.vendor=Oracle Corporation, java.io.tmpdir=/tmp, line.separator=
+, java.endorsed.dirs=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/endorsed, os.arch=amd64, java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment, java.runtime.version=1.8.0_275-8u275-b01-0ubuntu1~20.04-b01, java.vm.specification.name=Java Virtual Machine Specification, user.dir=/home/qm_shail_hash_98/xatkit/xatkit-examples/MdeBots/MdeBot-2, user.country=IN, sun.java.launcher=SUN_STANDARD, sun.os.patch.level=unknown, java.vm.name=OpenJDK 64-Bit Server VM, file.encoding.pkg=sun.io, guice.disable.misplaced.annotation.check=true, path.separator=:, maven.multiModuleProjectDirectory=/home/qm_shail_hash_98/xatkit/xatkit-examples/MdeBots/MdeBot-2, java.vm.vendor=Private Build, java.vendor.url=http://java.oracle.com/, exec.mainClass=com.xatkit.example.MdeBot, sun.boot.library.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64, java.vm.version=25.275-b01, java.runtime.name=OpenJDK Runtime Environment}, session: {}, contextId: 58617690-907f-42f0-925c-e58d6425951b, origin: http://localhost:5000))
+2021-01-07 18:46:09 INFO  Detected Intent ContractName (confidence 1) from query text "I want to call the contract as MedicalRecord" (com.xatkit.execution.impl.StateContextImpl@188758e5 (configuration: {sun.cpu.isalist=, sun.desktop=gnome, sun.io.unicode.encoding=UnicodeLittle, sun.cpu.endian=little, java.vendor.url.bug=http://bugreport.sun.com/bugreport/, file.separator=/, maven.home=/usr/share/maven, java.vendor=Private Build, sun.boot.class.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes, securerandom.source=file:/dev/./urandom, java.ext.dirs=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext, java.version=1.8.0_275, java.vm.info=mixed mode, awt.toolkit=sun.awt.X11.XToolkit, user.language=en, java.specification.vendor=Oracle Corporation, sun.java.command=org.codehaus.plexus.classworlds.launcher.Launcher exec:java -Dexec.mainClass=com.xatkit.example.MdeBot, java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre, sun.arch.data.model=64, java.vm.specification.version=1.8, java.class.path=/usr/share/maven/boot/plexus-classworlds-2.x.jar, user.name=qm_shail_hash_98, file.encoding=UTF-8, java.specification.version=1.8, java.awt.printerjob=sun.print.PSPrinterJob, user.timezone=Asia/Kolkata, user.home=/home/qm_shail_hash_98, library.jansi.path=/usr/share/maven/lib/jansi-native, os.version=5.4.0-59-generic, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, java.specification.name=Java Platform API Specification, java.class.version=52.0, maven.conf=/usr/share/maven/conf, java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib, sun.jnu.encoding=UTF-8, classworlds.conf=/usr/share/maven/bin/m2.conf, os.name=Linux, java.vm.specification.vendor=Oracle Corporation, java.io.tmpdir=/tmp, line.separator=
+, java.endorsed.dirs=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/endorsed, os.arch=amd64, java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment, java.runtime.version=1.8.0_275-8u275-b01-0ubuntu1~20.04-b01, java.vm.specification.name=Java Virtual Machine Specification, user.dir=/home/qm_shail_hash_98/xatkit/xatkit-examples/MdeBots/MdeBot-2, user.country=IN, sun.java.launcher=SUN_STANDARD, sun.os.patch.level=unknown, java.vm.name=OpenJDK 64-Bit Server VM, file.encoding.pkg=sun.io, guice.disable.misplaced.annotation.check=true, path.separator=:, maven.multiModuleProjectDirectory=/home/qm_shail_hash_98/xatkit/xatkit-examples/MdeBots/MdeBot-2, java.vm.vendor=Private Build, java.vendor.url=http://java.oracle.com/, exec.mainClass=com.xatkit.example.MdeBot, sun.boot.library.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64, java.vm.version=25.275-b01, java.runtime.name=OpenJDK Runtime Environment}, session: {}, contextId: 58617690-907f-42f0-925c-e58d6425951b, origin: http://localhost:5000))
+2021-01-07 19:08:26 INFO  Stopping SocketIO server
+2021-01-07 19:08:26 ERROR null
+java.net.SocketException: Socket closed
+	at java.net.PlainSocketImpl.socketAccept(Native Method) ~[?:1.8.0_275]
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409) ~[?:1.8.0_275]
+	at java.net.ServerSocket.implAccept(ServerSocket.java:560) ~[?:1.8.0_275]
+	at java.net.ServerSocket.accept(ServerSocket.java:528) ~[?:1.8.0_275]
+	at org.apache.http.impl.bootstrap.RequestListener.run(RequestListener.java:74) [httpcore-4.4.10.jar:4.4.10]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_275]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_275]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_275]
+2021-01-07 19:08:30 INFO  SocketIO server stopped

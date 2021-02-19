@@ -1,1 +1,9 @@
 com/xatkit/example/MdeBot.class
+com/xatkit/example/Parameter.class
+com/xatkit/example/AssetRel.class
+com/xatkit/example/TranRel.class
+com/xatkit/example/Condition.class
+com/xatkit/example/Transaction.class
+com/xatkit/example/Event.class
+com/xatkit/example/Asset.class
+com/xatkit/example/Participant.class
