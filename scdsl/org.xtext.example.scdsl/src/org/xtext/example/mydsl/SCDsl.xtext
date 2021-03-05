@@ -1,0 +1,107 @@
+grammar org.sctest.scdsl.SCDsl with org.eclipse.xtext.common.Terminals
+
+generate sCDsl "http://www.sctest.org/scdsl/SCDsl"
+
+SContract:
+	'Contract' ':' name=ID
+	'Platform' ':' platform=TargetPlatform
+    (element+=Element)*;
+    
+enum TargetPlatform:
+	IBM
+	| Azure 
+	| Solidity;
+	
+enum ParType:
+	string 
+	| integer
+	| long
+	| double
+	| datetime
+	| boolean
+	| address
+	| array
+	| contract
+	| money
+	| state
+	| mapping;
+
+enum ConditionTypes:
+	Pre 
+	| Post
+;
+
+Element:
+	(Participant | Asset | Transaction) '{'
+		'Name' ':' name=ID
+		'List' ':' list=ID
+		(relationship+=Relationship)*
+		(compositeelement+=CompositeElement)*
+		(parameters+=Parameter)*
+	'}';
+
+CompositeElement:
+	'Name' ':' name=ID
+	'List' ':' list=ID
+;
+
+Participant:
+	{Participant} 'Participant'
+	('Creator' ':' creator?= 'T')?
+;
+
+Asset:
+	'Asset'
+	'Type' ':' type=ID
+;
+
+Parameter:
+	'Parameter' '{'
+		'Name' ':' name=ID
+		'Type' ':' type=ID
+		('Identifier' ':' identifier?= 'T')?
+	'}';
+
+Transaction:
+	{Transaction} 'Transaction'
+	('Mostrar' ':' mostrar?= 'T')? '{'
+		(condition+=Condition)*
+	'}';
+
+Condition:
+	'Condition' '{'
+		'Name' ':' name=ID
+		'Condition' ':' condition=ID
+		'ConditionType' ':' conditionType=ConditionTypes
+	'}';
+
+Relationship:
+	'Relationship'
+	(TranRel | AssetRel) '{'
+		'Name' ':' name=ID
+		'From' ':' from=[Element]
+		'To' ':' to=[Element]
+		(event+=Event)*
+	'}';
+
+Event:
+	'Event' '{'
+		'Description' ':' description=ID
+		'Name' ':' name=ID
+	'}';
+
+TranRel:
+	{TranRel} 'TranRel' 
+	('Selected' ':' selected?= 'T')?
+;
+
+AssetRel:
+	{AssetRel} 'AssetRel'
+//		'Participant' ':' participant=ID
+		('Create' ':' create?= 'T')?
+		('Read' ':' read?= 'T')?
+		('Update' ':' update?= 'T')?
+		('Delete' ':'delete?= 'T')?
+		('All' ':'all?= 'T')?
+;
+

@@ -24,18 +24,27 @@ import java.lang.ProcessBuilder;
 
 public class MdeBot {
 
+    static final int participantIndexNumber = 1;
+    static final int assetIndexNumber = 2;
+    static final int transactionIndexNumber = 3;
+    static final int tranrelIndexNumber = 1;
+    static final int assetrelIndexNumber = 2;
     // This arraylist is meant for storing all the names of the participants of the smart contract. This will be used to find the participants using their names.
     static ArrayList<String> participantNames = new ArrayList <String>();
     // This arraylist is meant for storing all the names of the assets of the smart contract. This will be used to find the assets using their names.
     static ArrayList<String> assetNames = new ArrayList <String>();
     // This arraylist is meant for storing all the names of the transactions of the smart contract. This will be used to find the transactions using their names.
     static ArrayList<String> transactionNames = new ArrayList<String>();
+    // This arraylist is meant for storing all the participants that will be created in the smart contract.
     static ArrayList<Participant> contractParticipants = new ArrayList<Participant>();
+    // This arraylist is meant for storing all the assets that will be created in the smart contract.
     static ArrayList<Asset> contractAssets = new ArrayList<Asset>();
+    // This arraylist is meant for storing all the transactions that will be created in the smart contract.
     static ArrayList<Transaction> contractTransactions = new ArrayList<Transaction>();
     static String nameOfContract = "";
     static String wholeContract = "";
     static int indexNumber;
+    static int indexNumberRelationship;
     static String targetPlatform = "";
     static String participants = "";
     static String assets = "";
@@ -48,6 +57,12 @@ public class MdeBot {
     static int currentParticipant;
     static int currentAsset;
     static int currentTransaction;
+    static int currentParticipantParameter;
+    static int currentAssetParameter;
+    static int currentTransactionParameter;
+    static int currentTransactionTranRel;
+    static int currentTransactionAssetRel;
+    static int currentTransactionCondition;
 
     public MdeBot() {
         numberOfParticipants = 0;
@@ -56,6 +71,12 @@ public class MdeBot {
         currentParticipant = 0;
         currentAsset = 0;
         currentTransaction = 0;
+        currentParticipantParameter = 0;
+        currentAssetParameter = 0;
+        currentTransactionParameter = 0;
+        currentTransactionTranRel = 0;
+        currentTransactionAssetRel = 0;
+        currentTransactionCondition = 0;
     }
     
     public static void main(String[] args) {
@@ -136,6 +157,12 @@ public class MdeBot {
             .trainingSentence("This participant is completed")
             .trainingSentence("No, I don't want to change the participant anymore");
 
+        val createParticipantSetIdentifier = intent("CreateParticipantSetIdentifier")
+            .trainingSentence("I want PARTID to be the identifier for the participant")
+            .trainingSentence("PARTID should be the identifier for the identifier")
+            .trainingSentence("Make PARTID the identifier for the participant")
+            .parameter("partid").fromFragment("PARTID").entity(any());
+
         //***************************************************************************************************************************
 
         // Editing a participant
@@ -155,6 +182,25 @@ public class MdeBot {
         val editParticipantConfirm = intent("EditParticipantConfirm")
             .trainingSentence("Yes, edit this participant")
             .trainingSentence("Yes, I want to edit this participant");
+
+        val editParticipantChangeName = intent("EditParticipantChangeName")
+            .trainingSentence("I want to change the name of the participant")
+            .trainingSentence("I want to edit the name of the participant")
+            .trainingSentence("I want to rename the participant");
+
+        val editParticipantChangeIdentifier = intent("EditParticipantChangeIdentifier")
+            .trainingSentence("I want to change the identifier for the participant")
+            .trainingSentence("I want to update the identifier for the participant");
+
+        val editParticipantEditParameter = intent("EditParticipantEditParameter")
+            .trainingSentence("I want to edit a parameter for the participant")
+            .trainingSentence("I want to update a parameter for the participant")
+            .trainingSentence("Edit a parameter of the participant");
+
+        val editParticipantDeleteParameter = intent("EditParticipantDeleteParameter")
+            .trainingSentence("I want to delete a parameter for the participant")
+            .trainingSentence("I want to remove a parameter for the participant")
+            .trainingSentence("Delete a parameter of the participant");
 
         //***************************************************************************************************************************
 
@@ -242,6 +288,12 @@ public class MdeBot {
             .trainingSentence("This asset is completed")
             .trainingSentence("No, I don't want to change the asset anymore");
 
+        val createAssetSetIdentifier = intent("CreateAssetSetIdentifier")
+            .trainingSentence("I want ASSTID to be the identifier for the asset")
+            .trainingSentence("ASSTID should be the identifier for the asset")
+            .trainingSentence("Make ASSTID the identifier for the asset")
+            .parameter("asstid").fromFragment("ASSTID").entity(any());
+
         //***************************************************************************************************************************
 
         // Editing an asset
@@ -261,6 +313,25 @@ public class MdeBot {
         val editAssetConfirm = intent("EditAssetConfirm")
             .trainingSentence("Yes, edit this asset")
             .trainingSentence("Yes, I want to edit this asset");
+
+        val editAssetChangeName = intent("EditAssetChangeName")
+            .trainingSentence("I want to change the name of the asset")
+            .trainingSentence("I want to edit the name of the asset")
+            .trainingSentence("I want to rename the asset");
+
+        val editAssetChangeIdentifier = intent("EditAssetChangeIdentifier")
+            .trainingSentence("I want to change the identifier for the asset")
+            .trainingSentence("I want to update the identifier for the asset");
+
+        val editAssetEditParameter = intent("EditAssetEditParameter")
+            .trainingSentence("I want to edit a parameter for the asset")
+            .trainingSentence("I want to update a parameter for the asset")
+            .trainingSentence("Edit a parameter of the asset");
+
+        val editAssetDeleteParameter = intent("EditAssetDeleteParameter")
+            .trainingSentence("I want to delete a parameter for the asset")
+            .trainingSentence("I want to remove a parameter for the asset")
+            .trainingSentence("Delete a parameter of the asset");
 
         //***************************************************************************************************************************
 
@@ -327,6 +398,36 @@ public class MdeBot {
             .trainingSentence("The list for the asset is TRANLIST")
             .parameter("tranlist").fromFragment("TRANLIST").entity(any());
 
+        val createTransactionCondition = intent("CreateTransactionCondition")
+            .trainingSentence("Yes, I would like to have condition for the transaction")
+            .trainingSentence("Yes, I want conditions for thr transaction");
+
+        val createTransactionConditionName = intent("CreateTransactionConditionName")
+            .trainingSentence("The name of the condition is TRANCONDNAME")
+            .trainingSentence("Name the conditon as TRANCONDNAME")
+            .trainingSentence("The name of the condition should be TRANCONDNAME")
+            .parameter("trancondname").fromFragment("TRANCONDNAME").entity(any());
+
+        val createTransactionConditionCondition =  intent("CreateTransactionConditionCondition")
+            .trainingSentence("The condition is TRANCONDCOND")
+            .trainingSentence("The condition for the transaction should be TRANCONDCOND")
+            .trainingSentence("The condition would be TRANCONDCOND")
+            .parameter("trancondcond").fromFragment("TRANCONDCOND").entity(any());
+
+        val createTransactionConditionType = intent("CreateTransactionConditionType")
+            .trainingSentence("The condition would be of type PREPOST")
+            .trainingSentence("It is a PREPOST")
+            .parameter("prepost").fromFragment("PREPOST").entity(any());
+
+        val createTransactionAssertCondition = intent("CreateTransactionAssertCondition")
+            .trainingSentence("Yes, I want to have another conditon for this transaction")
+            .trainingSentence("Yes, I want to have more conditions for the transaction")
+            .trainingSentence("I want to build more conditions for this transaction");
+
+        val createTransactionConditionDone = intent("CreateTransactionConditionDone")
+            .trainingSentence("That's all for the conditions for the transaction")
+            .trainingSentence("I don't want to have any more conditions for the transaction");
+
         val createTransactionSetMostrar = intent("CreateTransactionSetMostrar")
             .trainingSentence("The attribute mostrar should be TRANMOST")
             .trainingSentence("Mostrar for the transaction is TRANMOST")
@@ -350,12 +451,18 @@ public class MdeBot {
             .trainingSentence("It will be from an asset")
             .trainingSentence("The relationship will be from an asset");
 
-        val createTransactionTranRelationshipName = intent("CreateTransactionTranRelationshipName")
+        val createTransactionRelationshipName = intent("CreateTransactionRelationshipName")
+            .trainingSentence("The name of the relationship is RELNAME")
+            .trainingSentence("Name the relationship as RELNAME")
+            .trainingSentence("The name of the relationship should be RELNAME")
+            .parameter("relname").fromFragment("RELNAME").entity(any());
+
+        val createTransactionTranRelationshipFrom = intent("CreateTransactionTranRelationshipFrom")
             .trainingSentence("The participant for the relationship would be RELPART")
             .trainingSentence("The relationship would from the participant named RELPART")
             .parameter("relpart").fromFragment("RELPART").entity(any());
 
-        val createTransactionAssetRelationshipName = intent("CreateTransactionAssetRelationshipName")
+        val createTransactionAssetRelationshipFrom = intent("CreateTransactionAssetRelationshipFrom")
             .trainingSentence("The asset for the relationship would be RELASST")
             .trainingSentence("The relationship would from the asset named RELASST")
             .parameter("relasst").fromFragment("RELASST").entity(any());
@@ -363,6 +470,11 @@ public class MdeBot {
         val createTransactionAssertRelationshipEvent = intent("CreateTransactionAssertRelationshipEvent")
             .trainingSentence("Yes, I want an event for the relationship")
             .trainingSentence("Yes, an event for the relationship has to be created");
+
+        val createTransactionDenyRelationshipEvent = intent("CreateTransactionDenyRelationshipEvent")
+            .trainingSentence("No, I don't want any event for the relationship")
+            .trainingSentence("No event is required for the relationship")
+            .trainingSentence("I don't want anymore of events for the relationship");
 
         val createTransactionRelationshipEventName = intent("CreateTransactionRelationshipEventName")
             .trainingSentence("The name of the event is EVENTNAME")
@@ -399,6 +511,21 @@ public class MdeBot {
         val editTransactionConfirm = intent("EditTransactionConfirm")
             .trainingSentence("Yes, edit this transaction")
             .trainingSentence("Yes, I want to edit this transaction");
+
+        val editTransactionChangeName = intent("EditTransactionChangeName")
+            .trainingSentence("I want to change the name of the transaction")
+            .trainingSentence("I want to edit the name of the transaction")
+            .trainingSentence("I want to rename the transaction");
+
+        val editTransactionEditParameter = intent("EditTransactionEditParameter")
+            .trainingSentence("I want to edit a parameter for the transaction")
+            .trainingSentence("I want to update a parameter for the transaction")
+            .trainingSentence("Edit a parameter of the transaction");
+
+        val editTransactionDeleteParameter = intent("EditTransactionDeleteParameter")
+            .trainingSentence("I want to delete a parameter for the transaction")
+            .trainingSentence("I want to remove a parameter for the transaction")
+            .trainingSentence("Delete a parameter of the transaction");
 
         //***************************************************************************************************************************
 
@@ -443,11 +570,18 @@ public class MdeBot {
         //***************************************************************************************************************************
 
         // Parameter------------------------------------------------------------------------------------------------
+
+        val createAssertParameter = intent("CreateParameterAssert")
+            .trainingSentence("I want to create a parameter")
+            .trainingSentence("I want to build a parameter")
+            .trainingSentence("I want to have another parameter");
+
         val createParameterSetName = intent("CreateParameterSetName")
             .trainingSentence("The name of the parameter should be PARANAME")
             .trainingSentence("The name of the parameter is PARANAME")
             .trainingSentence("I want to name the parameter as PARANAME")
             .trainingSentence("Set the name of the parameter as PARANAME")
+            .trainingSentence("The parameter is PARANAME")
             .parameter("paraname").fromFragment("PARANAME").entity(any());
 
         val createParameterSetType = intent("CreateParameterSetType")
@@ -456,12 +590,52 @@ public class MdeBot {
             .trainingSentence("Set the type of the parameter as PARATYPE")
             .parameter("paratype").fromFragment("PARATYPE").entity(any());
 
+        val deleteParameterGetName = intent("DeleteParameterGetName")
+            .trainingSentence("The name of the parameter that has to be deleted is GDPARANAME")
+            .trainingSentence("The transaction to be deleted is GDPARANAME")
+            .trainingSentence("I want the transaction named GDPARANAME to be deleted")
+            .parameter("gdparaname").fromFragment("GDPARANAME").entity(any());
+
+        val deleteParameterConfirm = intent("DeleteParameterConfirm")
+            .trainingSentence("Yes, delete this parameter")
+            .trainingSentence("Yes, you will have to delete this parameter");
+
+        // val deleteParameterGetName = intent("DeleteParameterGetName")
+        //     .trainingSentence("The name of the parameter that has to be deleted is GDPARANAME")
+        //     .trainingSentence("The transaction to be deleted is GDPARANAME")
+        //     .trainingSentence("I want the transaction named GDPARANAME to be deleted")
+        //     .parameter("gdparaname").fromFragment("GDPARANAME").entity(any());
+
+        // val deleteParameterConfirm = intent("DeleteParameterConfirm")
+        //     .trainingSentence("Yes, delete this parameter")
+        //     .trainingSentence("Yes, you will have to delete this parameter");
+
+        //***************************************************************************************************************************
+
+        //***************************************************************************************************************************
         // Complete------------------------------------------------------------------------------------------------
 
         val contractDone = intent("ContractDone")
+            .trainingSentence("That's all for the contract")
+            .trainingSentence("The contract is done")
             .trainingSentence("Done")
             .trainingSentence("done")
             .trainingSentence("DONE");
+
+        //***************************************************************************************************************************
+
+        // Get the target platform for the code generation
+
+        val getTargetPlatform = intent("GetTargetPlatform")
+            .trainingSentence("The platform should be TARGPLAT")
+            .trainingSentence("The smart contract must be genetated in TARGPLAT")
+            .trainingSentence("The language of the smart contract must be TARGPLAT")
+            .parameter("targplat").fromFragment("TARGPLAT").entity(any());
+
+        val getCreator = intent("GetCreator")
+            .trainingSentence("The creator must be CREA")
+            .trainingSentence("The creator of the smart contract is CREA")
+            .parameter("crea").fromFragment("CREA").entity(any()); 
         
         ReactPlatform reactPlatform = new ReactPlatform();
         ReactEventProvider reactEventProvider = reactPlatform.getReactEventProvider();
@@ -473,16 +647,22 @@ public class MdeBot {
         val handleEditContract = state("HandleEditContract");
         val handleCreateContractName = state("HandleCreateContractName");
         val handleGetEditContractName = state("HandleGetEditContractName");
+        val handleNeutral = state("HandleNeutral");
         // States for creating participants
         val handleCreateParticipant = state("HandleCreateParticipant");
         val handleCreateParticipantSetName = state("HandleCreateParticipantSetName");
         val handleCreateParticipantSetList = state("HandleCreateParticipantSetList");
         val handleCreateParticipantAssertRelationship = state("HandleCreateParticipantAssertRelationship");
         val handleCreateParticipantDone = state("HandleCreateParticipantDone");
+        val handleCreateParticipantSetIdentifier = state("HandleCreateParticipantSetIdentifier");
         // States for editing participants
         val handleEditParticipant = state("HandleEditParticipant");
         val handleEditParticipantGetName = state("HandleEditParticipantGetName");
         val handleEditParticipantConfirm = state("HandleEditParticipantConfirm");
+        val handleEditParticipantChangeName = state("HandleEditParticipantChangeName");
+        val handleEditParticipantChangeIdentifier = state("HandleEditParticipantChangeIdentifier");
+        val handleEditParticipantEditParameter = state("HandleEditParticipantEditParameter");
+        val handleEditParticipantDeleteParameter = state("HandleEditParticipantDeleteParameter");
         // States for deleting participants
         val handleDeleteParticipant = state("HandleDeleteParticipant");
         val handleDeleteParticipantGetName = state("HandleDeleteParticipantGetName");
@@ -498,10 +678,15 @@ public class MdeBot {
         val handleCreateAssetSetList = state("HandleCreateAssetSetList");
         val handleCreateAssetAssertRelationship = state("HandleCreateAssetAssertRelationship");
         val handleCreateAssetDone = state("HandleCreateAssetDone");
+        val handleCreateAssetSetIdentifier = state("HandleCreateAssetSetIdentifier");
         // States for editing assets
         val handleEditAsset = state("HandleEditAsset");
         val handleEditAssetGetName = state("HandleEditAssetGetName");
         val handleEditAssetConfirm = state("HandleEditAssetConfirm");
+        val handleEditAssetChangeName = state("HandleEditAssetChangeName");
+        val handleEditAssetChangeIdentifier = state("HandleEditAssetChangeIdentifier");
+        val handleEditAssetEditParameter = state("HandleEditAssetEditParameter");
+        val handleEditAssetDeleteParameter = state("HandleEditAssetDeleteParameter");
         // States for deleting assets
         val handleDeleteAsset = state("HandleDeleteAsset");
         val handleDeleteAssetGetName = state("HandleDeleteAssetGetName");
@@ -515,11 +700,19 @@ public class MdeBot {
         val handleCreateTransactionSetName = state("HandleCreateTransactionSetName");
         val handleCreateTransactionSetList = state("HandleCreateTransactionSetList");
         val handleCreateTransactionSetMostrar = state("HandleCreateTransactionSetMostrar");
+        val handleCreateTransactionCondition = state("HandleCreateTransactionCondition");
+        val handleCreateTransactionConditionName = state("HandleCreateTransactionConditionName");
+        val handleCreateTransactionConditionCondition = state("HandleCreateTransactionConditionCondition");
+        val handleCreateTransactionConditionType = state("HandleCreateTransactionConditionType");
+        val handleCreateTransactionAssertCondition = state("HandleCreateTransactionAssertCondition");
+        val handleCreateTransactionConditionDone = state("HandleCreateTransactionConditionDone");
         val handleCreateTransactionAssertRelationship = state("HandleCreateAssetAssertRelationship");
         val handleCreateTransactionAssertTranRelationship = state("HandleTransactionAssertTranRelationship");
         val handleCreateTransactionAssertAssetRelationship = state("HandleTransactionAssertAssetRelationship");
-        val handleCreateTransactionTranRelationshipName = state("HandleCreateTransactionTranRelationshipName");
-        val handleCreateTransactionAssetRelationshipName = state("HandleCreateTransactionAssetRelationshipName");
+        val handleCreateTransactionTranRelationshipFrom = state("HandleCreateTransactionTranRelationshipFrom");
+        val handleCreateTransactionAssetRelationshipFrom = state("HandleCreateTransactionAssetRelationshipFrom");
+        val handleCreateTransactionRelationshipName = state("HandleCreateTransactionRelationshipName");
+        val handleCreateTransactionDenyRelationshipEvent = state("HandleCreateTransactionDenyRelationshipEvent");
         val handleCreateTransactionAssertRelationshipEvent = state("HandleCreateTransactionAssertRelationshipEvent");
         val handleCreateTransactionRelationshipEventName = state("HandleCreateTransactionRelationshipEventName");
         val handleCreateTransactionRelationshipEventDescription = state("HandleCreateTransactionRelationshipEventDescription");
@@ -528,6 +721,8 @@ public class MdeBot {
         val handleEditTransaction = state("HandleEditTransaction");
         val handleEditTransactionGetName = state("HandleEditTransactionGetName");
         val handleEditTransactionConfirm = state("HandleEditTransactionConfirm");
+        val handleEditTransactionChangeName = state("HandleEditTransactionChangeName");
+        val handleEditTransactionDeleteParameter = state("HandleEditTransactionDeleteParameter");
         // States for deleting transactions
         val handleDeleteTransaction = state("HandleDeleteTransaction");
         val handleDeleteTransactionGetName = state("HandleDeleteTransactionGetName");
@@ -541,10 +736,16 @@ public class MdeBot {
         val handleCreateParticipantAssertParameter = state("HandleCreateParticipantAssertParameter");
         val handleCreateAssetAssertParameter = state("HandleCreateAssetAssertParameter");
         val handleCreateTransactionAssertParameter = state("HandleCreateAssetAssertParameter");
+        val handleCreateAssertParameter = state("HandleCreateAssertParameter"); 
         val handleCreateParameterSetName = state("HandleParameterSetName");
         val handleCreateParameterSetType = state("HandleParameterSetType");
+        val handleDeleteParameterGetName = state("HandleDeleteParameterGetName");
+        val handleDeleteParameterConfirm = state("HandleDeleteParameterConfirm");
         // The user has provided all the information from his/her side
         val handleDone = state("HandleDone");
+        val handleGetTargetPlatform = state("HandleGetTargetPlatform");
+        val handleGetCreator = state("HandleGetCreator");
+        val handleComplete = state("handleComplete");
 
 
         init
@@ -647,6 +848,7 @@ public class MdeBot {
                     reactPlatform.reply(context, "Great!! We are moving in the right direction. What would be the name of the first parameter of the participant?");
                     a1.set(partlist);
                     updateParticipants(a1, 1);
+                    funcCreateParameter();
             })  
             .next()
             .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
@@ -654,6 +856,7 @@ public class MdeBot {
         handleCreateParticipantAssertParameter
             .body(context -> {
                     reactPlatform.reply(context, "Great. What would you like to name the parameter?");
+                    funcCreateParameter();
             })
             .next()
             .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
@@ -667,9 +870,19 @@ public class MdeBot {
 
         handleCreateParticipantDone
             .body(context -> {
-                    reactPlatform.reply(context, "Wow. Great Job. So we have created a participant. What do you wish do now? Would you like to define create some more elements for the smart contract?");
-                    a1.set("}");
-                    updateParticipants(a1, 1);
+                    reactPlatform.reply(context, "Wow. Great Job. So we are almost there. Which parameter should be the identifier of the participant?");
+                    // a1.set("}");
+                    // updateParticipants(a1, 1);
+            })
+            .next()
+            .when(intentIs(createParticipantSetIdentifier)).moveTo(handleCreateParticipantSetIdentifier);
+
+        handleCreateParticipantSetIdentifier
+            .body(context -> {
+                    String partid = (String) context.getIntent().getValue("partid");
+                    reactPlatform.reply(context, "And.... we have created a participant. What would you like to do now? Would you like to define create some more elements for the smart contract?");
+                    a1.set(partid);
+                    updateParticipants(a1, 2);
             })
             .next()
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
@@ -686,6 +899,7 @@ public class MdeBot {
         handleEditParticipant
             .body(context -> {
                     reactPlatform.reply(context, "Great. Which participant would you like to edit?");
+                    updateElementIndexNumber(participantIndexNumber);
             })
             .next()
             .when(intentIs(editParticipantGetName)).moveTo(handleEditParticipantGetName);
@@ -693,7 +907,10 @@ public class MdeBot {
         handleEditParticipantGetName
             .body(context -> {
                     String gepartname = (String) context.getIntent().getValue("gepartname");
+                    String closestName = findClosestName(gepartname, 1);
                     reactPlatform.reply(context, "Okay. So you want to edit the participant named " + gepartname + ", right?");
+                    a1.set(closestName);
+                    updateParticipants(a1, 3);
             })
             .next()
             .when(intentIs(editParticipantConfirm)).moveTo(handleEditParticipantConfirm);
@@ -703,7 +920,39 @@ public class MdeBot {
                     reactPlatform.reply(context, "Thanks for letting me know! What changes would you like to make to the participant?");
             })
             .next()
-            .when(intentIs(createParticipantAssertParameter)).moveTo(handleCreateParameterSetName);
+            .when(intentIs(createParticipantAssertParameter)).moveTo(handleCreateParameterSetName)
+            .when(intentIs(editParticipantChangeName)).moveTo(handleEditParticipantChangeName)
+            .when(intentIs(editParticipantChangeIdentifier)).moveTo(handleEditParticipantChangeIdentifier)
+            .when(intentIs(editParticipantDeleteParameter)).moveTo(handleEditParticipantDeleteParameter);
+
+        handleEditParticipantChangeName
+            .body(context -> {
+                    reactPlatform.reply(context, "That's cool. What should be the new name of the participant?");
+            })
+            .next()
+            .when(intentIs(createParticipantSetName)).moveTo(handleCreateParticipantSetName);
+
+        handleEditParticipantChangeIdentifier
+            .body(context -> {
+                    reactPlatform.reply(context, "That's great. Which parameter should be the identifier of the participant?");
+            })
+            .next()
+            .when(intentIs(createParticipantSetIdentifier)).moveTo(handleCreateParticipantSetIdentifier);
+
+        // handleEditParticipantEditParameter
+        //     .body(context -> {
+        //             reactPlatform.reply(context, "Okay. Which parameter would you like to edit?");
+        //     })
+        //     .next()
+        //     .when(intentIs()).moveTo();
+
+        handleEditParticipantDeleteParameter
+            .body(context -> {
+                    reactPlatform.reply(context, "Okay... Which parameter would you like to like to delete?");
+            })
+            .next()
+            .when(intentIs(deleteParameterGetName)).moveTo(handleDeleteParameterGetName);
+
 
         //*****************************************************************************************************************************************
 
@@ -718,6 +967,7 @@ public class MdeBot {
 
         handleDeleteParticipant
             .body(context -> {
+                    updateElementIndexNumber(participantIndexNumber);
                     reactPlatform.reply(context, "Okay. Which participant would you like to delete?");
             })
             .next()
@@ -726,13 +976,17 @@ public class MdeBot {
         handleDeleteParticipantGetName
             .body(context -> {
                     String gdpartname = (String) context.getIntent().getValue("gdpartname");
+                    String closestName = findClosestName(gdpartname, 1);
                     reactPlatform.reply(context, "Are you sure that you want to delete the participant named " + gdpartname + "?" );
+                    a1.set(closestName);
+                    updateParticipants(a1, 3);
             })
             .next()
             .when(intentIs(deleteParticipantConfirm)).moveTo(handleDeleteParticipantConfirm);
 
         handleDeleteParticipantConfirm
             .body(context -> {
+                    funcDeleteParticipant();
                     reactPlatform.reply(context, "That's cool. I have completed the deletion. What would you like to do now");
             })
             .next()
@@ -749,6 +1003,7 @@ public class MdeBot {
 
         handleReadParticipant
             .body(context -> {
+                updateElementIndexNumber(participantIndexNumber);
                     reactPlatform.reply(context, "Okay. Which participant would you like to read?");
             })
             .next()
@@ -764,7 +1019,8 @@ public class MdeBot {
 
         handleReadParticipantConfirm
             .body(context -> {
-                    reactPlatform.reply(context, "That's cool. Have a look at the participant. What would you like to do now?");
+                    String rpartname = funcReadParticipant();
+                    reactPlatform.reply(context, "That's cool. Have a look at the participant." + rpartname + "What would you like to do now?");
             })
             .next()
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
@@ -817,6 +1073,7 @@ public class MdeBot {
                     reactPlatform.reply(context, "Great!! We are moving in the right direction. What would be the name of the first parameter of the asset?");
                     a1.set(asstlist);
                     updateAssets(a1, 2);
+                    funcCreateParameter();
             })
             .next()
             .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
@@ -824,6 +1081,7 @@ public class MdeBot {
         handleCreateAssetAssertParameter
             .body(context -> {
                     reactPlatform.reply(context, "Great. What would you like to name the parameter?");
+                    funcCreateParameter();
             })
             .next()
             .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
@@ -836,16 +1094,26 @@ public class MdeBot {
             .moveTo(awaitingInput);
 
         handleCreateAssetDone
-                .body(context -> {
-                        reactPlatform.reply(context, "Wow. Great Job. So we have created an asset. What do you wish to do now? Would you like to define create some more elements for the smart contract?");
-                        a1.set("}");
-                        updateAssets(a1, 1);
-                })
-                .next()
-                .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
-                .when(intentIs(createAsset)).moveTo(handleCreateAsset)
-                .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
-                .when(intentIs(contractDone)).moveTo(handleDone);
+            .body(context -> {
+                    reactPlatform.reply(context, "Wow. Great Job. So we are almost there. Which parameter should be the identifier of the asset?");
+                    // a1.set("}");
+                    // updateParticipants(a1, 1);
+            })
+            .next()
+            .when(intentIs(createParticipantSetIdentifier)).moveTo(handleCreateParticipantSetIdentifier);
+
+        handleCreateAssetSetIdentifier
+            .body(context -> {
+                    String asstid = (String) context.getIntent().getValue("asstid");
+                    reactPlatform.reply(context, "And.... we have created a participant. What would you like to do now? Would you like to define create some more elements for the smart contract?");
+                    a1.set(asstid);
+                    updateAssets(a1, 3);
+            })
+            .next()
+            .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
+            .when(intentIs(createAsset)).moveTo(handleCreateAsset)
+            .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
+            .when(intentIs(contractDone)).moveTo(handleDone);
 
         //*****************************************************************************************************************************************
 
@@ -856,6 +1124,7 @@ public class MdeBot {
         handleEditAsset
             .body(context -> {
                     reactPlatform.reply(context, "Great. Which asset would you like to edit?");
+                    updateElementIndexNumber(assetIndexNumber);
             })
             .next()
             .when(intentIs(editAssetGetName)).moveTo(handleEditAssetGetName);
@@ -863,7 +1132,10 @@ public class MdeBot {
         handleEditAssetGetName
             .body(context -> {
                     String geasstname = (String) context.getIntent().getValue("geasstname");
+                    String closestName = findClosestName(geasstname, 2);
                     reactPlatform.reply(context, "Are you sure that you want to read the asset named " + geasstname + "?" );
+                    a1.set(closestName);
+                    updateAssets(a1, 4);
             })
             .next()
             .when(intentIs(editAssetConfirm)).moveTo(handleEditAssetConfirm);
@@ -873,7 +1145,31 @@ public class MdeBot {
                     reactPlatform.reply(context, "Thanks for letting me know! What changes would you like to make to the asset?");
             })
             .next()
-            .when(intentIs(createAssetAssertParameter)).moveTo(handleCreateParameterSetName);
+            .when(intentIs(createAssetAssertParameter)).moveTo(handleCreateParameterSetName)
+            .when(intentIs(editAssetChangeName)).moveTo(handleEditAssetChangeName)
+            .when(intentIs(editAssetChangeIdentifier)).moveTo(handleEditAssetChangeIdentifier)
+            .when(intentIs(editAssetDeleteParameter)).moveTo(handleEditAssetDeleteParameter);
+
+            handleEditAssetChangeName
+            .body(context -> {
+                    reactPlatform.reply(context, "That's cool. What should be the new name of the asset?");
+            })
+            .next()
+            .when(intentIs(createAssetSetName)).moveTo(handleCreateAssetSetName);
+
+        handleEditAssetChangeIdentifier
+            .body(context -> {
+                    reactPlatform.reply(context, "That's great. Which parameter should be the identifier of the asset?");
+            })
+            .next()
+            .when(intentIs(createAssetSetIdentifier)).moveTo(handleCreateAssetSetIdentifier);
+
+        handleEditAssetDeleteParameter
+            .body(context -> {
+                    reactPlatform.reply(context, "Okay... Which parameter would you like to like to delete?");
+            })
+            .next()
+            .when(intentIs(deleteParameterGetName)).moveTo(handleDeleteParameterGetName);
 
         //*****************************************************************************************************************************************
 
@@ -883,21 +1179,26 @@ public class MdeBot {
 
         handleDeleteAsset
             .body(context -> {
+                    updateElementIndexNumber(assetIndexNumber);
                     reactPlatform.reply(context, "Okay. Which asset would you like to delete?");
             })
             .next()
             .when(intentIs(deleteAssetGetName)).moveTo(handleDeleteAssetGetName);
 
-        handleDeleteParticipantGetName
+        handleDeleteAssetGetName
             .body(context -> {
                     String gdasstname = (String) context.getIntent().getValue("gdasstname");
+                    String closestName = findClosestName(gdasstname, 2);
                     reactPlatform.reply(context, "Are you sure that you want to delete the asset named " + gdasstname + "?" );
+                    a1.set(closestName);
+                    updateAssets(a1, 4);
             })
             .next()
             .when(intentIs(deleteAssetConfirm)).moveTo(handleDeleteAssetConfirm);
 
         handleDeleteAssetConfirm
             .body(context -> {
+                    funcDeleteAsset();
                     reactPlatform.reply(context, "That's cool. I have completed the deletion. What would you like to do now?");
             })
             .next()
@@ -914,6 +1215,7 @@ public class MdeBot {
 
         handleReadAsset
             .body(context -> {
+                    updateElementIndexNumber(assetIndexNumber);
                     reactPlatform.reply(context, "Okay. Which asset would you like to read?");
             })
             .next()
@@ -922,14 +1224,18 @@ public class MdeBot {
         handleReadAssetGetName
             .body(context -> {
                     String grasstname = (String) context.getIntent().getValue("grasstname");
+                    String closestName = findClosestName(grasstname, 2);
                     reactPlatform.reply(context, "Are you sure that you want to read the asset named " + grasstname + "?" );
+                    a1.set(closestName);
+                    updateAssets(a1, 4);
             })
             .next()
             .when(intentIs(readAssetConfirm)).moveTo(handleReadAssetConfirm);
 
         handleReadAssetConfirm
             .body(context -> {
-                    reactPlatform.reply(context, "That's cool. Have a look at the asset. What would you like to do now?");
+                    String rasstname = funcReadAsset();
+                    reactPlatform.reply(context, "That's cool. Have a look at the asset." + rasstname + "What would you like to do now?");
             })
             .next()
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
@@ -958,7 +1264,7 @@ public class MdeBot {
         handleCreateTransactionSetName
             .body(context -> {
                     String tranname = (String) context.getIntent().getValue("tranname");
-                    reactPlatform.reply(context, "Awesome. What would you like to name the list attribute of the transaction?");
+                    reactPlatform.reply(context, "Awesome. What would be the list attribute for the transaction?");
                     a1.set(tranname);
                     updateTransactions(a1, 0);
             })
@@ -981,16 +1287,69 @@ public class MdeBot {
         handleCreateTransactionSetMostrar
             .body(context -> {
                     String tranmost = (String) context.getIntent().getValue("tranmost");
-                    reactPlatform.reply(context, "Great!! What would you like to call the first parameter of the transaction?");
+                    reactPlatform.reply(context, "Great!! Would you like to have conditions for the transaction?");
                     a1.set(tranmost);
                     updateTransactions(a1, 2);
             })
             .next()
-            .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
+            .when(intentIs(createTransactionAssertCondition)).moveTo(handleCreateTransactionAssertCondition);
+
+        handleCreateTransactionCondition
+            .body(context -> {
+                    reactPlatform.reply(context, "Great. What would you like to name the condition?");
+            })
+            .next()
+            .when(intentIs(createTransactionConditionName)).moveTo(handleCreateTransactionConditionName);
+
+        handleCreateTransactionConditionName
+            .body(context -> {
+                    String trancondname = (String) context.getIntent().getValue("trancondname");
+                    reactPlatform.reply(context, "We are heading in the right direction. What is the condition?");
+                    a1.set(trancondname);
+                    updateConditions(a1, 0);
+            })
+            .next()
+            .when(intentIs(createTransactionConditionCondition)).moveTo(handleCreateTransactionConditionCondition);
+
+        handleCreateTransactionConditionCondition
+            .body(context -> {
+                    String trancondcond = (String) context.getIntent().getValue("trancondcond");
+                    reactPlatform.reply(context, "Great. What would type the condition would be - will it be a precondition or a postcondition?");
+                    a1.set(trancondcond);
+                    updateConditions(a1, 1);
+            })
+            .next()
+            .when(intentIs(createTransactionConditionType)).moveTo(handleCreateTransactionConditionType);
+
+        handleCreateTransactionConditionType
+            .body(context -> {
+                    String prepost = (String) context.getIntent().getValue("prepost");
+                    reactPlatform.reply(context, "Done. What would you like to do now?");
+                    a1.set(prepost);
+                    updateConditions(a1, 2);
+            })
+            .next()
+            .when(intentIs(createTransactionAssertCondition)).moveTo(handleCreateTransactionAssertCondition);
+
+        handleCreateTransactionAssertCondition
+            .body(context -> {
+                    reactPlatform.reply(context, "Great. What should be the name of the condition?");
+                    funcCreateCondition();
+            })
+            .next()
+            .when(intentIs(createTransactionConditionName)).moveTo(handleCreateTransactionConditionName);
+
+        handleCreateTransactionConditionDone
+            .body(context -> {
+                    reactPlatform.reply(context, "Cool. What would you like to do now?");
+            })
+            .next()
+            .when(intentIs(createTransactionAssertParameter)).moveTo(handleCreateTransactionAssertParameter);
 
         handleCreateTransactionAssertParameter
             .body(context -> {
                     reactPlatform.reply(context, "Great. What would you like to name the parameter?");
+                    funcCreateParameter();
             })
             .next()
             .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
@@ -1005,34 +1364,61 @@ public class MdeBot {
 
         handleCreateTransactionAssertAssetRelationship
             .body(context -> {
-                    reactPlatform.reply(context, "Great. From which asset would you like to have the relationship?");
+                    reactPlatform.reply(context, "Great. To which asset would you like to have the relationship?");
+                    funcCreateAssetRel();
             })
             .next()
-            .when(intentIs(createTransactionAssetRelationshipName)).moveTo(handleCreateTransactionAssetRelationshipName);
+            .when(intentIs(createTransactionAssetRelationshipFrom)).moveTo(handleCreateTransactionAssetRelationshipFrom);
 
         handleCreateTransactionAssertTranRelationship
             .body(context -> {
                     reactPlatform.reply(context, "Great. From which participant would you like to have the relationship?");
+                    funcCreateTranRel();
             })
             .next()
-            .when(intentIs(createTransactionTranRelationshipName)).moveTo(handleCreateTransactionTranRelationshipName);
+            .when(intentIs(createTransactionTranRelationshipFrom)).moveTo(handleCreateTransactionTranRelationshipFrom);
 
 
-        handleCreateTransactionTranRelationshipName
+        handleCreateTransactionTranRelationshipFrom
             .body(context -> {
                     String relpart = (String) context.getIntent().getValue("relpart");
                     reactPlatform.reply(context, "Great. Would you like to have any events for the relationship?");
+                    a1.set(relpart);
+                    funcUpdateRelationships(a1, 0);
             })
             .next()
             .when(intentIs(createTransactionAssertRelationshipEvent)).moveTo(handleCreateTransactionAssertRelationshipEvent);
 
-        handleCreateTransactionAssetRelationshipName
+        handleCreateTransactionAssetRelationshipFrom
             .body(context -> {
                     String relasst = (String) context.getIntent().getValue("relasst");
+                    reactPlatform.reply(context, "Great. What should be the name of the relationship?");
+                    a1.set(relasst);
+                    funcUpdateRelationships(a1, 0);
+            })
+            .next()
+            .when(intentIs(createTransactionRelationshipName)).moveTo(handleCreateTransactionRelationshipName);
+
+        handleCreateTransactionRelationshipName
+            .body(context -> {
+                    String relname = (String) context.getIntent().getValue("relname");
                     reactPlatform.reply(context, "Great. Would you like to have any events for the relationship?");
+                    a1.set(relname);
+                    funcUpdateRelationships(a1, 1);
             })
             .next()
             .when(intentIs(createTransactionAssertRelationshipEvent)).moveTo(handleCreateTransactionAssertRelationshipEvent);
+
+        handleCreateTransactionDenyRelationshipEvent
+            .body(context -> {
+                    reactPlatform.reply(context, "Cool. What do you wish to do now? Would you like to create more relationships for the transaction or are you done with the transaction?");
+            })
+            .next()
+            .when(intentIs(createTransactionAssertRelationshipEvent)).moveTo(handleCreateTransactionAssertRelationshipEvent)
+            .when(intentIs(createTransactionAssertParameter)).moveTo(handleCreateTransactionAssertParameter)
+            .when(intentIs(createTransactionAssertRelationship)).moveTo(handleCreateTransactionAssertRelationship)
+            .when(intentIs(createTransactionDone)).moveTo(handleCreateTransactionDone);
+
 
         handleCreateTransactionAssertRelationshipEvent
             .body(context -> {
@@ -1063,8 +1449,6 @@ public class MdeBot {
         handleCreateTransactionDone
             .body(context -> {
                     reactPlatform.reply(context, "Wow. Great Job. So we have created a transaction. What do you wish to do now? Would you like to define create some more elements for the smart contract?");
-                    a1.set("}");
-                    updateTransactions(a1, 1);
             })
             .next()
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
@@ -1081,6 +1465,7 @@ public class MdeBot {
         handleEditTransaction
             .body(context -> {
                     reactPlatform.reply(context, "Great. Which transaction would you like to edit?");
+                    updateElementIndexNumber(transactionIndexNumber);
             })
             .next()
             .when(intentIs(editTransactionGetName)).moveTo(handleEditTransactionGetName);
@@ -1088,17 +1473,36 @@ public class MdeBot {
         handleEditTransactionGetName
             .body(context -> {
                     String getranname = (String) context.getIntent().getValue("getranname");
-                    reactPlatform.reply(context, "That's great. Let me check the directory.");
+                    String closestName = findClosestName(getranname, 3);
+                    reactPlatform.reply(context, "Okay. So you want to edit the transaction named " + getranname + ", right?");
+                    a1.set(closestName);
+                    updateTransactions(a1, 3);
             })
             .next()
-            .when(intentIs(editTransactionConfirm)).moveTo(handleCreateParameterSetName);
+            .when(intentIs(editTransactionConfirm)).moveTo(handleEditTransactionConfirm);
 
         handleEditTransactionConfirm
             .body(context -> {
                     reactPlatform.reply(context, "Thanks for letting me know! What changes would you like to make to the transaction?");
             })
             .next()
-            .when(intentIs(createTransactionAssertParameter)).moveTo(handleCreateParameterSetName);
+            .when(intentIs(createTransactionAssertParameter)).moveTo(handleCreateParameterSetName)
+            .when(intentIs(editTransactionChangeName)).moveTo(handleEditTransactionChangeName)
+            .when(intentIs(editTransactionDeleteParameter)).moveTo(handleEditTransactionDeleteParameter);
+
+        handleEditTransactionChangeName
+            .body(context -> {
+                    reactPlatform.reply(context, "That's cool. What should be the new name of the transaction?");
+            })
+            .next()
+            .when(intentIs(createTransactionSetName)).moveTo(handleCreateTransactionSetName);
+
+        handleEditTransactionDeleteParameter
+            .body(context -> {
+                    reactPlatform.reply(context, "Okay... Which parameter would you like to like to delete?");
+            })
+            .next()
+            .when(intentIs(deleteParameterGetName)).moveTo(handleDeleteParameterGetName);
 
          //*****************************************************************************************************************************************
 
@@ -1110,6 +1514,7 @@ public class MdeBot {
 
         handleDeleteTransaction
             .body(context -> {
+                    updateElementIndexNumber(transactionIndexNumber);
                     reactPlatform.reply(context, "Okay. Which transaction would you like to delete?");
             })
             .next()
@@ -1118,13 +1523,17 @@ public class MdeBot {
         handleDeleteTransactionGetName
             .body(context -> {
                     String gdtranname = (String) context.getIntent().getValue("gdtranname");
+                    String closestName = findClosestName(gdtranname, 3);
                     reactPlatform.reply(context, "Are you sure that you want to delete the transaction named " + gdtranname + "?" );
+                    a1.set(closestName);
+                    updateTransactions(a1, 3);
             })
             .next()
             .when(intentIs(deleteTransactionConfirm)).moveTo(handleDeleteTransactionConfirm);
 
         handleDeleteTransactionConfirm
             .body(context -> {
+                    funcDeleteTransaction();
                     reactPlatform.reply(context, "That's cool. I have completed the deletion. What would you like to do now?");
             })
             .next()
@@ -1141,6 +1550,7 @@ public class MdeBot {
 
         handleReadTransaction
             .body(context -> {
+                    updateElementIndexNumber(transactionIndexNumber);
                     reactPlatform.reply(context, "Okay. Which transaction would you like to read?");
             })
             .next()
@@ -1149,14 +1559,18 @@ public class MdeBot {
         handleReadTransactionGetName
             .body(context -> {
                     String grtranname = (String) context.getIntent().getValue("grtranname");
+                    String closestName = findClosestName(grtranname, 3);
                     reactPlatform.reply(context, "Are you sure that you want to read the transaction named " + grtranname + "?" );
+                    a1.set(closestName);
+                    updateTransactions(a1, 3);
             })
             .next()
             .when(intentIs(readTransactionConfirm)).moveTo(handleReadTransactionConfirm);
 
         handleReadTransactionConfirm
             .body(context -> {
-                    reactPlatform.reply(context, "That's cool. Have a look at the transaction. What would you like to do now?");
+                    String rtrannname = funcReadTransaction();
+                    reactPlatform.reply(context, "That's cool. Have a look at the transaction." + rtrannname + "What would you like to do now?");
             })
             .next()
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
@@ -1173,18 +1587,41 @@ public class MdeBot {
             .body(context -> {
                     String paraname = (String) context.getIntent().getValue("paraname");
                     reactPlatform.reply(context, "Great. What is the type of the parameter that you just created?");
-                    a1.set("Parameter {" + "\n" + "Name: " + paraname + "\n");
-                    updateParameters(a1);
+                    a1.set(paraname);
+                    updateParameters(a1, 0);
             })
             .next()
             .when(intentIs(createParameterSetType)).moveTo(handleCreateParameterSetType);
 
         handleCreateParameterSetType
             .body(context -> {
-                    String paratype = (String) context.getIntent().getValue("partparatype");
+                    String paratype = (String) context.getIntent().getValue("paratype");
                     reactPlatform.reply(context, "Cool. Would you like to add or delete attributes from the element?");
-                    a1.set( "Type: " + paratype + "\n" + "Identifier: " + "False" + "\n" +"}" + "\n");
-                    updateParameters(a1);
+                    a1.set(paratype);
+                    updateParameters(a1, 1);
+            })
+            .next()
+            .when(intentIs(createParticipantAssertParameter)).moveTo(handleCreateParticipantAssertParameter)
+            .when(intentIs(createParticipantAssertRelationship)).moveTo(handleCreateParticipantAssertRelationship)
+            .when(intentIs(createParticipantDone)).moveTo(handleCreateParticipantDone)
+            .when(intentIs(createAssetAssertParameter)).moveTo(handleCreateAssetAssertParameter)
+            .when(intentIs(createAssetAssertRelationship)).moveTo(handleCreateAssetAssertRelationship)
+            .when(intentIs(createAssetDone)).moveTo(handleCreateAssetDone)
+            .when(intentIs(createTransactionAssertParameter)).moveTo(handleCreateTransactionAssertParameter)
+            .when(intentIs(createTransactionAssertRelationship)).moveTo(handleCreateTransactionAssertRelationship)
+            .when(intentIs(createTransactionDone)).moveTo(handleCreateTransactionDone);
+
+        handleDeleteParameterGetName
+            .body(context -> {
+                    String gdparaname = (String) context.getIntent().getValue("gdparaname");
+                    reactPlatform.reply(context, "Are you sure that you want to delete the transaction named " + gdparaname + "?");
+            })
+            .next()
+            .when(intentIs(deleteParameterConfirm)).moveTo(handleDeleteParameterConfirm);
+
+        handleDeleteParameterConfirm
+            .body(context -> {
+                    reactPlatform.reply(context, "What would you like to do now? Would you like to add more elements to the smart contract or continue editing this element?");
             })
             .next()
             .when(intentIs(createParticipantAssertParameter)).moveTo(handleCreateParticipantAssertParameter)
@@ -1198,14 +1635,47 @@ public class MdeBot {
             .when(intentIs(createTransactionDone)).moveTo(handleCreateTransactionDone);
 
 
+
         //***************************************************************************************************************************************** 
         handleDone
-                .body(context -> {
-                        generateWholeFile();
-                        reactPlatform.reply(context, "Please wait for the file to be generated. Please check the code in the src-gen folder.");
-                })
-                .next()
-                .moveTo(awaitingInput);
+            .body(context -> {
+                    String listofparticipants = funcGetAllListOfParticipants(); 
+                    reactPlatform.reply(context, "Cool. We just need to complete two more steps. Which participant should be the creator of the smart contract? Here is the list: \n" + listofparticipants);
+                    updateElementIndexNumber(participantIndexNumber);
+            })
+            .next()
+            .when(intentIs(getCreator)).moveTo(handleGetCreator);
+
+        handleGetCreator
+            .body(context -> {
+                    String crea = (String) context.getIntent().getValue("crea");
+                    reactPlatform.reply(context, "That's amazing. Just one more. In which platform must the smart contract be generated? Hyperledger Composer or Azure or Ethereum?");
+                    String closestName = findClosestName(crea, 1);
+                    a1.set(closestName);
+                    updateParticipants(a1, 3);
+                    updateParticipants(a1, 4);
+            })
+            .next()
+            .when(intentIs(getTargetPlatform)).moveTo(handleGetTargetPlatform);
+
+        handleGetTargetPlatform
+            .body(context -> {
+                    String targplat = (String) context.getIntent().getValue("targplat");
+                    reactPlatform.reply(context, "Great!! It's all done. The smart contract will be in the src-gen folder inside the src-gen-dsl.");
+                    a1.set(targplat);
+                    setTargetPlatform(a1);
+                    generateWholeFile();
+            })
+            .next()
+            .moveTo(handleComplete);
+
+        handleComplete
+            .body(context -> {
+                    reactPlatform.reply(context, "Thanks for using iContractBot. Have a good day.");
+            })
+            .next()
+            .moveTo(awaitingInput);
+
 
         /*
          * The state that is executed if the engine doesn't find any navigable transition in a state and the state
@@ -1255,9 +1725,26 @@ public class MdeBot {
 
     // Function for setting the name of the contract
     public static void setContractName(AtomicReference<String> str){
-        nameOfContract = nameOfContract + str;
+        nameOfContract = "" + str;
     }
 
+    public static void setTargetPlatform(AtomicReference<String> str){
+        String strString = "" + str;
+        if(strString.toLowerCase().contains("ibm") || strString.toLowerCase().contains("composer"))
+        {
+            targetPlatform = "IBM";
+        }
+        if(strString.toLowerCase().contains("azure"))
+        {
+            targetPlatform = "Azure";
+        }
+        if(strString.toLowerCase().contains("solidity") || strString.toLowerCase().contains("Ethereum"))
+        {
+            targetPlatform = "Solidity";
+        }
+    }
+
+    // Function to create a participant
     public static void funcCreateParticipant() {
         String tempname = "Participant_Name_None_" + Integer.toString(numberOfParticipants);
         String templist = "Participant_List_None_" + Integer.toString(numberOfParticipants);
@@ -1265,25 +1752,93 @@ public class MdeBot {
         tempparticipant.name = tempname;
         tempparticipant.list = templist;
         tempparticipant.creator = false;
-        tempparticipant.parameters = new HashMap<String, Parameter> ();
+        tempparticipant.parameters = new ArrayList<Parameter> ();
         tempparticipant.parameterNames = new ArrayList<String> ();
         contractParticipants.add(tempparticipant);
         participantNames.add(tempname);
         currentParticipant = numberOfParticipants;
         numberOfParticipants++;
+        indexNumber = 1;
     }
 
+    // Function to update participants
     public static void updateParticipants(AtomicReference<String> str, int flag){
-        // This is to set the name of the participant that is being added to the contract
+        Participant tempparticipant = new Participant();
+        tempparticipant = contractParticipants.get(currentParticipant);
+        String strString = "" + str;
+        // When user states or changes the name of a participant
         if(flag == 0)
         {
             participantNames.set(currentParticipant, "" + str);
-            contractParticipants.get(currentParticipant).name = "" + str;
+            tempparticipant.name = "" + str;
+            contractParticipants.set(currentParticipant, tempparticipant);
         }
+        // When user changes the list parameter of the participant
         if(flag == 1)
         {
-            contractParticipants.get(currentParticipant).list = "" + str;
+            tempparticipant.list = "" + str;
+            contractParticipants.set(currentParticipant, tempparticipant);
         }
+        // When user sets or changes the identifier for the participant
+        if(flag == 2)
+        {
+            int indexofpara = tempparticipant.parameterNames.indexOf(strString);
+            Parameter tempparameter;
+            tempparameter = tempparticipant.parameters.get(indexofpara);
+            tempparameter.identifier = true;
+            tempparticipant.parameters.set(indexofpara, tempparameter);
+            contractParticipants.set(currentParticipant, tempparticipant);
+        }
+        // Changing the current participant, when a participant is to be edited, deleted or read
+        if(flag == 3)
+        {
+            currentParticipant = participantNames.indexOf(strString);
+        }
+        if(flag == 4)
+        {
+            tempparticipant.creator = true;
+            contractParticipants.set(currentParticipant, tempparticipant);
+        }
+
+    }
+
+    // Function to delete a participant
+    public static void funcDeleteParticipant()
+    {
+        participantNames.remove(currentParticipant);
+        contractParticipants.remove(currentParticipant);
+    }
+
+    public static String funcReadParticipant()
+    {
+        String participantReadString;
+        Participant tempparticipant = new Participant();
+        tempparticipant = contractParticipants.get(currentParticipant);
+        participantReadString = "Name: " + tempparticipant.name + "\n";
+        for(int i = 0; i < tempparticipant.parameterNames.size(); i++)
+        {
+            if(tempparticipant.parameters.get(i).identifier == true)
+            {
+                participantReadString = participantReadString + "Identifier: " + tempparticipant.parameters.get(i).name + "\n";
+                break;
+            }
+        }
+        participantReadString = "Parameters: \n";
+        for(int i = 0; i < tempparticipant.parameterNames.size(); i++)
+        {
+            participantReadString = participantReadString + tempparticipant.parameters.get(i).type + " " + tempparticipant.parameters.get(i).name + "\n";
+        }
+        return participantReadString;
+    }
+
+    public static String funcGetAllListOfParticipants()
+    {
+        String templ = "";
+        for(int i = 0; i < participantNames.size(); i++)
+        {
+            templ = templ + participantNames.get(i);
+        }
+        return templ;
     }
 
     public static void funcCreateAsset() {
@@ -1294,28 +1849,76 @@ public class MdeBot {
         tempasset.type = temptype;
         tempasset.name = tempname;
         tempasset.list = templist;
-        tempasset.parameters = new HashMap<String, Parameter> ();
+        tempasset.parameters = new ArrayList<Parameter> ();
         tempasset.parameterNames = new ArrayList<String> ();
         contractAssets.add(tempasset);
         assetNames.add(tempname);
         currentAsset = numberOfAssets;
         numberOfAssets++;
+        indexNumber = 2;
     }
 
     public static void updateAssets(AtomicReference<String> str, int flag){
+        Asset tempasset = new Asset();
+        tempasset = contractAssets.get(currentAsset);
+        String strString = "" + str;
         if(flag == 0)
         {
-            contractAssets.get(currentAsset).type = "" + str;
+            tempasset.type = "" + str;
+            contractAssets.set(currentAsset, tempasset);
         }
         if(flag == 1)
         {
-            contractAssets.get(currentAsset).name = "" + str;
             assetNames.set(currentAsset, "" + str);
+            tempasset.name = "" + str;
+            contractAssets.set(currentAsset, tempasset);
         }
         if(flag == 2)
         {
-            contractAssets.get(currentAsset).list = "" + str;
+            tempasset.list = "" + str;
+            contractAssets.set(currentAsset, tempasset);
         }
+        if(flag == 3)
+        {
+            int indexofpara = tempasset.parameterNames.indexOf(strString);
+            Parameter tempparameter;
+            tempparameter = tempasset.parameters.get(indexofpara);
+            tempparameter.identifier = true;
+            tempasset.parameters.set(indexofpara, tempparameter);
+            contractAssets.set(currentAsset, tempasset);
+        }
+        if(flag == 4)
+        {
+            currentAsset = assetNames.indexOf(strString);
+        }
+    }
+
+    public static void funcDeleteAsset()
+    {
+        assetNames.remove(currentAsset);
+        contractAssets.remove(currentAsset);
+    }
+
+    public static String funcReadAsset()
+    {
+        String assetReadString;
+        Asset tempasset = new Asset();
+        tempasset = contractAssets.get(currentAsset);
+        assetReadString = "Name: " + tempasset.name + "\n";
+        for(int i = 0; i < tempasset.parameterNames.size(); i++)
+        {
+            if(tempasset.parameters.get(i).identifier == true)
+            {
+                assetReadString = assetReadString + "Identifier: " + tempasset.parameters.get(i).name + "\n";
+                break;
+            }
+        }
+        assetReadString = "Parameters: \n";
+        for(int i = 0; i < tempasset.parameterNames.size(); i++)
+        {
+            assetReadString = assetReadString + tempasset.parameters.get(i).type + " " + tempasset.parameters.get(i).name + "\n";
+        }
+        return assetReadString;
     }
 
     public static void funcCreateTransaction() {
@@ -1323,13 +1926,13 @@ public class MdeBot {
         String tempname = "Transaction_Name_None_" + Integer.toString(numberOfTransactions);
         String templist = "Transaction_List_None_" + Integer.toString(numberOfTransactions);
         Transaction temptransaction = new Transaction();
-        temptransaction.conditions = new HashMap <String, Condition> ();
+        temptransaction.conditions = new ArrayList <Condition> ();
         temptransaction.mostrar = false;
         temptransaction.name = tempname;
         temptransaction.list = templist;
-        temptransaction.parameters = new HashMap <String, Parameter> ();
-        temptransaction.tranRels = new HashMap <String, TranRel> ();
-        temptransaction.assetRels = new HashMap <String, AssetRel> ();
+        temptransaction.parameters = new ArrayList <Parameter> ();
+        temptransaction.tranRels = new ArrayList <TranRel> ();
+        temptransaction.assetRels = new ArrayList <AssetRel> ();
         temptransaction.conditionNames = new ArrayList <String> ();
         temptransaction.parameterNames = new ArrayList <String> ();
         temptransaction.tranRelNames = new ArrayList <String> ();
@@ -1338,52 +1941,565 @@ public class MdeBot {
         transactionNames.add(tempname);
         currentTransaction = numberOfTransactions;
         numberOfTransactions++;
+        indexNumber = 3;
     }
 
     public static void updateTransactions(AtomicReference<String> str, int flag){
+        Transaction temptransaction = new Transaction();
+        temptransaction = contractTransactions.get(currentTransaction);
+        String strString = "" + str;
+        // User states or changes the name of the transaction
         if(flag == 0)
         {
-            contractTransactions.get(currentTransaction).name = "" + str;
             transactionNames.set(currentTransaction, "" + str);
+            temptransaction.name = "" + str;
+            contractTransactions.set(currentTransaction, temptransaction);
         }
+
         if(flag == 1)
         {
-            contractTransactions.get(currentTransaction).list = "" + str;
+            temptransaction.list = "" + str;
+            contractTransactions.set(currentTransaction, temptransaction);
         }
         if(flag == 2)
         {
             if(("" + str) == "False" || ("" + str) == "false")
-                contractTransactions.get(currentTransaction).mostrar = false;
+                temptransaction.mostrar = false;
+                contractTransactions.set(currentTransaction, temptransaction);
+        }
+        if(flag == 3)
+        {
+            currentTransaction = transactionNames.indexOf(strString);
+        }
+
+    }
+
+    public static void funcDeleteTransaction()
+    {
+        transactionNames.remove(currentTransaction);
+        contractTransactions.remove(currentTransaction);
+    }
+
+    public static String funcReadTransaction()
+    {
+        String transactionReadString;
+        Transaction temptransaction = new Transaction();
+        temptransaction = contractTransactions.get(currentTransaction);
+        transactionReadString = "Name: " + temptransaction.name + "\n";
+
+        transactionReadString = "Parameters: \n";
+        for(int i = 0; i < temptransaction.parameterNames.size(); i++)
+        {
+            transactionReadString = transactionReadString + temptransaction.parameters.get(i).type + " " + temptransaction.parameters.get(i).name + "\n";
+        }
+
+        transactionReadString = "Relationships: \n";
+        for(int i = 0; i < temptransaction.tranRelNames.size(); i++)
+        {
+            transactionReadString = transactionReadString + "Name: " + temptransaction.tranRels.get(i).name + ", From: " + temptransaction.tranRels.get(i).from + ", To: " + temptransaction.tranRels.get(i).to + "/n";
+        }
+        for(int i = 0; i < temptransaction.assetRelNames.size(); i++)
+        {
+            transactionReadString = transactionReadString + "Name: " + temptransaction.assetRels.get(i).name + ", From: " + temptransaction.assetRels.get(i).from + ", To: " + temptransaction.assetRels.get(i).to + "/n";
+        }
+        return transactionReadString;
+    }
+
+    public static void funcCreateParameter(){
+        Parameter tempparameter = new Parameter();
+        String tempparaname = "";
+        String tempparatype = "";
+
+        if (indexNumber == 1) {
+            Participant tempparticipant = new Participant();
+            tempparticipant = contractParticipants.get(currentParticipant);
+            tempparaname = "Parameter_Name_None_" + Integer.toString(tempparticipant.parameterNames.size());
+            tempparatype = "Parameter_Type_None_" + Integer.toString(tempparticipant.parameterNames.size());
+            tempparameter.name = tempparaname;
+            tempparameter.type = tempparatype;
+            tempparameter.identifier = false;
+            tempparticipant.parameterNames.add(tempparameter.name);
+            tempparticipant.parameters.add(tempparameter);
+            contractParticipants.set(currentParticipant, tempparticipant);
+            currentParticipantParameter = tempparticipant.parameterNames.size() - 1;
+        }
+
+        if (indexNumber == 2) {
+            Asset tempasset = new Asset();
+            tempasset = contractAssets.get(currentAsset);
+            tempparaname = "Parameter_Name_None_" + Integer.toString(tempasset.parameterNames.size());
+            tempparatype = "Parameter_Type_None_" + Integer.toString(tempasset.parameterNames.size());
+            tempparameter.name = tempparaname;
+            tempparameter.type = tempparatype;
+            tempparameter.identifier = false;
+            tempasset.parameterNames.add(tempparameter.name);
+            tempasset.parameters.add(tempparameter);
+            contractAssets.set(currentAsset, tempasset);
+            currentAssetParameter = tempasset.parameterNames.size() - 1;
+        }
+
+        if (indexNumber == 3) {
+            Transaction temptransaction = new Transaction();
+            temptransaction = contractTransactions.get(currentTransaction);
+            tempparaname = "Parameter_Name_None_" + Integer.toString(temptransaction.parameterNames.size());
+            tempparatype = "Parameter_Type_None_" + Integer.toString(temptransaction.parameterNames.size());
+            tempparameter.name = tempparaname;
+            tempparameter.type = tempparatype;
+            tempparameter.identifier = false;
+            temptransaction.parameterNames.add(tempparameter.name);
+            temptransaction.parameters.add(tempparameter);
+            contractTransactions.set(currentTransaction, temptransaction);
+            currentTransactionParameter = temptransaction.parameterNames.size() - 1;
         }
     }
 
-    public static void updateParameters(AtomicReference<String> str){
-        parameters = parameters + str;
+    public static void updateParameters(AtomicReference<String> str, int flag){
+        Parameter tempparameter = new Parameter();
+        String strString = "" + str;
+
+        if (indexNumber == 1) 
+        {
+            Participant tempparticipant = new Participant();
+            tempparticipant = contractParticipants.get(currentParticipant);
+            
+            if(flag == 0)
+            {
+                tempparticipant.parameterNames.set(currentParticipantParameter, strString);
+                tempparameter.name = strString;
+                tempparameter.type = tempparticipant.parameters.get(currentParticipantParameter).type;
+                tempparameter.identifier = false;
+                tempparticipant.parameters.set(currentParticipantParameter, tempparameter);
+                contractParticipants.set(currentParticipant, tempparticipant);
+            }
+            if(flag == 1)
+            {
+                tempparameter.name = tempparticipant.parameters.get(currentParticipantParameter).name;
+                tempparameter.type = strString;
+                tempparameter.identifier = false;
+                tempparticipant.parameters.set(currentParticipantParameter, tempparameter);
+                contractParticipants.set(currentParticipant, tempparticipant);
+            }
+
+        }
+
+        if (indexNumber == 2) 
+        {
+            Asset tempasset = new Asset();
+            tempasset = contractAssets.get(currentAsset);
+            
+            if(flag == 0)
+            {
+                tempasset.parameterNames.set(currentAssetParameter, strString);
+                tempparameter.name = strString;
+                tempparameter.type = tempasset.parameters.get(currentAssetParameter).type;
+                tempparameter.identifier = false;
+                tempasset.parameters.set(currentAssetParameter, tempparameter);
+                contractAssets.set(currentAsset, tempasset);
+            }
+            if(flag == 1)
+            {
+                tempparameter.name = tempasset.parameters.get(currentAssetParameter).name;
+                tempparameter.type = strString;
+                tempparameter.identifier = false;
+                tempasset.parameters.set(currentAssetParameter, tempparameter);
+                contractAssets.set(currentAsset, tempasset);
+            }
+        }
+
+        if (indexNumber == 3) 
+        {
+            Transaction temptransaction = new Transaction();
+            temptransaction = contractTransactions.get(currentTransaction);
+            
+            if(flag == 0)
+            {
+                temptransaction.parameterNames.set(currentTransactionParameter, strString);
+                tempparameter.name = strString;
+                tempparameter.type = temptransaction.parameters.get(currentTransactionParameter).type;
+                tempparameter.identifier = temptransaction.parameters.get(currentTransactionParameter).identifier;
+                temptransaction.parameters.set(currentTransactionParameter, tempparameter);
+                contractTransactions.set(currentTransaction, temptransaction);
+            }
+            if(flag == 1)
+            {
+                tempparameter.name = temptransaction.parameters.get(currentTransactionParameter).name;
+                tempparameter.type = strString;
+                tempparameter.identifier = temptransaction.parameters.get(currentTransactionParameter).identifier;
+                temptransaction.parameters.set(currentTransactionParameter, tempparameter);
+                contractTransactions.set(currentTransaction, temptransaction);
+            }
+        }
+    }
+
+    public static void updateElementIndexNumber(int i)
+    {
+        indexNumber = i;
+    }
+
+    public static void funcCreateCondition()
+    {
+        Condition tempcondition = new Condition();
+        Transaction temptransaction = new Transaction();
+        temptransaction = contractTransactions.get(currentTransaction);
+        tempcondition.name = "Condition_Name_None_" + Integer.toString(temptransaction.conditionNames.size());
+        tempcondition.condition = "Condition_Condition_None_" + Integer.toString(temptransaction.conditionNames.size());
+        tempcondition.pre_or_post = 0;
+        temptransaction.conditionNames.add(tempcondition.name);
+        temptransaction.conditions.add(tempcondition);
+        contractTransactions.set(currentTransaction, temptransaction);
+        currentTransactionCondition = temptransaction.conditionNames.size() - 1;
+    }
+
+    public static void updateConditions(AtomicReference<String> str, int flag)
+    {
+        Condition tempcondition = new Condition();
+        Transaction temptransaction = new Transaction();
+        temptransaction = contractTransactions.get(currentTransaction);
+        String strString = "" + str;
+
+        if(flag == 0)
+        {
+            temptransaction.conditionNames.set(currentTransactionCondition, strString);
+            tempcondition.name = strString;
+            tempcondition.condition = temptransaction.conditions.get(currentTransactionCondition).condition;
+            tempcondition.pre_or_post = temptransaction.conditions.get(currentTransactionCondition).pre_or_post;
+            temptransaction.conditions.set(currentTransactionCondition, tempcondition);
+            contractTransactions.set(currentTransaction, temptransaction);
+        }
+
+        if(flag == 1)
+        {
+            tempcondition.name = temptransaction.conditions.get(currentTransactionCondition).name;
+            tempcondition.condition = strString;
+            tempcondition.pre_or_post = temptransaction.conditions.get(currentTransactionCondition).pre_or_post;
+            temptransaction.conditions.set(currentTransactionCondition, tempcondition);
+            contractTransactions.set(currentTransaction, temptransaction);
+        }
+
+        if(flag == 2)
+        {
+            tempcondition.name = temptransaction.conditions.get(currentTransactionCondition).name;
+            tempcondition.condition = temptransaction.conditions.get(currentTransactionCondition).condition;
+            if(strString.toLowerCase().contains("post"))
+            {
+                tempcondition.pre_or_post = 1;
+            }
+            else
+            {
+                tempcondition.pre_or_post = 0;
+            }
+            temptransaction.conditions.set(currentTransactionCondition, tempcondition);
+            contractTransactions.set(currentTransaction, temptransaction);
+        }
+    }
+
+    public static void funcCreateTranRel()
+    {
+        TranRel temptranrel = new TranRel();
+        Transaction temptransaction = new Transaction();
+        temptransaction = contractTransactions.get(currentTransaction);
+        temptranrel.name = "Tranrel_Name_None_" + Integer.toString(temptransaction.tranRelNames.size());
+        temptranrel.from = "Tranrel_From_None_" + Integer.toString(temptransaction.tranRelNames.size());
+        temptranrel.to = temptransaction.name;
+        temptranrel.selected = true;
+        temptranrel.events = new ArrayList <Event> ();
+        temptranrel.eventNames = new ArrayList <String> ();
+        temptransaction.tranRelNames.add(temptranrel.name);
+        temptransaction.tranRels.add(temptranrel);
+        contractTransactions.set(currentTransaction, temptransaction);
+        currentTransactionTranRel = temptransaction.tranRelNames.size() - 1;
+        indexNumberRelationship = tranrelIndexNumber;
+    }
+    
+
+    public static void funcCreateAssetRel()
+    {
+        AssetRel tempassetrel = new AssetRel();
+        Transaction temptransaction = new Transaction();
+        temptransaction = contractTransactions.get(currentTransaction);
+        tempassetrel.name = "Assetrel_Name_None_" + Integer.toString(temptransaction.assetRelNames.size());
+        tempassetrel.from = temptransaction.name;
+        tempassetrel.to = "Assetrel_To_None_" + Integer.toString(temptransaction.assetRelNames.size());
+        tempassetrel.create = false;
+        tempassetrel.read = false;
+        tempassetrel.update = false;
+        tempassetrel.delete = false;
+        tempassetrel.all = false;
+        tempassetrel.events = new ArrayList <Event> ();
+        tempassetrel.eventNames = new ArrayList <String> ();
+        temptransaction.assetRelNames.add(tempassetrel.name);
+        temptransaction.assetRels.add(tempassetrel);
+        contractTransactions.set(currentTransaction, temptransaction);
+        currentTransactionAssetRel = temptransaction.assetRelNames.size() - 1;
+        indexNumberRelationship = assetrelIndexNumber;
+    }
+
+    public static void funcUpdateRelationships(AtomicReference<String> str, int flag)
+    {
+        String strString = "" + str;
+        Transaction temptransaction = new Transaction();
+        temptransaction = contractTransactions.get(currentTransaction);
+        if(indexNumberRelationship == tranrelIndexNumber)
+        {
+            TranRel temptranrel = new TranRel();
+            if (flag == 0)
+            {
+                temptranrel = temptransaction.tranRels.get(currentTransactionTranRel);
+                temptranrel.from = strString;
+                temptransaction.tranRels.set(currentTransactionTranRel, temptranrel);
+                contractTransactions.set(currentTransaction, temptransaction);
+            }
+            
+            if (flag == 1)
+            {
+                temptranrel = temptransaction.tranRels.get(currentTransactionTranRel);
+                temptranrel.name = strString;
+                temptransaction.tranRelNames.set(currentTransactionTranRel, temptranrel.name);
+                temptransaction.tranRels.set(currentTransactionTranRel, temptranrel);
+                contractTransactions.set(currentTransaction, temptransaction);
+            }
+            
+        }
+
+        if(indexNumberRelationship == assetrelIndexNumber)
+        {
+            AssetRel tempassetrel = new AssetRel();
+            if (flag == 0)
+            {
+                tempassetrel = temptransaction.assetRels.get(currentTransactionAssetRel);
+                tempassetrel.to = strString;
+                temptransaction.assetRels.set(currentTransactionAssetRel, tempassetrel);
+                contractTransactions.set(currentTransaction, temptransaction);
+            }
+            if (flag == 1)
+            {
+                tempassetrel = temptransaction.assetRels.get(currentTransactionAssetRel);
+                tempassetrel.name = strString;
+                temptransaction.assetRelNames.set(currentTransactionAssetRel, tempassetrel.name);
+                temptransaction.assetRels.set(currentTransactionAssetRel, tempassetrel);
+                contractTransactions.set(currentTransaction, temptransaction);
+            }
+        }
+    }
+
+    public static String findClosestName(String str, int i)
+    {
+        String cN = "";
+        if(i == 1)
+        {
+            int tempindex = findClosestStringIndex(str, participantNames);
+            cN = participantNames.get(tempindex);
+        }
+        if(i == 2)
+        {
+            int tempindex = findClosestStringIndex(str, assetNames);
+            cN = assetNames.get(tempindex);
+        }
+        if(i == 3)
+        {
+            int tempindex = findClosestStringIndex(str, transactionNames);
+            cN = transactionNames.get(tempindex);
+        }
+        return cN;
+    }
+
+    public static int findClosestStringIndex(String str, ArrayList<String> strlist)
+    {
+        int distance = 10000;
+        int tempdist;
+        int index1 = 0;
+        for(int i = 0; i < strlist.size(); i++)
+        {
+            tempdist = EditDistDP(str, strlist.get(i));
+            if(tempdist < distance)
+                index1 = i;
+        }
+        return index1;
+    }
+
+    public static int EditDistDP(String str1, String str2)
+    {
+        int len1 = str1.length();
+        int len2 = str2.length();
+     
+        // Create a DP array to memoize result
+        // of previous computations
+        int [][]DP = new int[2][len1 + 1];
+     
+     
+        // Base condition when second String
+        // is empty then we remove all characters
+        for (int i = 0; i <= len1; i++)
+            DP[0][i] = i;
+     
+        // Start filling the DP
+        // This loop run for every
+        // character in second String
+        for (int i = 1; i <= len2; i++) 
+        {
+           
+            // This loop compares the char from
+            // second String with first String
+            // characters
+            for (int j = 0; j <= len1; j++)
+            {
+               
+                // if first String is empty then
+                // we have to perform add character
+                // operation to get second String
+                if (j == 0)
+                    DP[i % 2][j] = i;
+     
+                // if character from both String
+                // is same then we do not perform any
+                // operation . here i % 2 is for bound
+                // the row number.
+                else if (str1.charAt(j - 1) == str2.charAt(i - 1)) {
+                    DP[i % 2][j] = DP[(i - 1) % 2][j - 1];
+                }
+     
+                // if character from both String is
+                // not same then we take the minimum
+                // from three specified operation
+                else {
+                    DP[i % 2][j] = 1 + Math.min(DP[(i - 1) % 2][j],
+                                           Math.min(DP[i % 2][j - 1],
+                                               DP[(i - 1) % 2][j - 1]));
+                }
+            }
+        }
+     
+        // after complete fill the DP array
+        // if the len2 is even then we end
+        // up in the 0th row else we end up
+        // in the 1th row so we take len2 % 2
+        // to get row
+        return DP[len2 % 2][len1];
     }
 
     //Function to generate the whole file
     public static void generateWholeFile(){
-        wholeContract = wholeContract + nameOfContract;
-        wholeContract = wholeContract + targetPlatform;
-        wholeContract = wholeContract + participants;
-        wholeContract = wholeContract + assets;
-        wholeContract = wholeContract + transactions;
+        String stringTempParticipant = "";
+        String stringTempAsset = "";
+        String stringTempTransaction = "";
 
-        String filename = "./src-gen/" + nameOfContract + ".scdsl";
+        for(int i = 0; i < contractParticipants.size(); i++)
+        {
+            if(contractParticipants.get(i).creator == true)
+            {
+                stringTempParticipant = stringTempParticipant + "Participant" + "\n" + "Creator: T {" + "\n";
+            }
+            else
+            {
+                stringTempParticipant = stringTempParticipant + "Participant " + "{" + "\n";
+            }
+            stringTempParticipant = stringTempParticipant + "Name: " + contractParticipants.get(i).name + "\n";
+            stringTempParticipant = stringTempParticipant + "List: " + contractParticipants.get(i).list + "\n";
+            for(int j = 0; j < contractParticipants.get(i).parameters.size(); j++)
+            {
+                stringTempParticipant = stringTempParticipant + "Parameter " + "{" + "\n";
+                stringTempParticipant = stringTempParticipant + "Name: " + contractParticipants.get(i).parameters.get(j).name + "\n";
+                stringTempParticipant = stringTempParticipant + "Type: " + contractParticipants.get(i).parameters.get(j).type + "\n";
+                if(contractParticipants.get(i).parameters.get(j).identifier == true)
+                {
+                    stringTempParticipant = stringTempParticipant + "Identifier: T" + "\n";
+                }
+                stringTempParticipant = stringTempParticipant + "}" + "\n";
+            }
+            stringTempParticipant = stringTempParticipant + "}" + "\n";
+        }
+
+        for(int i = 0; i < contractAssets.size(); i++)
+        {
+            stringTempAsset = stringTempAsset + "Asset" + "\n" + "Type: " + contractAssets.get(i).type + "{" + "\n";
+            stringTempAsset = stringTempAsset + "Name: " + contractAssets.get(i).name + "\n";
+            stringTempAsset = stringTempAsset + "Type: " + contractAssets.get(i).type + "\n";
+            for(int j = 0; j < contractAssets.get(i).parameters.size(); j++)
+            {
+                stringTempAsset = stringTempAsset + "Parameter" + "{" + "\n";
+                stringTempAsset = "Name: " + contractAssets.get(i).parameters.get(j).name + "\n";
+                stringTempAsset = "Type: " + contractAssets.get(i).parameters.get(j).type + "\n";
+                if(contractAssets.get(i).parameters.get(j).identifier == true)
+                {
+                    stringTempAsset = stringTempAsset + "Identifier: T" + "\n";
+                }
+                stringTempAsset = stringTempAsset + "}" + "\n";
+            }
+            stringTempAsset = stringTempAsset + "}" + "\n";
+        }
+
+        for(int i = 0; i < contractTransactions.size(); i++)
+        {
+            stringTempTransaction = stringTempTransaction + "Transaction" + "{" + "\n";
+            for(int j = 0; j < contractTransactions.get(i).conditions.size(); j++)
+            {
+                stringTempTransaction = stringTempTransaction + "Condition" + "\n" + "{";
+                stringTempTransaction = stringTempTransaction + "Name: " + contractTransactions.get(i).conditions.get(j).name + "\n";
+                stringTempTransaction = stringTempTransaction + "Condition: " + contractTransactions.get(i).conditions.get(j).condition + "\n";
+                if(contractTransactions.get(i).conditions.get(j).pre_or_post == 0)
+                {
+                    stringTempTransaction = stringTempTransaction + "ConditionType: " + "Pre" + "\n";
+                }
+                if(contractTransactions.get(i).conditions.get(j).pre_or_post == 1)
+                {
+                    stringTempTransaction = stringTempTransaction + "ConditionType: " + "Post" + "\n";
+                }
+                stringTempTransaction = stringTempTransaction + "}" + "\n";
+            }
+
+            stringTempTransaction = stringTempParticipant + "{" + "\n";
+            for(int j = 0; j < contractTransactions.get(i).parameters.size(); j++)
+            {
+                stringTempTransaction = stringTempTransaction + "Parameter" + "{" + "\n";
+                stringTempTransaction = stringTempTransaction + "Name: " + contractTransactions.get(i).parameters.get(j).name + "\n";
+                stringTempTransaction = stringTempTransaction + "Type: " + contractTransactions.get(i).parameters.get(j).type + "\n";
+                stringTempTransaction = stringTempTransaction + "}" + "\n";
+            }
+
+            for(int j = 0; j < contractTransactions.get(i).tranRels.size(); j++)
+            {
+                stringTempTransaction = stringTempTransaction + "Relationship" + "\n";
+                stringTempTransaction = stringTempTransaction + "TranRel" + "{" + "\n";
+                stringTempTransaction = stringTempTransaction + "Name: " + contractTransactions.get(i).tranRels.get(j).name + "\n";
+                stringTempTransaction = stringTempTransaction + "From: " + contractTransactions.get(i).tranRels.get(j).from + "\n";
+                stringTempTransaction = stringTempTransaction + "To: " + contractTransactions.get(i).tranRels.get(j).to + "\n";
+                stringTempTransaction = stringTempTransaction + "}" + "\n";
+            }
+
+            for(int j = 0; j < contractTransactions.get(i).assetRels.size(); j++)
+            {
+                stringTempTransaction = stringTempTransaction + "Relationship" + "\n";
+                stringTempTransaction = stringTempTransaction + "TranRel" + "{" + "\n";
+                stringTempTransaction = stringTempTransaction + "Name: " + contractTransactions.get(i).assetRels.get(j).name + "\n";
+                stringTempTransaction = stringTempTransaction + "From: " + contractTransactions.get(i).assetRels.get(j).from + "\n";
+                stringTempTransaction = stringTempTransaction + "To: " + contractTransactions.get(i).assetRels.get(j).to + "\n";
+                stringTempTransaction = stringTempTransaction + "}" + "\n";
+            }
+
+            stringTempTransaction = stringTempTransaction + "}" + "\n";
+        }
+
+        wholeContract = wholeContract + "Contract: " + nameOfContract + "\n";
+        wholeContract = wholeContract + "Platform: " + targetPlatform + "\n";
+        wholeContract = wholeContract + stringTempParticipant;
+        wholeContract = wholeContract + stringTempAsset;
+        wholeContract = wholeContract + stringTempTransaction;
+
+        String filename = "./src-gen-dsl/" + nameOfContract + ".scdsl";
 
         try{
                 FileWriter fw = new FileWriter(filename);
                 fw.write(wholeContract);
                 fw.close();
-                // ProcessBuilder pb = new ProcessBuilder("java", "-jar", "run.jar", filename);
-                // Process p = pb.start();
+                ProcessBuilder pb = new ProcessBuilder("java", "-jar", "run.jar", filename);
+                Process p = pb.start();
         }
         catch(Exception e){
             System.out.println(e);
         }
     }
-}
 
+}
 
 // Defining the different types needed in the smart contract
 class Parameter
@@ -1405,7 +2521,7 @@ class TranRel
     public String to;
     public String name;
     public boolean selected;
-    public HashMap <String, Event> events;
+    public ArrayList <Event> events;
     public ArrayList <String> eventNames;
 }
 
@@ -1414,13 +2530,13 @@ class AssetRel
     public String from;
     public String to;
     public String name;
-    public String participant;
+    // public String participant;
     public boolean create;
     public boolean read;
     public boolean update;
     public boolean delete;
     public boolean all;
-    public HashMap <String, Event> events;
+    public ArrayList <Event> events;
     public ArrayList <String> eventNames;
 }
 
@@ -1436,7 +2552,7 @@ class Participant
     public String name;
     public String list;
     public boolean creator;
-    public HashMap <String, Parameter> parameters;
+    public ArrayList <Parameter> parameters;
     public ArrayList <String> parameterNames;
 }
 
@@ -1445,19 +2561,19 @@ class Asset
     public String type;
     public String name;
     public String list;
-    public HashMap <String, Parameter> parameters;
+    public ArrayList <Parameter> parameters;
     public ArrayList <String> parameterNames;
 }
 
 class Transaction
 {
-    public HashMap <String, Condition> conditions;
+    public ArrayList <Condition> conditions;
     public boolean mostrar;
     public String name;
     public String list;
-    public HashMap <String, Parameter> parameters;
-    public HashMap <String, TranRel> tranRels;
-    public HashMap <String, AssetRel> assetRels;
+    public ArrayList <Parameter> parameters;
+    public ArrayList <TranRel> tranRels;
+    public ArrayList <AssetRel> assetRels;
     public ArrayList <String> conditionNames;
     public ArrayList <String> parameterNames;
     public ArrayList <String> tranRelNames;
