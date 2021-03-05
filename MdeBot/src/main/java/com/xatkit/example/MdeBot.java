@@ -2485,7 +2485,7 @@ public class MdeBot {
         wholeContract = wholeContract + stringTempAsset;
         wholeContract = wholeContract + stringTempTransaction;
 
-        String filename = "./src-gen-dsl/" + nameOfContract + ".scdsl";
+        String filename = "./" + nameOfContract + ".scdsl";
 
         try{
                 FileWriter fw = new FileWriter(filename);
