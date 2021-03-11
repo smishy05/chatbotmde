@@ -22,7 +22,7 @@
 
 ```
 mvn clean compile
-mvn exec:java -Dexec.mainClass="com.xatkit.example.GreetingsBot"
+mvn exec:java -Dexec.mainClass="com.xatkit.example.MdeBot"
 ```
 
 5) Then, open a Web-browser and go to link - http://localhost:5000/admin
