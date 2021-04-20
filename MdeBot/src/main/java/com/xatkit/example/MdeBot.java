@@ -64,6 +64,12 @@ public class MdeBot {
     static int currentTransactionAssetRel;
     static int currentTransactionCondition;
 
+    static String currentParticipantName;
+    static String currentAssetName;
+    static String currentTransactionName;
+    static String currentConditionName;
+    static String currentRelationshipName;
+
     public MdeBot() {
         numberOfParticipants = 0;
         numberOfAssets = 0;
@@ -86,28 +92,54 @@ public class MdeBot {
 
         //Intent to find if the user wants to create a contract
         val createContract = intent("CreateContract")
-                .trainingSentence("I want to create a contract")
-                .trainingSentence("Create a contract")
-                .trainingSentence("I wish to make a contract")
-                .trainingSentence("I wish to develop a contract");
+            .trainingSentence("I want to create a contract")
+            .trainingSentence("Create a contract")
+            .trainingSentence("I wish to make a contract")
+            .trainingSentence("I wish to develop a contract");
 
         //Intent to find if the user wants to edit a contract
         val editContract = intent("EditContract")
-                .trainingSentence("I want to edit a contract")
-                .trainingSentence("Edit a contract")
-                .trainingSentence("I wish to update a contract")
-                .trainingSentence("I wish to change a contract");
+            .trainingSentence("I want to edit a contract")
+            .trainingSentence("Edit a contract")
+            .trainingSentence("I wish to update a contract")
+            .trainingSentence("I wish to change a contract");
 
         //Obtain the name of the contract that is to be created or that is to be edited
         val contractName = intent("ContractName")
-                .trainingSentence("The name of the contract is CONT")
-                .trainingSentence("Name of the contract is CONT")
-                .trainingSentence("I want to call the contract as CONT")
-                .trainingSentence("Contract's name is CONT")
-                .trainingSentence("Name of the contract is CONT")
-                .trainingSentence("Contract = CONT")
-                .trainingSentence("Contract is CONT")
-                .parameter("cont").fromFragment("CONT").entity(any());
+            .trainingSentence("The name of the contract is CONT")
+            .trainingSentence("Name of the contract is CONT")
+            .trainingSentence("I want to call the contract as CONT")
+            .trainingSentence("Contract's name is CONT")
+            .trainingSentence("Name of the contract is CONT")
+            .trainingSentence("Contract = CONT")
+            .trainingSentence("Contract is CONT")
+            .parameter("cont").fromFragment("CONT").entity(any());
+
+        val createElement = intent("CreateElement")
+            .trainingSentence("I want to build an element")
+            .trainingSentence("I want to create an element")
+            .trainingSentence("I want to make an element")
+            .trainingSentence("Create an element")
+            .trainingSentence("Make an element for the contract");
+
+        val editElement = intent("EditElement")
+            .trainingSentence("I want to edit an element")
+            .trainingSentence("I want to update an element")
+            .trainingSentence("I want to change an element")
+            .trainingSentence("Make changes to an element")
+            .trainingSentence("Edit an element for the contract");
+
+        val deleteElement = intent("DeleteElement")
+            .trainingSentence("I want to delete an element")
+            .trainingSentence("I want to remove an element")
+            .trainingSentence("Delete an element")
+            .trainingSentence("Remove an element for the contract");
+
+        val readElement = intent("ReadElement")
+            .trainingSentence("I want to read an element")
+            .trainingSentence("I want you to show me an element")
+            .trainingSentence("Show me an element");
+
 
         // Participants----------------------------------------------------------------------------------------
 
@@ -423,6 +455,11 @@ public class MdeBot {
             .trainingSentence("Yes, I want to have another conditon for this transaction")
             .trainingSentence("Yes, I want to have more conditions for the transaction")
             .trainingSentence("I want to build more conditions for this transaction");
+
+        val createTransactionDenyCondition = intent("CreateTransactionAssertCondition")
+            .trainingSentence("No, I don't want to have another conditon for this transaction")
+            .trainingSentence("I don't want to have any more conditions for the transaction")
+            .trainingSentence("I don't want any more transactions");
 
         val createTransactionConditionDone = intent("CreateTransactionConditionDone")
             .trainingSentence("That's all for the conditions for the transaction")
@@ -745,17 +782,23 @@ public class MdeBot {
         val handleCreateContractName = state("HandleCreateContractName");
         val handleGetEditContractName = state("HandleGetEditContractName");
         val handleNeutral = state("HandleNeutral");
+        val handleCreateElement = state("HandleCreateElement");
+        val handleEditElement = state("HandleEditElement");
+        val handleDeleteElement = state("HandleDeleteElement");
+        val handleReadElement = state("HandleReadElement");
         // States for creating participants
         val handleCreateParticipant = state("HandleCreateParticipant");
         val handleCreateParticipantSetName = state("HandleCreateParticipantSetName");
         val handleCreateParticipantSetList = state("HandleCreateParticipantSetList");
         val handleCreateParticipantDone = state("HandleCreateParticipantDone");
         val handleCreateParticipantSetIdentifier = state("HandleCreateParticipantSetIdentifier");
+        val handleCreateParticipantAssertRelationship = state("HandleCreateParticipantAssertRelationship");
         // States for editing participants
         val handleEditParticipant = state("HandleEditParticipant");
         val handleEditParticipantGetName = state("HandleEditParticipantGetName");
         val handleEditParticipantConfirm = state("HandleEditParticipantConfirm");
         val handleEditParticipantChangeName = state("HandleEditParticipantChangeName");
+        val handleEditParticipantSetName = state("HandleEditParticipantSetName");
         val handleEditParticipantChangeIdentifier = state("HandleEditParticipantChangeIdentifier");
         val handleEditParticipantEditParameter = state("HandleEditParticipantEditParameter");
         val handleEditParticipantDeleteParameter = state("HandleEditParticipantDeleteParameter");
@@ -774,11 +817,13 @@ public class MdeBot {
         val handleCreateAssetSetList = state("HandleCreateAssetSetList");
         val handleCreateAssetDone = state("HandleCreateAssetDone");
         val handleCreateAssetSetIdentifier = state("HandleCreateAssetSetIdentifier");
+        val handleCreateAssetAssertRelationship = state("HandleCreateAssetAssertRelationship");
         // States for editing assets
         val handleEditAsset = state("HandleEditAsset");
         val handleEditAssetGetName = state("HandleEditAssetGetName");
         val handleEditAssetConfirm = state("HandleEditAssetConfirm");
         val handleEditAssetChangeName = state("HandleEditAssetChangeName");
+        val handleEditAssetSetName = state("HandleEditAssetSetName");
         val handleEditAssetChangeIdentifier = state("HandleEditAssetChangeIdentifier");
         val handleEditAssetEditParameter = state("HandleEditAssetEditParameter");
         val handleEditAssetDeleteParameter = state("HandleEditAssetDeleteParameter");
@@ -800,6 +845,7 @@ public class MdeBot {
         val handleCreateTransactionConditionCondition = state("HandleCreateTransactionConditionCondition");
         val handleCreateTransactionConditionType = state("HandleCreateTransactionConditionType");
         val handleCreateTransactionAssertCondition = state("HandleCreateTransactionAssertCondition");
+        val handleCreateTransactionDenyCondition = state("HandleCreateTransactionDenyCondition");
         val handleCreateTransactionConditionDone = state("HandleCreateTransactionConditionDone");
         val handleCreateTransactionAssertRelationship = state("HandleCreateAssetAssertRelationship");
         val handleCreateTransactionAssertTranRelationship = state("HandleTransactionAssertTranRelationship");
@@ -817,6 +863,7 @@ public class MdeBot {
         val handleEditTransactionGetName = state("HandleEditTransactionGetName");
         val handleEditTransactionConfirm = state("HandleEditTransactionConfirm");
         val handleEditTransactionChangeName = state("HandleEditTransactionChangeName");
+        val handleEditTransactionSetName = state("HandleEditTransactionSetName");
         val handleEditTransactionEditParameter = state("HandleEditTransactionEditParameter");
         val handleEditTransactionDeleteParameter = state("HandleEditTransactionDeleteParameter");
         val handleEditTransactionEditRelationship = state("HandleEditTransactionEditRelationship");
@@ -878,11 +925,10 @@ public class MdeBot {
         //Ask the user if they wish to create or edit a contract. This is the first line that the user says.
         awaitingInput
             .body(context -> {
-                    reactPlatform.reply(context, "Hey there. I am iContractBot. I am here to guide you to create and edit smart contracts. Do you want to create or edit a smart contract?");
+                    reactPlatform.reply(context, "Hey there!! I am iContractBot. I am here to guide you to create and edit smart contracts. Do you want to create a smart contract?");
             })
             .next()
-            .when(intentIs(createContract)).moveTo(handleCreateContract)
-            .when(intentIs(editContract)).moveTo(handleEditContract);
+            .when(intentIs(createContract)).moveTo(handleCreateContract);
 
         //When the user wants to create a smart contract
         handleCreateContract
@@ -893,38 +939,76 @@ public class MdeBot {
             .when(intentIs(contractName)).moveTo(handleCreateContractName);
 
         //When the user wants to edit a smart contract
-        handleEditContract
-            .body(context -> {
-                    reactPlatform.reply(context, "That's great. I will help you to edit the smart contract. What's the name of the contract that you want to edit?");
-            })
-            .next()
-            .when(intentIs(contractName)).moveTo(handleGetEditContractName);
+        // handleEditContract
+        //     .body(context -> {
+        //             reactPlatform.reply(context, "That's great. I will help you to edit the smart contract. What's the name of the contract that you want to edit?");
+        //     })
+        //     .next()
+        //     .when(intentIs(contractName)).moveTo(handleGetEditContractName);
 
         // After the user gives instructions to give the name to the contract
         // The user can only create elements from here.
         handleCreateContractName
             .body(context -> {
                     String contractname = (String) context.getIntent().getValue("cont");
-                    reactPlatform.reply(context, "Wow. Great Job. So we are going to create a smart contract with the name " + contractname + ". So, what do you wish do now? Would you like to create some elements in the smart contract?");
+                    reactPlatform.reply(context, "Wow. Great Job. So we are going to create a smart contract with the name " + contractname + ".");
+                    reactPlatform.reply(context, "So, what do you wish do now? Would you like to create some elements in the smart contract?");
                     a1.set(contractname);
                     setContractName(a1);
             })
             .next()
+            .when(intentIs(createElement)).moveTo(handleCreateElement)
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
             .when(intentIs(createAsset)).moveTo(handleCreateAsset)
             .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
             .when(intentIs(contractDone)).moveTo(handleDone);
 
-        // Get the name of the contract that the user wants to edit
-        handleGetEditContractName
+        handleCreateElement
             .body(context -> {
-                    String contractname = (String) context.getIntent().getValue("cName");
-                    reactPlatform.reply(context, "That's great. Lemme find the" + contractname + "smart contract in the contract in the directory. What would you like to do next? Do you want to create/edit/delete/read some elements in the smart contract?");
-                    a1.set("Contract : " + contractname + "\n");
-                    setContractName(a1);
+                    reactPlatform.reply(context, "That's perfect. Which element would would you like to create now? Do you want to create a participant or an asset or a transaction?");
             })
             .next()
-            .moveTo(awaitingInput);
+            .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
+            .when(intentIs(createAsset)).moveTo(handleCreateAsset)
+            .when(intentIs(createTransaction)).moveTo(handleCreateTransaction);
+
+        handleEditElement
+            .body(context -> {
+                    reactPlatform.reply(context, "Okay! That's great! Which element would would you like to edit now? Do you want to edit a participant or an asset or a transaction?");
+            })
+            .next()
+            .when(intentIs(editParticipant)).moveTo(handleEditParticipant)
+            .when(intentIs(editAsset)).moveTo(handleEditAsset)
+            .when(intentIs(editTransaction)).moveTo(handleEditTransaction);
+
+        handleDeleteElement
+            .body(context -> {
+                    reactPlatform.reply(context, "Okay. Which element would would you like to delete now? Do you want to delete a participant or an asset or a transaction?");
+            })
+            .next()
+            .when(intentIs(deleteParticipant)).moveTo(handleDeleteParticipant)
+            .when(intentIs(deleteAsset)).moveTo(handleDeleteAsset)
+            .when(intentIs(deleteTransaction)).moveTo(handleDeleteTransaction);
+
+        handleReadElement
+            .body(context -> {
+                    reactPlatform.reply(context, "That's cool. Which element would would you like to see now? Do you want to read a participant or an asset or a transaction?");
+            })
+            .next()
+            .when(intentIs(readParticipant)).moveTo(handleReadParticipant)
+            .when(intentIs(readAsset)).moveTo(handleReadAsset)
+            .when(intentIs(readTransaction)).moveTo(handleReadTransaction);
+
+        // Get the name of the contract that the user wants to edit
+        // handleGetEditContractName
+        //     .body(context -> {
+        //             String contractname = (String) context.getIntent().getValue("cName");
+        //             reactPlatform.reply(context, "That's great. Lemme find the" + contractname + "smart contract in the contract in the directory. What would you like to do next? Do you want to create/edit/delete/read some elements in the smart contract?");
+        //             a1.set("Contract : " + contractname + "\n");
+        //             setContractName(a1);
+        //     })
+        //     .next()
+        //     .moveTo(awaitingInput);
             // .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
             // .when(intentIs(deleteParticipant)).moveTo(handleDeleteParticipant)
             // .when(intentIs(editParticipant)).moveTo(handleEditParticipant)
@@ -957,24 +1041,25 @@ public class MdeBot {
         handleCreateParticipantSetName
             .body(context -> {
                     String partname = (String) context.getIntent().getValue("partname");
-                    reactPlatform.reply(context, "Awesome. What would you like to name the list attribute of the participant?");
+                    reactPlatform.reply(context, "Awesome. So, a participant needs to have at least one parameter. Hence, our next step would be creating a parameter for the participant.");
+                    reactPlatform.reply(context, "So, what would you like to name the parameter?");
                     a1.set(partname);
                     updateParticipants(a1, 0);
             })
             .next()
-            .when(intentIs(createParticipantSetList)).moveTo(handleCreateParticipantSetList);
+            .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
 
         // Detect and store the list attribute of the participant
-        handleCreateParticipantSetList
-            .body(context -> {
-                    String partlist = (String) context.getIntent().getValue("partlist");
-                    reactPlatform.reply(context, "Great!! We are moving in the right direction. What would be the name of the first parameter of the participant?");
-                    a1.set(partlist);
-                    updateParticipants(a1, 1);
-                    funcCreateParameter();
-            })  
-            .next()
-            .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
+        // handleCreateParticipantSetList
+        //     .body(context -> {
+        //             String partlist = (String) context.getIntent().getValue("partlist");
+        //             reactPlatform.reply(context, "Great!! We are moving in the right direction. What would be the name of the first parameter of the participant?");
+        //             a1.set(partlist);
+        //             updateParticipants(a1, 1);
+        //             funcCreateParameter();
+        //     })  
+        //     .next()
+        //     .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
 
         handleCreateParticipantAssertParameter
             .body(context -> {
@@ -983,13 +1068,6 @@ public class MdeBot {
             })
             .next()
             .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
-
-        handleCreateParticipantAssertRelationship
-            .body(context -> {
-                    reactPlatform.reply(context, "Great. What would you like to name the relationship?");
-            })
-            .next()
-            .moveTo(awaitingInput);
 
         handleCreateParticipantDone
             .body(context -> {
@@ -1011,6 +1089,15 @@ public class MdeBot {
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
             .when(intentIs(createAsset)).moveTo(handleCreateAsset)
             .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
+            .when(intentIs(editParticipant)).moveTo(handleEditParticipant)
+            .when(intentIs(editAsset)).moveTo(handleEditAsset)
+            .when(intentIs(editTransaction)).moveTo(handleEditTransaction)
+            .when(intentIs(deleteParticipant)).moveTo(handleDeleteParticipant)
+            .when(intentIs(deleteAsset)).moveTo(handleDeleteAsset)
+            .when(intentIs(deleteTransaction)).moveTo(handleDeleteTransaction)
+            .when(intentIs(readParticipant)).moveTo(handleReadParticipant)
+            .when(intentIs(readAsset)).moveTo(handleReadAsset)
+            .when(intentIs(readTransaction)).moveTo(handleReadTransaction)
             .when(intentIs(contractDone)).moveTo(handleDone);
 
         //*****************************************************************************************************************************************
@@ -1053,7 +1140,20 @@ public class MdeBot {
                     reactPlatform.reply(context, "That's cool. What should be the new name of the participant?");
             })
             .next()
-            .when(intentIs(createParticipantSetName)).moveTo(handleCreateParticipantSetName);
+            .when(intentIs(createParticipantSetName)).moveTo(handleEditParticipantSetName);
+
+        handleEditParticipantSetName
+            .body(context -> {
+                    String partname = (String) context.getIntent().getValue("partname");
+                    reactPlatform.reply(context, "Awesome. The name of the participant has been changed to " + partname + ". What would you like to do now? Would you like to continue editing the participant?");
+                    a1.set(partname);
+                    updateParticipants(a1, 0);
+            })
+            .next()
+            .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
+            .when(intentIs(createAsset)).moveTo(handleCreateAsset)
+            .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
+            .when(intentIs(contractDone)).moveTo(handleDone);
 
         handleEditParticipantChangeIdentifier
             .body(context -> {
@@ -1116,6 +1216,15 @@ public class MdeBot {
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
             .when(intentIs(createAsset)).moveTo(handleCreateAsset)
             .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
+            .when(intentIs(editParticipant)).moveTo(handleEditParticipant)
+            .when(intentIs(editAsset)).moveTo(handleEditAsset)
+            .when(intentIs(editTransaction)).moveTo(handleEditTransaction)
+            .when(intentIs(deleteParticipant)).moveTo(handleDeleteParticipant)
+            .when(intentIs(deleteAsset)).moveTo(handleDeleteAsset)
+            .when(intentIs(deleteTransaction)).moveTo(handleDeleteTransaction)
+            .when(intentIs(readParticipant)).moveTo(handleReadParticipant)
+            .when(intentIs(readAsset)).moveTo(handleReadAsset)
+            .when(intentIs(readTransaction)).moveTo(handleReadTransaction)
             .when(intentIs(contractDone)).moveTo(handleDone);
 
         //*****************************************************************************************************************************************
@@ -1149,6 +1258,15 @@ public class MdeBot {
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
             .when(intentIs(createAsset)).moveTo(handleCreateAsset)
             .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
+            .when(intentIs(editParticipant)).moveTo(handleEditParticipant)
+            .when(intentIs(editAsset)).moveTo(handleEditAsset)
+            .when(intentIs(editTransaction)).moveTo(handleEditTransaction)
+            .when(intentIs(deleteParticipant)).moveTo(handleDeleteParticipant)
+            .when(intentIs(deleteAsset)).moveTo(handleDeleteAsset)
+            .when(intentIs(deleteTransaction)).moveTo(handleDeleteTransaction)
+            .when(intentIs(readParticipant)).moveTo(handleReadParticipant)
+            .when(intentIs(readAsset)).moveTo(handleReadAsset)
+            .when(intentIs(readTransaction)).moveTo(handleReadTransaction)
             .when(intentIs(contractDone)).moveTo(handleDone);
 
         //*****************************************************************************************************************************************
@@ -1161,45 +1279,46 @@ public class MdeBot {
         // The user says that he/she wants to create an asset
         handleCreateAsset
             .body(context -> {
-                    reactPlatform.reply(context, "Looks like we are heading somewhere :). What should be the type of the asset?");
+                    reactPlatform.reply(context, "Looks like we are heading somewhere :). What should be the name of the asset?");
                     funcCreateAsset();
             })
             .next()
-            .when(intentIs(createAssetSetType)).moveTo(handleCreateAssetSetType);
+            .when(intentIs(createAssetSetName)).moveTo(handleCreateAssetSetName);
 
         // Set the type attribute of the asset
-        handleCreateAssetSetType
-            .body(context -> {
-                    String assttype = (String) context.getIntent().getValue("assttype");
-                    reactPlatform.reply(context, "Perfect. What would you like to name the asset?");
-                    a1.set(assttype);
-                    updateAssets(a1, 0);
-            })
-            .next()
-            .when(intentIs(createAssetSetName)).moveTo(handleCreateAssetSetName);
+        // handleCreateAssetSetType
+        //     .body(context -> {
+        //             String assttype = (String) context.getIntent().getValue("assttype");
+        //             reactPlatform.reply(context, "Perfect. What would you like to name the asset?");
+        //             a1.set(assttype);
+        //             updateAssets(a1, 0);
+        //     })
+        //     .next()
+        //     .when(intentIs(createAssetSetName)).moveTo(handleCreateAssetSetName);
 
         // Detect and store the name of the asset
         handleCreateAssetSetName
             .body(context -> {
                     String asstname = (String) context.getIntent().getValue("asstname");
-                    reactPlatform.reply(context, "Awesome. What would you like to name the list attribute of the asset?");
+                    reactPlatform.reply(context, "Awesome. So, an asset needs to have at least one parameter. Hence, out next step would be creating a parameter for the asset.");
+                    reactPlatform.reply(context, "So, what should be the name of the parameter?");
                     a1.set(asstname);
                     updateAssets(a1, 1);
             })
             .next()
-            .when(intentIs(createAssetSetList)).moveTo(handleCreateAssetSetList);
+            .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
 
         // Detect and store the list attribute of the asset
-        handleCreateAssetSetList
-            .body(context -> {
-                    String asstlist = (String) context.getIntent().getValue("asstlist");
-                    reactPlatform.reply(context, "Great!! We are moving in the right direction. What would be the name of the first parameter of the asset?");
-                    a1.set(asstlist);
-                    updateAssets(a1, 2);
-                    funcCreateParameter();
-            })
-            .next()
-            .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
+        // handleCreateAssetSetList
+        //     .body(context -> {
+        //             String asstlist = (String) context.getIntent().getValue("asstlist");
+        //             reactPlatform.reply(context, "Great!! We are moving in the right direction. What would be the name of the first parameter of the asset?");
+        //             a1.set(asstlist);
+        //             updateAssets(a1, 2);
+        //             funcCreateParameter();
+        //     })
+        //     .next()
+        //     .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
 
         handleCreateAssetAssertParameter
             .body(context -> {
@@ -1208,13 +1327,6 @@ public class MdeBot {
             })
             .next()
             .when(intentIs(createParameterSetName)).moveTo(handleCreateParameterSetName);
-
-        handleCreateAssetAssertRelationship
-            .body(context -> {
-                    reactPlatform.reply(context, "Great. What would you like to name the relationship?");
-            })
-            .next()
-            .moveTo(awaitingInput);
 
         handleCreateAssetDone
             .body(context -> {
@@ -1228,7 +1340,7 @@ public class MdeBot {
         handleCreateAssetSetIdentifier
             .body(context -> {
                     String asstid = (String) context.getIntent().getValue("asstid");
-                    reactPlatform.reply(context, "And.... we have created a participant. What would you like to do now? Would you like to define create some more elements for the smart contract?");
+                    reactPlatform.reply(context, "And.... we have created an asset. What would you like to do now? Would you like to define create some more elements for the smart contract?");
                     a1.set(asstid);
                     updateAssets(a1, 3);
             })
@@ -1236,6 +1348,15 @@ public class MdeBot {
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
             .when(intentIs(createAsset)).moveTo(handleCreateAsset)
             .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
+            .when(intentIs(editParticipant)).moveTo(handleEditParticipant)
+            .when(intentIs(editAsset)).moveTo(handleEditAsset)
+            .when(intentIs(editTransaction)).moveTo(handleEditTransaction)
+            .when(intentIs(deleteParticipant)).moveTo(handleDeleteParticipant)
+            .when(intentIs(deleteAsset)).moveTo(handleDeleteAsset)
+            .when(intentIs(deleteTransaction)).moveTo(handleDeleteTransaction)
+            .when(intentIs(readParticipant)).moveTo(handleReadParticipant)
+            .when(intentIs(readAsset)).moveTo(handleReadAsset)
+            .when(intentIs(readTransaction)).moveTo(handleReadTransaction)
             .when(intentIs(contractDone)).moveTo(handleDone);
 
         //*****************************************************************************************************************************************
@@ -1278,7 +1399,20 @@ public class MdeBot {
                     reactPlatform.reply(context, "That's cool. What should be the new name of the asset?");
             })
             .next()
-            .when(intentIs(createAssetSetName)).moveTo(handleCreateAssetSetName);
+            .when(intentIs(createAssetSetName)).moveTo(handleEditAssetSetName);
+
+        handleEditAssetSetName
+            .body(context -> {
+                    String asstname = (String) context.getIntent().getValue("asstname");
+                    reactPlatform.reply(context, "Awesome. The name of the asset has been changed to " + asstname + ". What would you like to do now? Would you like to continue editing the participant?");
+                    a1.set(asstname);
+                    updateAssets(a1, 1);
+            })
+            .next()
+            .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
+            .when(intentIs(createAsset)).moveTo(handleCreateAsset)
+            .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
+            .when(intentIs(contractDone)).moveTo(handleDone);
 
         handleEditAssetChangeIdentifier
             .body(context -> {
@@ -1335,6 +1469,15 @@ public class MdeBot {
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
             .when(intentIs(createAsset)).moveTo(handleCreateAsset)
             .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
+            .when(intentIs(editParticipant)).moveTo(handleEditParticipant)
+            .when(intentIs(editAsset)).moveTo(handleEditAsset)
+            .when(intentIs(editTransaction)).moveTo(handleEditTransaction)
+            .when(intentIs(deleteParticipant)).moveTo(handleDeleteParticipant)
+            .when(intentIs(deleteAsset)).moveTo(handleDeleteAsset)
+            .when(intentIs(deleteTransaction)).moveTo(handleDeleteTransaction)
+            .when(intentIs(readParticipant)).moveTo(handleReadParticipant)
+            .when(intentIs(readAsset)).moveTo(handleReadAsset)
+            .when(intentIs(readTransaction)).moveTo(handleReadTransaction)
             .when(intentIs(contractDone)).moveTo(handleDone);
 
         //*****************************************************************************************************************************************
@@ -1371,6 +1514,15 @@ public class MdeBot {
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
             .when(intentIs(createAsset)).moveTo(handleCreateAsset)
             .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
+            .when(intentIs(editParticipant)).moveTo(handleEditParticipant)
+            .when(intentIs(editAsset)).moveTo(handleEditAsset)
+            .when(intentIs(editTransaction)).moveTo(handleEditTransaction)
+            .when(intentIs(deleteParticipant)).moveTo(handleDeleteParticipant)
+            .when(intentIs(deleteAsset)).moveTo(handleDeleteAsset)
+            .when(intentIs(deleteTransaction)).moveTo(handleDeleteTransaction)
+            .when(intentIs(readParticipant)).moveTo(handleReadParticipant)
+            .when(intentIs(readAsset)).moveTo(handleReadAsset)
+            .when(intentIs(readTransaction)).moveTo(handleReadTransaction)
             .when(intentIs(contractDone)).moveTo(handleDone);
 
         //*****************************************************************************************************************************************
@@ -1394,35 +1546,36 @@ public class MdeBot {
         handleCreateTransactionSetName
             .body(context -> {
                     String tranname = (String) context.getIntent().getValue("tranname");
-                    reactPlatform.reply(context, "Awesome. What would be the list attribute for the transaction?");
+                    reactPlatform.reply(context, "Awesome. We are moving in the right direction. Would you like to have conditions for the transaction?");
                     a1.set(tranname);
                     updateTransactions(a1, 0);
             })
             .next()
-            .when(intentIs(createTransactionSetList)).moveTo(handleCreateTransactionSetList);
+            .when(intentIs(createTransactionAssertCondition)).moveTo(handleCreateTransactionAssertCondition)
+            .when(intentIs(createTransactionDenyCondition)).moveTo(handleCreateTransactionDenyCondition);
 
-        handleCreateTransactionSetList
-            .body(context -> {
-                    String tranlist = (String) context.getIntent().getValue("tranlist");
-                    reactPlatform.reply(context, "Great!! We are moving in the right direction. What would be the mostrar attribute of the ?");
-                    a1.set(tranlist);
-                    updateTransactions(a1, 1);
-            })
-            .next()
-            .when(intentIs(createTransactionSetMostrar)).moveTo(handleCreateTransactionSetMostrar);
+        // handleCreateTransactionSetList
+        //     .body(context -> {
+        //             String tranlist = (String) context.getIntent().getValue("tranlist");
+        //             reactPlatform.reply(context, "Great!! We are moving in the right direction. What would be the mostrar attribute of the ?");
+        //             a1.set(tranlist);
+        //             updateTransactions(a1, 1);
+        //     })
+        //     .next()
+        //     .when(intentIs(createTransactionSetMostrar)).moveTo(handleCreateTransactionSetMostrar);
 
 
 
         // Ask for the mostrar attribute of the transaction
-        handleCreateTransactionSetMostrar
-            .body(context -> {
-                    String tranmost = (String) context.getIntent().getValue("tranmost");
-                    reactPlatform.reply(context, "Great!! Would you like to have conditions for the transaction?");
-                    a1.set(tranmost);
-                    updateTransactions(a1, 2);
-            })
-            .next()
-            .when(intentIs(createTransactionAssertCondition)).moveTo(handleCreateTransactionAssertCondition);
+        // handleCreateTransactionSetMostrar
+        //     .body(context -> {
+        //             String tranmost = (String) context.getIntent().getValue("tranmost");
+        //             reactPlatform.reply(context, "Great!! Would you like to have conditions for the transaction?");
+        //             a1.set(tranmost);
+        //             updateTransactions(a1, 2);
+        //     })
+        //     .next()
+        //     .when(intentIs(createTransactionAssertCondition)).moveTo(handleCreateTransactionAssertCondition);
 
         handleCreateTransactionCondition
             .body(context -> {
@@ -1454,12 +1607,22 @@ public class MdeBot {
         handleCreateTransactionConditionType
             .body(context -> {
                     String prepost = (String) context.getIntent().getValue("prepost");
-                    reactPlatform.reply(context, "Done. What would you like to do now?");
+                    reactPlatform.reply(context, "Done. Would you like to have more conditions for the transaction?");
                     a1.set(prepost);
                     updateConditions(a1, 2);
             })
             .next()
-            .when(intentIs(createTransactionAssertCondition)).moveTo(handleCreateTransactionAssertCondition);
+            .when(intentIs(createTransactionAssertCondition)).moveTo(handleCreateTransactionAssertCondition)
+            .when(intentIs(createTransactionDenyCondition)).moveTo(handleCreateTransactionDenyCondition);
+
+        handleCreateTransactionDenyCondition
+            .body(context -> {
+                    reactPlatform.reply(context, "Ohh okay. So what would you like to do now? Would you like to have parameters or relationships for the transaction?");
+            })
+            .next()
+            .when(intentIs(createTransactionAssertParameter)).moveTo(handleCreateTransactionAssertParameter)
+            .when(intentIs(createTransactionAssertRelationship)).moveTo(handleCreateTransactionAssertRelationship);
+
 
         handleCreateTransactionAssertCondition
             .body(context -> {
@@ -1537,14 +1700,14 @@ public class MdeBot {
                     funcUpdateRelationships(a1, 1);
             })
             .next()
-            .when(intentIs(createTransactionAssertRelationshipEvent)).moveTo(handleCreateTransactionAssertRelationshipEvent);
+            .when(intentIs(createTransactionAssertRelationshipEvent)).moveTo(handleCreateTransactionAssertRelationshipEvent)
+            .when(intentIs(createTransactionDenyRelationshipEvent)).moveTo(handleCreateTransactionDenyRelationshipEvent);
 
         handleCreateTransactionDenyRelationshipEvent
             .body(context -> {
                     reactPlatform.reply(context, "Cool. What do you wish to do now? Would you like to create more relationships for the transaction or are you done with the transaction?");
             })
             .next()
-            .when(intentIs(createTransactionAssertRelationshipEvent)).moveTo(handleCreateTransactionAssertRelationshipEvent)
             .when(intentIs(createTransactionAssertParameter)).moveTo(handleCreateTransactionAssertParameter)
             .when(intentIs(createTransactionAssertRelationship)).moveTo(handleCreateTransactionAssertRelationship)
             .when(intentIs(createTransactionDone)).moveTo(handleCreateTransactionDone);
@@ -1584,6 +1747,15 @@ public class MdeBot {
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
             .when(intentIs(createAsset)).moveTo(handleCreateAsset)
             .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
+            .when(intentIs(editParticipant)).moveTo(handleEditParticipant)
+            .when(intentIs(editAsset)).moveTo(handleEditAsset)
+            .when(intentIs(editTransaction)).moveTo(handleEditTransaction)
+            .when(intentIs(deleteParticipant)).moveTo(handleDeleteParticipant)
+            .when(intentIs(deleteAsset)).moveTo(handleDeleteAsset)
+            .when(intentIs(deleteTransaction)).moveTo(handleDeleteTransaction)
+            .when(intentIs(readParticipant)).moveTo(handleReadParticipant)
+            .when(intentIs(readAsset)).moveTo(handleReadAsset)
+            .when(intentIs(readTransaction)).moveTo(handleReadTransaction)
             .when(intentIs(contractDone)).moveTo(handleDone);
 
         //*****************************************************************************************************************************************
@@ -1625,7 +1797,29 @@ public class MdeBot {
                     reactPlatform.reply(context, "That's cool. What should be the new name of the transaction?");
             })
             .next()
-            .when(intentIs(createTransactionSetName)).moveTo(handleCreateTransactionSetName);
+            .when(intentIs(createTransactionSetName)).moveTo(handleEditTransactionSetName);
+
+        handleEditTransactionSetName
+            .body(context -> {
+                    String tranname = (String) context.getIntent().getValue("tranname");
+                    reactPlatform.reply(context, "Awesome. The name of the transaction has been changed to " + tranname + ". What would you like to do now? Would you like to continue editing the transaction?");
+                    a1.set(tranname);
+                    updateTransactions(a1, 0);
+            })
+            .next()
+            .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
+            .when(intentIs(createAsset)).moveTo(handleCreateAsset)
+            .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
+            .when(intentIs(editParticipant)).moveTo(handleEditParticipant)
+            .when(intentIs(editAsset)).moveTo(handleEditAsset)
+            .when(intentIs(editTransaction)).moveTo(handleEditTransaction)
+            .when(intentIs(deleteParticipant)).moveTo(handleDeleteParticipant)
+            .when(intentIs(deleteAsset)).moveTo(handleDeleteAsset)
+            .when(intentIs(deleteTransaction)).moveTo(handleDeleteTransaction)
+            .when(intentIs(readParticipant)).moveTo(handleReadParticipant)
+            .when(intentIs(readAsset)).moveTo(handleReadAsset)
+            .when(intentIs(readTransaction)).moveTo(handleReadTransaction)
+            .when(intentIs(contractDone)).moveTo(handleDone);
 
         handleEditTransactionEditParameter
             .body(context -> {
@@ -1934,6 +2128,15 @@ public class MdeBot {
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
             .when(intentIs(createAsset)).moveTo(handleCreateAsset)
             .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
+            .when(intentIs(editParticipant)).moveTo(handleEditParticipant)
+            .when(intentIs(editAsset)).moveTo(handleEditAsset)
+            .when(intentIs(editTransaction)).moveTo(handleEditTransaction)
+            .when(intentIs(deleteParticipant)).moveTo(handleDeleteParticipant)
+            .when(intentIs(deleteAsset)).moveTo(handleDeleteAsset)
+            .when(intentIs(deleteTransaction)).moveTo(handleDeleteTransaction)
+            .when(intentIs(readParticipant)).moveTo(handleReadParticipant)
+            .when(intentIs(readAsset)).moveTo(handleReadAsset)
+            .when(intentIs(readTransaction)).moveTo(handleReadTransaction)
             .when(intentIs(contractDone)).moveTo(handleDone);
 
         //*****************************************************************************************************************************************
@@ -1970,6 +2173,15 @@ public class MdeBot {
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
             .when(intentIs(createAsset)).moveTo(handleCreateAsset)
             .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
+            .when(intentIs(editParticipant)).moveTo(handleEditParticipant)
+            .when(intentIs(editAsset)).moveTo(handleEditAsset)
+            .when(intentIs(editTransaction)).moveTo(handleEditTransaction)
+            .when(intentIs(deleteParticipant)).moveTo(handleDeleteParticipant)
+            .when(intentIs(deleteAsset)).moveTo(handleDeleteAsset)
+            .when(intentIs(deleteTransaction)).moveTo(handleDeleteTransaction)
+            .when(intentIs(readParticipant)).moveTo(handleReadParticipant)
+            .when(intentIs(readAsset)).moveTo(handleReadAsset)
+            .when(intentIs(readTransaction)).moveTo(handleReadTransaction)
             .when(intentIs(contractDone)).moveTo(handleDone);
 
         //*****************************************************************************************************************************************
@@ -1996,10 +2208,10 @@ public class MdeBot {
             })
             .next()
             .when(intentIs(createParticipantAssertParameter)).moveTo(handleCreateParticipantAssertParameter)
-            .when(intentIs(createParticipantAssertRelationship)).moveTo(handleCreateParticipantAssertRelationship)
+            .when(intentIs(editParticipantChangeName)).moveTo(handleEditParticipantChangeName)
             .when(intentIs(createParticipantDone)).moveTo(handleCreateParticipantDone)
             .when(intentIs(createAssetAssertParameter)).moveTo(handleCreateAssetAssertParameter)
-            .when(intentIs(createAssetAssertRelationship)).moveTo(handleCreateAssetAssertRelationship)
+            .when(intentIs(editAssetChangeName)).moveTo(handleEditAssetChangeName)
             .when(intentIs(createAssetDone)).moveTo(handleCreateAssetDone)
             .when(intentIs(createTransactionAssertParameter)).moveTo(handleCreateTransactionAssertParameter)
             .when(intentIs(createTransactionAssertRelationship)).moveTo(handleCreateTransactionAssertRelationship)
@@ -2045,10 +2257,8 @@ public class MdeBot {
             })
             .next()
             .when(intentIs(createParticipantAssertParameter)).moveTo(handleCreateParticipantAssertParameter)
-            .when(intentIs(createParticipantAssertRelationship)).moveTo(handleCreateParticipantAssertRelationship)
             .when(intentIs(createParticipantDone)).moveTo(handleCreateParticipantDone)
             .when(intentIs(createAssetAssertParameter)).moveTo(handleCreateAssetAssertParameter)
-            .when(intentIs(createAssetAssertRelationship)).moveTo(handleCreateAssetAssertRelationship)
             .when(intentIs(createAssetDone)).moveTo(handleCreateAssetDone)
             .when(intentIs(createTransactionAssertParameter)).moveTo(handleCreateTransactionAssertParameter)
             .when(intentIs(createTransactionAssertRelationship)).moveTo(handleCreateTransactionAssertRelationship)
@@ -2070,10 +2280,8 @@ public class MdeBot {
             })
             .next()
             .when(intentIs(createParticipantAssertParameter)).moveTo(handleCreateParticipantAssertParameter)
-            .when(intentIs(createParticipantAssertRelationship)).moveTo(handleCreateParticipantAssertRelationship)
             .when(intentIs(createParticipantDone)).moveTo(handleCreateParticipantDone)
             .when(intentIs(createAssetAssertParameter)).moveTo(handleCreateAssetAssertParameter)
-            .when(intentIs(createAssetAssertRelationship)).moveTo(handleCreateAssetAssertRelationship)
             .when(intentIs(createAssetDone)).moveTo(handleCreateAssetDone)
             .when(intentIs(createTransactionAssertParameter)).moveTo(handleCreateTransactionAssertParameter)
             .when(intentIs(createTransactionAssertRelationship)).moveTo(handleCreateTransactionAssertRelationship)
@@ -2102,10 +2310,8 @@ public class MdeBot {
             })
             .next()
             .when(intentIs(createParticipantAssertParameter)).moveTo(handleCreateParticipantAssertParameter)
-            .when(intentIs(createParticipantAssertRelationship)).moveTo(handleCreateParticipantAssertRelationship)
             .when(intentIs(createParticipantDone)).moveTo(handleCreateParticipantDone)
             .when(intentIs(createAssetAssertParameter)).moveTo(handleCreateAssetAssertParameter)
-            .when(intentIs(createAssetAssertRelationship)).moveTo(handleCreateAssetAssertRelationship)
             .when(intentIs(createAssetDone)).moveTo(handleCreateAssetDone)
             .when(intentIs(createTransactionAssertParameter)).moveTo(handleCreateTransactionAssertParameter)
             .when(intentIs(createTransactionAssertRelationship)).moveTo(handleCreateTransactionAssertRelationship)

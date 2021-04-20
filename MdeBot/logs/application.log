@@ -549,3 +549,613 @@ java.net.SocketException: Socket closed
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_282]
 	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_282]
 2021-04-03 23:43:31 INFO  SocketIO server stopped
+2021-04-15 10:21:02 INFO  Using MapDB to store monitoring data
+2021-04-15 10:21:02 INFO  Starting intent recognition monitoring
+2021-04-15 10:21:02 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2021-04-15 10:21:02 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2021-04-15 10:21:02 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2021-04-15 10:21:02 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2021-04-15 10:21:02 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2021-04-15 10:21:02 INFO  Starting DialogFlow Client
+2021-04-15 10:21:02 INFO  Loading Google Credentials file ./sc-mde-nymmpx-d0311abe8e74.json
+2021-04-15 10:21:03 INFO  Loading Intents previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-15 10:21:06 INFO  Loading Entities previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-15 10:21:07 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2021-04-15 10:21:08 INFO  Registered REST handler  at URI /admin (method=GET)
+2021-04-15 10:21:08 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2021-04-15 10:21:08 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2021-04-15 10:21:08 INFO  Starting ReactEventProvider
+2021-04-15 10:21:08 INFO  SocketIO server started at port: 5001
+2021-04-15 10:21:08 INFO  Starting ReactIntentProvider
+2021-04-15 10:21:08 INFO  Registering execution rule events
+2021-04-15 10:21:08 WARN  Intent CreateTransactionTranRelationshipFrom already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionAssertParameter already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateAsset already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateParticipantAssertParameter already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionAssertRelationshipEvent already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionAssertTranRelationship already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateParticipantAssertRelationship already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionSetMostrar already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateAssetAssertRelationship already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent ContractDone already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionDone already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateAssetSetList already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateAssetSetName already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionAssertCondition already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateParticipant already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateParameterSetName already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionRelationshipEventName already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionConditionType already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateParameterSetType already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionRelationshipEventDescription already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateContract already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionConditionCondition already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent GetTargetPlatform already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateParticpantDone already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionAssertAssetRelationship already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateAssetDone already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionConditionName already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateParticipantSetIdentifier already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionSetName already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionRelationshipName already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionAssetRelationshipFrom already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionAssertRelationship already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent ContractName already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent EditContract already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransactionSetList already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateTransaction already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent GetCreator already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateAssetAssertParameter already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateParticipantSetName already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent createParticipantSetList already exists in the agent and will not be updated
+2021-04-15 10:21:08 WARN  Intent CreateAssetSetType already exists in the agent and will not be updated
+2021-04-15 10:21:08 INFO  Starting XatkitServer
+2021-04-15 10:21:08 INFO  Registered REST handler  at URI /status (method=GET)
+2021-04-15 10:21:08 INFO  XatkitServer started, listening on port 5,000
+2021-04-15 10:21:08 INFO  Xatkit bot started
+2021-04-15 10:21:38 ERROR No endpoint registered for GET: /favicon.ico
+2021-04-15 10:24:48 ERROR No endpoint registered for GET: /favicon.ico
+2021-04-15 10:26:14 ERROR No endpoint registered for GET: /favicon.ico
+2021-04-15 10:26:15 ERROR No endpoint registered for GET: /favicon.ico
+2021-04-15 10:28:08 INFO  Stopping SocketIO server
+2021-04-15 10:28:08 ERROR null
+java.net.SocketException: Socket closed
+	at java.net.PlainSocketImpl.socketAccept(Native Method) ~[?:1.8.0_282]
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409) ~[?:1.8.0_282]
+	at java.net.ServerSocket.implAccept(ServerSocket.java:560) ~[?:1.8.0_282]
+	at java.net.ServerSocket.accept(ServerSocket.java:528) ~[?:1.8.0_282]
+	at org.apache.http.impl.bootstrap.RequestListener.run(RequestListener.java:74) [httpcore-4.4.10.jar:4.4.10]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_282]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_282]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_282]
+2021-04-15 10:28:13 INFO  SocketIO server stopped
+2021-04-15 10:32:23 INFO  Using MapDB to store monitoring data
+2021-04-15 10:32:23 INFO  Starting intent recognition monitoring
+2021-04-15 10:32:23 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2021-04-15 10:32:23 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2021-04-15 10:32:23 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2021-04-15 10:32:23 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2021-04-15 10:32:23 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2021-04-15 10:32:23 INFO  Starting DialogFlow Client
+2021-04-15 10:32:24 INFO  Loading Google Credentials file ./sc-mde-nymmpx-d0311abe8e74.json
+2021-04-15 10:32:24 INFO  Loading Intents previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-15 10:32:26 INFO  Loading Entities previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-15 10:32:27 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2021-04-15 10:32:27 INFO  Registered REST handler  at URI /admin (method=GET)
+2021-04-15 10:32:27 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2021-04-15 10:32:27 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2021-04-15 10:32:27 INFO  Starting ReactEventProvider
+2021-04-15 10:32:27 INFO  SocketIO server started at port: 5001
+2021-04-15 10:32:27 INFO  Starting ReactIntentProvider
+2021-04-15 10:32:27 INFO  Registering execution rule events
+2021-04-15 10:32:27 WARN  Intent CreateParticpantDone already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionAssertCondition already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateParticipantSetIdentifier already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionSetName already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateParticipant already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionConditionCondition already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateParameterSetName already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateAssetSetName already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionSetMostrar already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionConditionName already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionRelationshipEventName already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateAssetSetList already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent GetCreator already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateParticipantSetName already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionRelationshipEventDescription already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateAssetSetType already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent createParticipantSetList already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateAssetDone already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateAssetAssertRelationship already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateParticipantAssertParameter already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionAssertParameter already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateAsset already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionAssertTranRelationship already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateAssetAssertParameter already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateContract already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionAssertRelationshipEvent already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateParticipantAssertRelationship already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionDone already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent ContractName already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent EditContract already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateParameterSetType already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransaction already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionRelationshipName already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionAssetRelationshipFrom already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent GetTargetPlatform already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionAssertRelationship already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionAssertAssetRelationship already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionSetList already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent ContractDone already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionTranRelationshipFrom already exists in the agent and will not be updated
+2021-04-15 10:32:27 WARN  Intent CreateTransactionConditionType already exists in the agent and will not be updated
+2021-04-15 10:32:27 INFO  Starting XatkitServer
+2021-04-15 10:32:27 INFO  Registered REST handler  at URI /status (method=GET)
+2021-04-15 10:32:27 INFO  XatkitServer started, listening on port 5,000
+2021-04-15 10:32:27 INFO  Xatkit bot started
+2021-04-15 10:49:01 INFO  Stopping SocketIO server
+2021-04-15 10:49:01 ERROR null
+java.net.SocketException: Socket closed
+	at java.net.PlainSocketImpl.socketAccept(Native Method) ~[?:1.8.0_282]
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409) ~[?:1.8.0_282]
+	at java.net.ServerSocket.implAccept(ServerSocket.java:560) ~[?:1.8.0_282]
+	at java.net.ServerSocket.accept(ServerSocket.java:528) ~[?:1.8.0_282]
+	at org.apache.http.impl.bootstrap.RequestListener.run(RequestListener.java:74) [httpcore-4.4.10.jar:4.4.10]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_282]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_282]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_282]
+2021-04-15 10:49:06 INFO  SocketIO server stopped
+2021-04-15 10:57:42 INFO  Using MapDB to store monitoring data
+2021-04-15 10:57:42 INFO  Starting intent recognition monitoring
+2021-04-15 10:57:42 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2021-04-15 10:57:42 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2021-04-15 10:57:42 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2021-04-15 10:57:42 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2021-04-15 10:57:42 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2021-04-15 10:57:42 INFO  Starting DialogFlow Client
+2021-04-15 10:57:42 INFO  Loading Google Credentials file ./sc-mde-nymmpx-d0311abe8e74.json
+2021-04-15 10:57:43 INFO  Loading Intents previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-15 10:57:45 INFO  Loading Entities previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-15 10:57:46 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2021-04-15 10:57:46 INFO  Registered REST handler  at URI /admin (method=GET)
+2021-04-15 10:57:46 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2021-04-15 10:57:46 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2021-04-15 10:57:46 INFO  Starting ReactEventProvider
+2021-04-15 10:57:46 INFO  SocketIO server started at port: 5001
+2021-04-15 10:57:46 INFO  Starting ReactIntentProvider
+2021-04-15 10:57:46 INFO  Registering execution rule events
+2021-04-15 10:57:46 WARN  Intent CreateTransaction already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionSetList already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateAssetSetType already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateAssetSetName already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionConditionType already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateParameterSetName already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateAssetAssertParameter already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent createParticipantSetList already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionRelationshipEventName already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent ContractName already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateParticipantSetIdentifier already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateParticpantDone already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateAssetSetList already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateParticipant already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent ContractDone already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionAssetRelationshipFrom already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionConditionName already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateParticipantAssertParameter already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionRelationshipName already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionAssertRelationshipEvent already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionAssertTranRelationship already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionAssertCondition already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateAssetAssertRelationship already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent EditContract already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateAssetDone already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionTranRelationshipFrom already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionDone already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionAssertAssetRelationship already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionAssertRelationship already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionConditionCondition already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateContract already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionRelationshipEventDescription already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionSetName already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent GetCreator already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateAsset already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateParameterSetType already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateParticipantAssertRelationship already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent GetTargetPlatform already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateParticipantSetName already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionSetMostrar already exists in the agent and will not be updated
+2021-04-15 10:57:46 WARN  Intent CreateTransactionAssertParameter already exists in the agent and will not be updated
+2021-04-15 10:57:46 INFO  Starting XatkitServer
+2021-04-15 10:57:46 INFO  Registered REST handler  at URI /status (method=GET)
+2021-04-15 10:57:46 INFO  XatkitServer started, listening on port 5,000
+2021-04-15 10:57:46 INFO  Xatkit bot started
+2021-04-15 10:59:05 ERROR No endpoint registered for GET: /favicon.ico
+2021-04-15 10:59:17 ERROR No endpoint registered for GET: /admin/js/xatkit.min.js.map
+2021-04-15 11:04:09 ERROR No endpoint registered for GET: /admin/js/xatkit.min.js.map
+2021-04-15 11:14:11 ERROR No endpoint registered for GET: /favicon.ico
+2021-04-15 11:14:15 ERROR No endpoint registered for GET: /admin/js/xatkit.min.js.map
+2021-04-15 11:15:44 ERROR No endpoint registered for GET: /admin/js/xatkit.min.js.map
+2021-04-15 11:17:04 ERROR No endpoint registered for GET: /admin/js/xatkit.min.js.map
+2021-04-15 11:17:08 ERROR No endpoint registered for GET: /admin/js/xatkit.min.js.map
+2021-04-15 11:17:10 ERROR No endpoint registered for GET: /admin/js/xatkit.min.js.map
+2021-04-15 11:17:11 ERROR No endpoint registered for GET: /admin/js/xatkit.min.js.map
+2021-04-15 11:17:11 ERROR No endpoint registered for GET: /admin/js/xatkit.min.js.map
+2021-04-15 11:17:12 ERROR No endpoint registered for GET: /admin/js/xatkit.min.js.map
+2021-04-15 11:17:12 ERROR No endpoint registered for GET: /admin/js/xatkit.min.js.map
+2021-04-15 17:04:48 INFO  Stopping SocketIO server
+2021-04-15 17:04:48 ERROR null
+java.net.SocketException: Socket closed
+	at java.net.PlainSocketImpl.socketAccept(Native Method) ~[?:1.8.0_282]
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409) ~[?:1.8.0_282]
+	at java.net.ServerSocket.implAccept(ServerSocket.java:560) ~[?:1.8.0_282]
+	at java.net.ServerSocket.accept(ServerSocket.java:528) ~[?:1.8.0_282]
+	at org.apache.http.impl.bootstrap.RequestListener.run(RequestListener.java:74) [httpcore-4.4.10.jar:4.4.10]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_282]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_282]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_282]
+2021-04-15 17:04:50 INFO  SocketIO server stopped
+2021-04-20 18:02:12 INFO  Using MapDB to store monitoring data
+2021-04-20 18:02:12 INFO  Starting intent recognition monitoring
+2021-04-20 18:02:12 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2021-04-20 18:02:12 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2021-04-20 18:02:12 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2021-04-20 18:02:12 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2021-04-20 18:02:12 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2021-04-20 18:02:12 INFO  Starting DialogFlow Client
+2021-04-20 18:02:13 INFO  Loading Google Credentials file ./sc-mde-nymmpx-d0311abe8e74.json
+2021-04-20 18:02:14 INFO  Loading Intents previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-20 18:02:15 INFO  Loading Entities previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-20 18:02:16 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2021-04-20 18:02:17 INFO  Registered REST handler  at URI /admin (method=GET)
+2021-04-20 18:02:17 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2021-04-20 18:02:17 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2021-04-20 18:02:17 INFO  Starting ReactEventProvider
+2021-04-20 18:02:17 INFO  SocketIO server started at port: 5001
+2021-04-20 18:02:17 INFO  Starting ReactIntentProvider
+2021-04-20 18:02:17 INFO  Registering execution rule events
+2021-04-20 18:02:33 WARN  Another EventDefinition is stored with the key CreateTransactionAssertCondition, overriding it
+2021-04-20 18:02:33 WARN  Intent CreateTransactionAssertCondition already exists in the agent and will not be updated
+2021-04-20 18:02:39 ERROR An error occurred when starting the XatkitBot, trying to close started services
+2021-04-20 18:02:39 INFO  Stopping XatkitServer
+2021-04-20 18:02:39 WARN  Cannot stop the XatkitServer, the server is not started
+2021-04-20 18:06:34 INFO  Stopping SocketIO server
+2021-04-20 18:06:38 INFO  SocketIO server stopped
+2021-04-20 18:06:42 INFO  Using MapDB to store monitoring data
+2021-04-20 18:06:42 INFO  Starting intent recognition monitoring
+2021-04-20 18:06:43 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2021-04-20 18:06:43 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2021-04-20 18:06:43 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2021-04-20 18:06:43 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2021-04-20 18:06:43 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2021-04-20 18:06:43 INFO  Starting DialogFlow Client
+2021-04-20 18:06:43 INFO  Loading Google Credentials file ./sc-mde-nymmpx-d0311abe8e74.json
+2021-04-20 18:06:43 INFO  Loading Intents previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-20 18:06:45 INFO  Loading Entities previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-20 18:06:45 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2021-04-20 18:06:46 INFO  Registered REST handler  at URI /admin (method=GET)
+2021-04-20 18:06:46 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2021-04-20 18:06:46 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2021-04-20 18:06:46 INFO  Starting ReactEventProvider
+2021-04-20 18:06:46 INFO  SocketIO server started at port: 5001
+2021-04-20 18:06:46 INFO  Starting ReactIntentProvider
+2021-04-20 18:06:46 INFO  Registering execution rule events
+2021-04-20 18:06:46 WARN  Intent DeleteTransactionConfirm already exists in the agent and will not be updated
+2021-04-20 18:06:46 ERROR An error occurred when starting the XatkitBot, trying to close started services
+2021-04-20 18:06:46 INFO  Stopping XatkitServer
+2021-04-20 18:06:46 WARN  Cannot stop the XatkitServer, the server is not started
+2021-04-20 18:06:54 INFO  Stopping SocketIO server
+2021-04-20 18:06:59 INFO  SocketIO server stopped
+2021-04-20 18:07:31 INFO  Using MapDB to store monitoring data
+2021-04-20 18:07:31 INFO  Starting intent recognition monitoring
+2021-04-20 18:07:32 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2021-04-20 18:07:32 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2021-04-20 18:07:32 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2021-04-20 18:07:32 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2021-04-20 18:07:32 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2021-04-20 18:07:32 INFO  Starting DialogFlow Client
+2021-04-20 18:07:32 INFO  Loading Google Credentials file ./sc-mde-nymmpx-d0311abe8e74.json
+2021-04-20 18:07:32 INFO  Loading Intents previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-20 18:07:33 INFO  Loading Entities previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-20 18:07:34 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2021-04-20 18:07:35 INFO  Registered REST handler  at URI /admin (method=GET)
+2021-04-20 18:07:35 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2021-04-20 18:07:35 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2021-04-20 18:07:35 INFO  Starting ReactEventProvider
+2021-04-20 18:07:35 INFO  SocketIO server started at port: 5001
+2021-04-20 18:07:35 INFO  Starting ReactIntentProvider
+2021-04-20 18:07:35 INFO  Registering execution rule events
+2021-04-20 18:07:35 WARN  Intent DeleteTransactionConfirm already exists in the agent and will not be updated
+2021-04-20 18:07:35 ERROR An error occurred when starting the XatkitBot, trying to close started services
+2021-04-20 18:07:35 INFO  Stopping XatkitServer
+2021-04-20 18:07:35 WARN  Cannot stop the XatkitServer, the server is not started
+2021-04-20 18:08:25 INFO  Stopping SocketIO server
+2021-04-20 18:08:29 INFO  SocketIO server stopped
+2021-04-20 18:10:09 INFO  Using MapDB to store monitoring data
+2021-04-20 18:10:09 INFO  Starting intent recognition monitoring
+2021-04-20 18:10:09 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2021-04-20 18:10:09 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2021-04-20 18:10:09 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2021-04-20 18:10:09 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2021-04-20 18:10:09 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2021-04-20 18:10:09 INFO  Starting DialogFlow Client
+2021-04-20 18:10:09 INFO  Loading Google Credentials file ./sc-mde-nymmpx-d0311abe8e74.json
+2021-04-20 18:10:10 INFO  Loading Intents previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-20 18:10:11 INFO  Loading Entities previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-20 18:10:11 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2021-04-20 18:10:12 INFO  Registered REST handler  at URI /admin (method=GET)
+2021-04-20 18:10:12 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2021-04-20 18:10:12 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2021-04-20 18:10:12 INFO  Starting ReactEventProvider
+2021-04-20 18:10:12 INFO  SocketIO server started at port: 5001
+2021-04-20 18:10:12 INFO  Starting ReactIntentProvider
+2021-04-20 18:10:12 INFO  Registering execution rule events
+2021-04-20 18:10:12 WARN  Intent DeleteTransactionGetName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateAsset already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditTransactionGetName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditParticipantChangeIdentifier already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditTransactionDeleteParameter already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditAssetChangeName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditParticipantChangeName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionAssertRelationshipEvent already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionConditionCondition already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateContract already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionRelationshipName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionAssertCondition already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditParticipant already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent ContractDone already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateParameterSetName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateAssetSetIdentifier already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent ReadTransactionConfirm already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateAssetSetName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditParticipantGetName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent ReadAssetGetName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditAssetConfirm already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent ReadParticipantConfirm already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionAssertTranRelationship already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent ContractName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionTranRelationshipFrom already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionConditionName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionRelationshipEventName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransaction already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditTransaction already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateParticipantSetIdentifier already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionSetName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent ReadParticipantGetName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditAssetDeleteParameter already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditAsset already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateParameterSetType already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent DeleteAssetConfirm already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateParticipantAssertParameter already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent DeleteAsset already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditTransactionConfirm already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateAssetDone already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent DeleteTransaction already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Another EventDefinition is stored with the key CreateTransactionAssertCondition, overriding it
+2021-04-20 18:10:12 WARN  Intent CreateTransactionAssertCondition already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateParticipantSetName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateElement already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionRelationshipEventDescription already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionAssertParameter already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent ReadTransactionGetName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionAssertRelationship already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent DeleteParticipant already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditParticipantConfirm already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent EditParticipantDeleteParameter already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent ReadAsset already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent GetTargetPlatform already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionAssertAssetRelationship already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent DeleteParticipantGetName already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent CreateTransactionAssetRelationshipFrom already exists in the agent and will not be updated
+2021-04-20 18:10:12 WARN  Intent DeleteTransactionConfirm already exists in the agent and will not be updated
+2021-04-20 18:10:13 ERROR An error occurred when starting the XatkitBot, trying to close started services
+2021-04-20 18:10:13 INFO  Stopping XatkitServer
+2021-04-20 18:10:13 WARN  Cannot stop the XatkitServer, the server is not started
+2021-04-20 18:10:17 INFO  Stopping SocketIO server
+2021-04-20 18:10:18 ERROR An error occurred when closing the DialogFlowIntentRecognitionProvider
+2021-04-20 18:10:21 INFO  SocketIO server stopped
+2021-04-20 18:12:00 INFO  Using MapDB to store monitoring data
+2021-04-20 18:12:00 INFO  Starting intent recognition monitoring
+2021-04-20 18:12:00 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2021-04-20 18:12:00 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2021-04-20 18:12:00 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2021-04-20 18:12:00 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2021-04-20 18:12:00 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2021-04-20 18:12:00 INFO  Starting DialogFlow Client
+2021-04-20 18:12:00 INFO  Loading Google Credentials file ./sc-mde-nymmpx-d0311abe8e74.json
+2021-04-20 18:12:01 INFO  Loading Intents previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-20 18:12:02 INFO  Loading Entities previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-20 18:12:03 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2021-04-20 18:12:03 INFO  Registered REST handler  at URI /admin (method=GET)
+2021-04-20 18:12:03 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2021-04-20 18:12:03 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2021-04-20 18:12:03 INFO  Starting ReactEventProvider
+2021-04-20 18:12:03 INFO  SocketIO server started at port: 5001
+2021-04-20 18:12:03 INFO  Starting ReactIntentProvider
+2021-04-20 18:12:03 INFO  Registering execution rule events
+2021-04-20 18:12:03 WARN  Intent DeleteTransactionConfirm already exists in the agent and will not be updated
+2021-04-20 18:12:04 WARN  Intent ReadAsset already exists in the agent and will not be updated
+2021-04-20 18:12:04 WARN  Intent GetTargetPlatform already exists in the agent and will not be updated
+2021-04-20 18:12:04 WARN  Intent CreateAssetDone already exists in the agent and will not be updated
+2021-04-20 18:12:04 WARN  Intent CreateParameterSetName already exists in the agent and will not be updated
+2021-04-20 18:12:04 WARN  Intent EditParticipantConfirm already exists in the agent and will not be updated
+2021-04-20 18:12:04 WARN  Intent ContractName already exists in the agent and will not be updated
+2021-04-20 18:12:04 WARN  Intent CreateTransactionConditionCondition already exists in the agent and will not be updated
+2021-04-20 18:12:04 WARN  Intent CreateTransactionAssertCondition already exists in the agent and will not be updated
+2021-04-20 18:12:04 WARN  Intent CreateTransactionAssertRelationship already exists in the agent and will not be updated
+2021-04-20 18:12:05 WARN  Intent CreateAssetSetName already exists in the agent and will not be updated
+2021-04-20 18:12:05 WARN  Intent EditTransactionChangeName already exists in the agent and will not be updated
+2021-04-20 18:12:05 WARN  Intent CreateTransactionRelationshipEventDescription already exists in the agent and will not be updated
+2021-04-20 18:12:05 WARN  Intent EditParticipantGetName already exists in the agent and will not be updated
+2021-04-20 18:12:05 WARN  Intent CreateTransactionRelationshipName already exists in the agent and will not be updated
+2021-04-20 18:12:05 WARN  Intent EditParticipant already exists in the agent and will not be updated
+2021-04-20 18:12:05 WARN  Intent DeleteAsset already exists in the agent and will not be updated
+2021-04-20 18:12:05 WARN  Intent EditParticipantChangeName already exists in the agent and will not be updated
+2021-04-20 18:12:06 WARN  Intent CreateTransactionTranRelationshipFrom already exists in the agent and will not be updated
+2021-04-20 18:12:06 WARN  Intent CreateTransactionAssertParameter already exists in the agent and will not be updated
+2021-04-20 18:12:06 WARN  Intent EditAssetChangeName already exists in the agent and will not be updated
+2021-04-20 18:12:06 WARN  Intent DeleteAssetConfirm already exists in the agent and will not be updated
+2021-04-20 18:12:06 WARN  Intent EditTransactionGetName already exists in the agent and will not be updated
+2021-04-20 18:12:07 WARN  Intent CreateElement already exists in the agent and will not be updated
+2021-04-20 18:12:07 WARN  Intent EditAsset already exists in the agent and will not be updated
+2021-04-20 18:12:07 WARN  Intent CreateParticipantSetName already exists in the agent and will not be updated
+2021-04-20 18:12:08 WARN  Intent EditTransactionDeleteParameter already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent ReadTransactionConfirm already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent CreateTransactionSetName already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent CreateTransaction already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent EditParticipantDeleteParameter already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent CreateParticipantSetIdentifier already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent CreateAsset already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent EditTransaction already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent ReadParticipantGetName already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent EditTransactionConfirm already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent CreateTransactionAssertTranRelationship already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent ReadTransactionGetName already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent CreateContract already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent CreateParameterSetType already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent CreateTransactionAssertAssetRelationship already exists in the agent and will not be updated
+2021-04-20 18:12:09 WARN  Intent DeleteParticipantGetName already exists in the agent and will not be updated
+2021-04-20 18:12:10 WARN  Intent EditAssetConfirm already exists in the agent and will not be updated
+2021-04-20 18:12:10 WARN  Intent ReadParticipantConfirm already exists in the agent and will not be updated
+2021-04-20 18:12:10 WARN  Intent EditAssetDeleteParameter already exists in the agent and will not be updated
+2021-04-20 18:12:10 WARN  Intent ContractDone already exists in the agent and will not be updated
+2021-04-20 18:12:10 WARN  Intent CreateAssetSetIdentifier already exists in the agent and will not be updated
+2021-04-20 18:12:10 WARN  Another EventDefinition is stored with the key CreateTransactionAssertCondition, overriding it
+2021-04-20 18:12:10 WARN  Intent CreateTransactionAssertCondition already exists in the agent and will not be updated
+2021-04-20 18:12:10 WARN  Intent CreateTransactionAssertRelationshipEvent already exists in the agent and will not be updated
+2021-04-20 18:12:10 WARN  Intent ReadAssetGetName already exists in the agent and will not be updated
+2021-04-20 18:12:11 WARN  Intent EditParticipantChangeIdentifier already exists in the agent and will not be updated
+2021-04-20 18:12:11 WARN  Intent CreateTransactionAssetRelationshipFrom already exists in the agent and will not be updated
+2021-04-20 18:12:11 WARN  Intent CreateParticipantAssertParameter already exists in the agent and will not be updated
+2021-04-20 18:12:11 WARN  Intent CreateTransactionRelationshipEventName already exists in the agent and will not be updated
+2021-04-20 18:12:11 WARN  Intent CreateTransactionConditionName already exists in the agent and will not be updated
+2021-04-20 18:12:11 WARN  Intent DeleteTransaction already exists in the agent and will not be updated
+2021-04-20 18:12:12 WARN  Intent DeleteTransactionGetName already exists in the agent and will not be updated
+2021-04-20 18:12:12 WARN  Intent DeleteParticipant already exists in the agent and will not be updated
+2021-04-20 18:12:12 INFO  Starting DialogFlow agent training (this may take a few minutes)
+2021-04-20 18:12:14 INFO  DialogFlow agent trained, intent matching will be available in a few seconds
+2021-04-20 18:12:24 INFO  Starting XatkitServer
+2021-04-20 18:12:24 INFO  Registered REST handler  at URI /status (method=GET)
+2021-04-20 18:12:24 INFO  XatkitServer started, listening on port 5,000
+2021-04-20 18:12:24 INFO  Xatkit bot started
+2021-04-20 18:12:49 INFO  Stopping SocketIO server
+2021-04-20 18:12:49 ERROR null
+java.net.SocketException: Socket closed
+	at java.net.PlainSocketImpl.socketAccept(Native Method) ~[?:1.8.0_282]
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409) ~[?:1.8.0_282]
+	at java.net.ServerSocket.implAccept(ServerSocket.java:560) ~[?:1.8.0_282]
+	at java.net.ServerSocket.accept(ServerSocket.java:528) ~[?:1.8.0_282]
+	at org.apache.http.impl.bootstrap.RequestListener.run(RequestListener.java:74) [httpcore-4.4.10.jar:4.4.10]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_282]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_282]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_282]
+2021-04-20 18:12:53 INFO  SocketIO server stopped
+2021-04-20 18:15:41 INFO  Using MapDB to store monitoring data
+2021-04-20 18:15:41 INFO  Starting intent recognition monitoring
+2021-04-20 18:15:42 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2021-04-20 18:15:42 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2021-04-20 18:15:42 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2021-04-20 18:15:42 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2021-04-20 18:15:42 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2021-04-20 18:15:42 INFO  Starting DialogFlow Client
+2021-04-20 18:15:42 INFO  Loading Google Credentials file ./sc-mde-nymmpx-d0311abe8e74.json
+2021-04-20 18:15:42 INFO  Loading Intents previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-20 18:15:44 INFO  Loading Entities previously registered in the DialogFlow project sc-mde-nymmpx
+2021-04-20 18:15:45 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2021-04-20 18:15:45 INFO  Registered REST handler  at URI /admin (method=GET)
+2021-04-20 18:15:45 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2021-04-20 18:15:45 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2021-04-20 18:15:45 INFO  Starting ReactEventProvider
+2021-04-20 18:15:45 INFO  SocketIO server started at port: 5001
+2021-04-20 18:15:45 INFO  Starting ReactIntentProvider
+2021-04-20 18:15:45 INFO  Registering execution rule events
+2021-04-20 18:15:45 WARN  Intent ReadParticipantConfirm already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransaction already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent ReadParticipant already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionAssertCondition already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionAssertRelationshipEvent already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionAssetRelationshipFrom already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditTransactionConfirm already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditAssetChangeName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateParameterSetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionTranRelationshipFrom already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditParticipantChangeName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent ReadParticipantGetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateAssetDone already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateContract already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditAssetGetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditParticipant already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent DeleteParticipantConfirm already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateAsset already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent GetCreator already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent DeleteParticipantGetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Another EventDefinition is stored with the key CreateTransactionAssertCondition, overriding it
+2021-04-20 18:15:45 WARN  Intent CreateTransactionAssertCondition already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditParticipantDeleteParameter already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionAssertAssetRelationship already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateParameterSetType already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionSetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent DeleteAsset already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditAsset already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditAssetDeleteParameter already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent DeleteParameterConfirm already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent ReadAssetConfirm already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionRelationshipEventDescription already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent DeleteParameterGetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionConditionCondition already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent ReadTransactionGetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent ContractDone already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent DeleteTransactionConfirm already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent ReadTransactionConfirm already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditParticipantChangeIdentifier already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditParticipantGetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionAssertParameter already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditParticipantConfirm already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent GetTargetPlatform already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent DeleteAssetGetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionAssertRelationship already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionRelationshipEventName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditTransaction already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateParticipantSetIdentifier already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent ReadAssetGetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionDone already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditAssetChangeIdentifier already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditAssetConfirm already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionDenyRelationshipEvent already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditTransactionDeleteParameter already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent ContractName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent DeleteTransaction already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditTransactionChangeName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateAssetAssertParameter already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateParticipantSetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateAssetSetIdentifier already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateParticipant already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateParticpantDone already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent DeleteParticipant already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionConditionType already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent ReadAsset already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionRelationshipName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateElement already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent ReadTransaction already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateAssetSetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent EditTransactionGetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionAssertTranRelationship already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent DeleteAssetConfirm already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateTransactionConditionName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent DeleteTransactionGetName already exists in the agent and will not be updated
+2021-04-20 18:15:45 WARN  Intent CreateParticipantAssertParameter already exists in the agent and will not be updated
+2021-04-20 18:15:45 INFO  Starting XatkitServer
+2021-04-20 18:15:45 INFO  Registered REST handler  at URI /status (method=GET)
+2021-04-20 18:15:45 INFO  XatkitServer started, listening on port 5,000
+2021-04-20 18:15:45 INFO  Xatkit bot started
+2021-04-20 18:16:06 INFO  Stopping SocketIO server
+2021-04-20 18:16:06 ERROR null
+java.net.SocketException: Socket closed
+	at java.net.PlainSocketImpl.socketAccept(Native Method) ~[?:1.8.0_282]
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409) ~[?:1.8.0_282]
+	at java.net.ServerSocket.implAccept(ServerSocket.java:560) ~[?:1.8.0_282]
+	at java.net.ServerSocket.accept(ServerSocket.java:528) ~[?:1.8.0_282]
+	at org.apache.http.impl.bootstrap.RequestListener.run(RequestListener.java:74) [httpcore-4.4.10.jar:4.4.10]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_282]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_282]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_282]
+2021-04-20 18:16:10 INFO  SocketIO server stopped
