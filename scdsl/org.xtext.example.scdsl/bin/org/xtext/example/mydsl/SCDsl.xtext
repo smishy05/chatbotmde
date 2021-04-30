@@ -3,8 +3,8 @@ grammar org.sctest.scdsl.SCDsl with org.eclipse.xtext.common.Terminals
 generate sCDsl "http://www.sctest.org/scdsl/SCDsl"
 
 SContract:
-	'Contract' ':' name=ID
-	'Platform' ':' platform=TargetPlatform
+'Contract' ':' name=ID
+'Platform' ':' platform=TargetPlatform
     (element+=Element)*;
     
 enum TargetPlatform:
@@ -46,13 +46,13 @@ CompositeElement:
 ;
 
 Participant:
-	{Participant} 'Participant'
-	('Creator' ':' creator?= 'T')?
+{Participant} 'Participant'
+('Creator' ':' creator?= 'T')?
 ;
 
 Asset:
-	'Asset'
-	'Type' ':' type=ID
+'Asset'
+'Type' ':' type=ID
 ;
 
 Parameter:
@@ -63,10 +63,10 @@ Parameter:
 	'}';
 
 Transaction:
-	{Transaction} 'Transaction'
-	('Mostrar' ':' mostrar?= 'T')? '{'
-		(condition+=Condition)*
-	'}';
+{Transaction} 'Transaction'
+('Mostrar' ':' mostrar?= 'T')? '{'
+(condition+=Condition)*
+'}';
 
 Condition:
 	'Condition' '{'

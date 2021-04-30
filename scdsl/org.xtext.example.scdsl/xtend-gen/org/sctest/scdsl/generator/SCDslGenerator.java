@@ -21,6 +21,7 @@ import org.sctest.scdsl.sCDsl.Condition;
 import org.sctest.scdsl.sCDsl.Element;
 import org.sctest.scdsl.sCDsl.Parameter;
 import org.sctest.scdsl.sCDsl.Participant;
+import org.sctest.scdsl.sCDsl.Relationship;
 import org.sctest.scdsl.sCDsl.SContract;
 import org.sctest.scdsl.sCDsl.TranRel;
 import org.sctest.scdsl.sCDsl.Transaction;
@@ -47,6 +48,16 @@ public class SCDslGenerator extends AbstractGenerator {
   private String rel = "";
   
   private String modifiername = "";
+  
+  private String applicationroles = "";
+  
+  private String workflows = "";
+  
+  private String constructor = "";
+  
+  private String functions = "";
+  
+  private String azureProperties = ((((((((((((((("\"Properties\":" + "\n") + "{") + "\"Name\": \"State\"") + ",\n") + "\"DisplayName\": \"State\"") + ",\n") + "\"Description\": \"Holds the state of the contract.\"") + ",\n") + "\"Type\": {\n") + "\"Name\": \"state\"") + "\n") + "}") + "\n") + "},") + "\n");
   
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -132,29 +143,38 @@ public class SCDslGenerator extends AbstractGenerator {
             String _plus_1 = (_plus + _substring);
             String _plus_2 = (_plus_1 + " {\n");
             this.transaction = _plus_2;
-            Iterable<TranRel> _iterable_4 = IteratorExtensions.<TranRel>toIterable(Iterators.<TranRel>filter(resource.getAllContents(), TranRel.class));
-            for (final TranRel r : _iterable_4) {
-              String _upperCase_1 = r.getFrom().getName().substring(0, 1).toUpperCase();
-              String _plus_3 = ((this.transaction + "--> ") + _upperCase_1);
-              String _substring_1 = r.getName().toString().substring(1);
-              String _plus_4 = (_plus_3 + _substring_1);
-              String _plus_5 = (_plus_4 + " ");
-              String _lowerCase = r.getFrom().getName().toLowerCase();
-              String _plus_6 = (_plus_5 + _lowerCase);
-              String _plus_7 = (_plus_6 + "\n");
-              this.transaction = _plus_7;
-            }
-            Iterable<AssetRel> _iterable_5 = IteratorExtensions.<AssetRel>toIterable(Iterators.<AssetRel>filter(resource.getAllContents(), AssetRel.class));
-            for (final AssetRel r_1 : _iterable_5) {
-              String _upperCase_2 = r_1.getTo().getName().substring(0, 1).toUpperCase();
-              String _plus_8 = ((this.transaction + "--> ") + _upperCase_2);
-              String _substring_2 = r_1.getTo().getName().substring(1);
-              String _plus_9 = (_plus_8 + _substring_2);
-              String _plus_10 = (_plus_9 + " ");
-              String _lowerCase_1 = r_1.getTo().getName().toLowerCase();
-              String _plus_11 = (_plus_10 + _lowerCase_1);
-              String _plus_12 = (_plus_11 + "\n");
-              this.transaction = _plus_12;
+            EList<Relationship> _relationship = t.getRelationship();
+            for (final Relationship r : _relationship) {
+              {
+                String _string_1 = r.getTo().getName().toString();
+                String _name = t.getName();
+                boolean _equals_1 = Objects.equal(_string_1, _name);
+                if (_equals_1) {
+                  String _upperCase_1 = r.getFrom().getName().substring(0, 1).toUpperCase();
+                  String _plus_3 = ((this.transaction + "--> ") + _upperCase_1);
+                  String _substring_1 = r.getFrom().getName().toString().substring(1);
+                  String _plus_4 = (_plus_3 + _substring_1);
+                  String _plus_5 = (_plus_4 + " ");
+                  String _lowerCase = r.getFrom().getName().toLowerCase();
+                  String _plus_6 = (_plus_5 + _lowerCase);
+                  String _plus_7 = (_plus_6 + "\n");
+                  this.transaction = _plus_7;
+                }
+                String _string_2 = r.getFrom().getName().toString();
+                String _name_1 = t.getName();
+                boolean _equals_2 = Objects.equal(_string_2, _name_1);
+                if (_equals_2) {
+                  String _upperCase_2 = r.getTo().getName().substring(0, 1).toUpperCase();
+                  String _plus_8 = ((this.transaction + "--> ") + _upperCase_2);
+                  String _substring_2 = r.getTo().getName().substring(1);
+                  String _plus_9 = (_plus_8 + _substring_2);
+                  String _plus_10 = (_plus_9 + " ");
+                  String _lowerCase_1 = r.getTo().getName().toLowerCase();
+                  String _plus_11 = (_plus_10 + _lowerCase_1);
+                  String _plus_12 = (_plus_11 + "\n");
+                  this.transaction = _plus_12;
+                }
+              }
             }
             this.transaction = (this.transaction + "}\n");
           }
@@ -169,190 +189,259 @@ public class SCDslGenerator extends AbstractGenerator {
           Iterable<Participant> _iterable_4 = IteratorExtensions.<Participant>toIterable(Iterators.<Participant>filter(resource.getAllContents(), Participant.class));
           for (final Participant p_1 : _iterable_4) {
             String _upperCase = p_1.getName().substring(0, 1).toUpperCase();
-            String _plus_1 = (((this.participant + "{ \n") + "\"Name\": ") + _upperCase);
+            String _plus_1 = ((((this.applicationroles + "{ \n") + "\"Name\": ") + "\"") + _upperCase);
             String _substring = p_1.getName().substring(1);
             String _plus_2 = (_plus_1 + _substring);
-            String _plus_3 = (_plus_2 + "\n");
-            String _plus_4 = (_plus_3 + "\"Description\": \"...\"");
-            String _plus_5 = (_plus_4 + "\n},\n");
-            this.participant = _plus_5;
+            String _plus_3 = (_plus_2 + "\"");
+            String _plus_4 = (_plus_3 + "\n");
+            String _plus_5 = (_plus_4 + "\"Description\": \"...\"");
+            String _plus_6 = (_plus_5 + "\n},\n");
+            this.applicationroles = _plus_6;
           }
           Iterable<AssetRel> _iterable_5 = IteratorExtensions.<AssetRel>toIterable(Iterators.<AssetRel>filter(resource.getAllContents(), AssetRel.class));
           for (final AssetRel arel : _iterable_5) {
             {
-              this.tranrel = ((this.tranrel + "{") + "\n");
-              String _name_1 = arel.getName();
-              String _plus_6 = ("Name: " + _name_1);
-              String _plus_7 = (_plus_6 + "\n");
-              String _plus_8 = (_plus_7 + "DisplayName: ");
-              String _name_2 = arel.getName();
-              String _plus_9 = (_plus_8 + _name_2);
-              String _plus_10 = (_plus_9 + "\n");
-              String _plus_11 = (_plus_10 + "\"Description\": \"...\"");
-              /* (_plus_11 + "\n"); */
-              this.tranrel = (this.tranrel + "Initiator: [");
-              Iterable<TranRel> _iterable_6 = IteratorExtensions.<TranRel>toIterable(Iterators.<TranRel>filter(resource.getAllContents(), TranRel.class));
-              for (final TranRel trel : _iterable_6) {
-                Element _to = trel.getTo();
-                Element _from = arel.getFrom();
-                boolean _equals_2 = Objects.equal(_to, _from);
+              Iterable<Asset> _iterable_6 = IteratorExtensions.<Asset>toIterable(Iterators.<Asset>filter(resource.getAllContents(), Asset.class));
+              for (final Asset a_1 : _iterable_6) {
+                String _name_1 = a_1.getName();
+                String _string_2 = arel.getTo().getName().toString();
+                boolean _equals_2 = Objects.equal(_name_1, _string_2);
                 if (_equals_2) {
-                  Element _from_1 = trel.getFrom();
-                  String _plus_12 = (this.tranrel + _from_1);
-                  String _plus_13 = (_plus_12 + ", ");
-                  this.tranrel = _plus_13;
+                  EList<Parameter> _parameters = a_1.getParameters();
+                  for (final Parameter par : _parameters) {
+                    {
+                      this.workflows = ((this.workflows + "{") + "\n");
+                      String _name_2 = par.getName();
+                      String _plus_7 = (("\"Name\": " + "\"") + _name_2);
+                      String _plus_8 = (_plus_7 + "\"");
+                      String _plus_9 = (_plus_8 + "\n");
+                      String _plus_10 = (_plus_9 + "\"DisplayName\": ");
+                      String _plus_11 = (_plus_10 + "\"");
+                      String _name_3 = par.getName();
+                      String _plus_12 = (_plus_11 + _name_3);
+                      String _plus_13 = (_plus_12 + "\"");
+                      String _plus_14 = (_plus_13 + "\n");
+                      String _plus_15 = (_plus_14 + "\"Description\": \"...\"");
+                      /* (_plus_15 + "\n"); */
+                      this.workflows = (this.workflows + "Initiator: [");
+                      Iterable<TranRel> _iterable_7 = IteratorExtensions.<TranRel>toIterable(Iterators.<TranRel>filter(resource.getAllContents(), TranRel.class));
+                      for (final TranRel trel : _iterable_7) {
+                        String _string_3 = trel.getTo().getName().toString();
+                        String _string_4 = arel.getFrom().getName().toString();
+                        boolean _equals_3 = Objects.equal(_string_3, _string_4);
+                        if (_equals_3) {
+                          String _string_5 = trel.getFrom().getName().toString();
+                          String _plus_16 = (this.workflows + _string_5);
+                          String _plus_17 = (_plus_16 + ", ");
+                          this.workflows = _plus_17;
+                        }
+                      }
+                      this.workflows = ((this.workflows + "],") + "\n");
+                      this.workflows = ((this.workflows + "\"StartState\": \"\"") + ",\n");
+                      this.workflows = (this.workflows + this.azureProperties);
+                      String _name_4 = par.getName();
+                      String _plus_18 = (((this.workflows + "{\n") + "\"Name\": \"") + _name_4);
+                      String _plus_19 = (_plus_18 + "\",\n");
+                      String _plus_20 = (_plus_19 + "\"DisplayName\": \"");
+                      String _name_5 = par.getName();
+                      String _plus_21 = (_plus_20 + _name_5);
+                      String _plus_22 = (_plus_21 + "\",\n");
+                      String _plus_23 = (_plus_22 + "\"Description\": \"...\",\n");
+                      String _plus_24 = (_plus_23 + "\"Type\": {\n");
+                      String _plus_25 = (_plus_24 + "\"Name\": \"");
+                      String _type = par.getType();
+                      String _plus_26 = (_plus_25 + _type);
+                      String _plus_27 = (_plus_26 + "\"");
+                      String _plus_28 = (_plus_27 + "\n}");
+                      String _plus_29 = (_plus_28 + "\n}");
+                      this.workflows = _plus_29;
+                    }
+                  }
                 }
               }
-              this.tranrel = (this.tranrel + "]");
+              Iterable<Asset> _iterable_7 = IteratorExtensions.<Asset>toIterable(Iterators.<Asset>filter(resource.getAllContents(), Asset.class));
+              for (final Asset a_2 : _iterable_7) {
+              }
             }
           }
-          String _name_1 = s.getName();
-          String _plus_6 = (_name_1 + ".json");
-          fsa.generateFile(_plus_6, this.generateCodeAzure(s));
+          Iterable<AssetRel> _iterable_6 = IteratorExtensions.<AssetRel>toIterable(Iterators.<AssetRel>filter(resource.getAllContents(), AssetRel.class));
+          for (final AssetRel arel_1 : _iterable_6) {
+            Iterable<Asset> _iterable_7 = IteratorExtensions.<Asset>toIterable(Iterators.<Asset>filter(resource.getAllContents(), Asset.class));
+            for (final Asset a_1 : _iterable_7) {
+              String _string_2 = arel_1.getTo().getName().toString();
+              String _name_1 = a_1.getName();
+              boolean _equals_2 = Objects.equal(_string_2, _name_1);
+              if (_equals_2) {
+                EList<Parameter> _parameters = a_1.getParameters();
+                for (final Parameter par : _parameters) {
+                  String _name_2 = par.getName();
+                  String _plus_7 = (((this.constructor + "{\n") + "\"Name\": \"") + _name_2);
+                  String _plus_8 = (_plus_7 + "\",\n");
+                  String _plus_9 = (_plus_8 + "\"DisplayName\": \"");
+                  String _name_3 = par.getName();
+                  String _plus_10 = (_plus_9 + _name_3);
+                  String _plus_11 = (_plus_10 + "\",\n");
+                  String _plus_12 = (_plus_11 + "\"Description\": \"...\",\n");
+                  String _plus_13 = (_plus_12 + "\"Type\": {\n");
+                  String _plus_14 = (_plus_13 + "\"Name\": \"");
+                  String _type = par.getType();
+                  String _plus_15 = (_plus_14 + _type);
+                  String _plus_16 = (_plus_15 + "\"");
+                  String _plus_17 = (_plus_16 + "\n}");
+                  String _plus_18 = (_plus_17 + "\n},");
+                  this.constructor = _plus_18;
+                }
+              }
+            }
+          }
+          Iterable<AssetRel> _iterable_8 = IteratorExtensions.<AssetRel>toIterable(Iterators.<AssetRel>filter(resource.getAllContents(), AssetRel.class));
+          for (final AssetRel arel_2 : _iterable_8) {
+            String _name_4 = arel_2.getName();
+            String _plus_19 = (((this.functions + "{ \n") + "\"Name\": \"") + _name_4);
+            String _plus_20 = (_plus_19 + "\", \n");
+            String _plus_21 = (_plus_20 + "\"DisplayName\":\t\"");
+            String _name_5 = arel_2.getName();
+            String _plus_22 = (_plus_21 + _name_5);
+            String _plus_23 = (_plus_22 + "\",\n");
+            String _plus_24 = (_plus_23 + "\"Description\": \"...\",\n");
+            String _plus_25 = (_plus_24 + "\"Parameters\": [\'[]\'/]\n");
+            String _plus_26 = (_plus_25 + "}\n");
+            this.functions = _plus_26;
+          }
+          String _name_6 = s.getName();
+          String _plus_27 = (_name_6 + ".json");
+          fsa.generateFile(_plus_27, this.generateCodeAzure(s));
         } else {
-          Iterable<Participant> _iterable_6 = IteratorExtensions.<Participant>toIterable(Iterators.<Participant>filter(resource.getAllContents(), Participant.class));
-          for (final Participant p_2 : _iterable_6) {
+          Iterable<Participant> _iterable_9 = IteratorExtensions.<Participant>toIterable(Iterators.<Participant>filter(resource.getAllContents(), Participant.class));
+          for (final Participant p_2 : _iterable_9) {
             {
               String _upperCase_1 = p_2.getName().substring(0, 1).toUpperCase();
-              String _plus_7 = ((this.participant + "struct ") + _upperCase_1);
+              String _plus_28 = ((this.participant + "struct ") + _upperCase_1);
               String _substring_1 = p_2.getName().substring(1);
-              String _plus_8 = (_plus_7 + _substring_1);
-              String _plus_9 = (_plus_8 + "{\n");
-              this.participant = _plus_9;
-              EList<Parameter> _parameters = p_2.getParameters();
-              for (final Parameter par : _parameters) {
-                String _lowerCase = par.getType().toLowerCase();
-                boolean _equals_2 = Objects.equal(_lowerCase, "string");
-                if (_equals_2) {
-                  String _name_2 = par.getName();
-                  String _plus_10 = ((this.participant + "bytes32 ") + _name_2);
-                  String _plus_11 = (_plus_10 + ";\n");
-                  this.participant = _plus_11;
+              String _plus_29 = (_plus_28 + _substring_1);
+              String _plus_30 = (_plus_29 + "{\n");
+              this.participant = _plus_30;
+              EList<Parameter> _parameters_1 = p_2.getParameters();
+              for (final Parameter par_1 : _parameters_1) {
+                String _lowerCase = par_1.getType().toLowerCase();
+                boolean _equals_3 = Objects.equal(_lowerCase, "string");
+                if (_equals_3) {
+                  String _name_7 = par_1.getName();
+                  String _plus_31 = ((this.participant + "bytes32 ") + _name_7);
+                  String _plus_32 = (_plus_31 + ";\n");
+                  this.participant = _plus_32;
                 } else {
-                  String _type = par.getType();
-                  String _plus_12 = (this.participant + _type);
-                  String _plus_13 = (_plus_12 + " ");
-                  String _name_3 = par.getName();
-                  String _plus_14 = (_plus_13 + _name_3);
-                  String _plus_15 = (_plus_14 + ";\n");
-                  this.participant = _plus_15;
+                  String _type_1 = par_1.getType();
+                  String _plus_33 = (this.participant + _type_1);
+                  String _plus_34 = (_plus_33 + " ");
+                  String _name_8 = par_1.getName();
+                  String _plus_35 = (_plus_34 + _name_8);
+                  String _plus_36 = (_plus_35 + ";\n");
+                  this.participant = _plus_36;
                 }
               }
               String _lowerCase_1 = p_2.getName().toLowerCase();
-              String _plus_16 = ((this.participant + "address ") + _lowerCase_1);
-              String _plus_17 = (_plus_16 + "Address;\n } \n");
-              this.participant = _plus_17;
+              String _plus_37 = ((this.participant + "address ") + _lowerCase_1);
+              String _plus_38 = (_plus_37 + "Address;\n } \n");
+              this.participant = _plus_38;
             }
           }
-          Iterable<Asset> _iterable_7 = IteratorExtensions.<Asset>toIterable(Iterators.<Asset>filter(resource.getAllContents(), Asset.class));
-          for (final Asset a_1 : _iterable_7) {
-            EList<Parameter> _parameters = a_1.getParameters();
-            for (final Parameter par : _parameters) {
-              String _type = par.getType();
-              String _plus_7 = (this.asset + _type);
-              String _plus_8 = (_plus_7 + " public ");
-              String _name_2 = par.getName();
-              String _plus_9 = (_plus_8 + _name_2);
-              String _plus_10 = (_plus_9 + ";\n");
-              this.asset = _plus_10;
-            }
-          }
-          Iterable<Asset> _iterable_8 = IteratorExtensions.<Asset>toIterable(Iterators.<Asset>filter(resource.getAllContents(), Asset.class));
-          for (final Asset a_2 : _iterable_8) {
+          Iterable<Asset> _iterable_10 = IteratorExtensions.<Asset>toIterable(Iterators.<Asset>filter(resource.getAllContents(), Asset.class));
+          for (final Asset a_2 : _iterable_10) {
             {
               String _upperCase_1 = a_2.getName().substring(0, 1).toUpperCase();
-              String _plus_11 = ((this.asset + "struct ") + _upperCase_1);
+              String _plus_28 = ((this.asset + "struct ") + _upperCase_1);
               String _substring_1 = a_2.getName().substring(1);
-              String _plus_12 = (_plus_11 + _substring_1);
-              String _plus_13 = (_plus_12 + "{\n");
-              this.asset = _plus_13;
+              String _plus_29 = (_plus_28 + _substring_1);
+              String _plus_30 = (_plus_29 + "{\n");
+              this.asset = _plus_30;
               EList<Parameter> _parameters_1 = a_2.getParameters();
               for (final Parameter ass : _parameters_1) {
                 String _lowerCase = ass.getType().toLowerCase();
-                boolean _equals_2 = Objects.equal(_lowerCase, "string");
-                if (_equals_2) {
-                  String _name_3 = ass.getName();
-                  String _plus_14 = ((this.asset + "bytes32 ") + _name_3);
-                  String _plus_15 = (_plus_14 + ";\n");
-                  this.asset = _plus_15;
+                boolean _equals_3 = Objects.equal(_lowerCase, "string");
+                if (_equals_3) {
+                  String _name_7 = ass.getName();
+                  String _plus_31 = ((this.asset + "bytes32 ") + _name_7);
+                  String _plus_32 = (_plus_31 + ";\n");
+                  this.asset = _plus_32;
                 } else {
                   String _type_1 = ass.getType();
-                  String _plus_16 = (this.asset + _type_1);
-                  String _plus_17 = (_plus_16 + " ");
-                  String _name_4 = ass.getName();
-                  String _plus_18 = (_plus_17 + _name_4);
-                  String _plus_19 = (_plus_18 + ";\n");
-                  this.asset = _plus_19;
+                  String _plus_33 = (this.asset + _type_1);
+                  String _plus_34 = (_plus_33 + " ");
+                  String _name_8 = ass.getName();
+                  String _plus_35 = (_plus_34 + _name_8);
+                  String _plus_36 = (_plus_35 + ";\n");
+                  this.asset = _plus_36;
                 }
               }
               this.asset = (this.asset + "\n } \n");
             }
           }
-          Iterable<AssetRel> _iterable_9 = IteratorExtensions.<AssetRel>toIterable(Iterators.<AssetRel>filter(resource.getAllContents(), AssetRel.class));
-          for (final AssetRel arel_1 : _iterable_9) {
-            String _name_3 = arel_1.getName();
-            String _plus_11 = ((this.assetrel + "event ") + _name_3);
-            String _plus_12 = (_plus_11 + "(");
-            Element _from = arel_1.getFrom();
-            String _plus_13 = (_plus_12 + _from);
-            String _plus_14 = (_plus_13 + " ");
-            String _plus_15 = (_plus_14 + "var);\n");
-            this.assetrel = _plus_15;
+          Iterable<AssetRel> _iterable_11 = IteratorExtensions.<AssetRel>toIterable(Iterators.<AssetRel>filter(resource.getAllContents(), AssetRel.class));
+          for (final AssetRel arel_3 : _iterable_11) {
+            String _name_7 = arel_3.getName();
+            String _plus_28 = ((this.assetrel + "event ") + _name_7);
+            String _plus_29 = (_plus_28 + "(");
+            String _string_3 = arel_3.getFrom().getName().toString();
+            String _plus_30 = (_plus_29 + _string_3);
+            String _plus_31 = (_plus_30 + " ");
+            String _plus_32 = (_plus_31 + "var);\n");
+            this.assetrel = _plus_32;
           }
-          Iterable<TranRel> _iterable_10 = IteratorExtensions.<TranRel>toIterable(Iterators.<TranRel>filter(resource.getAllContents(), TranRel.class));
-          for (final TranRel trel : _iterable_10) {
-            String _name_4 = trel.getName();
-            String _plus_16 = ("modifier only" + _name_4);
-            String _plus_17 = (_plus_16 + " {\n");
-            String _plus_18 = (_plus_17 + "require( msg.sender == ");
-            String _upperCase_1 = trel.getName().substring(0, 1).toUpperCase();
-            String _plus_19 = (_plus_18 + _upperCase_1);
-            String _substring_1 = trel.getName().substring(1);
-            String _plus_20 = (_plus_19 + _substring_1);
-            String _plus_21 = (_plus_20 + ".");
-            String _lowerCase = trel.getName().toLowerCase();
-            String _plus_22 = (_plus_21 + _lowerCase);
-            String _plus_23 = (_plus_22 + "Address);\n_;\n}");
-            this.tranrel = _plus_23;
+          Iterable<TranRel> _iterable_12 = IteratorExtensions.<TranRel>toIterable(Iterators.<TranRel>filter(resource.getAllContents(), TranRel.class));
+          for (final TranRel trel : _iterable_12) {
+            String _upperCase_1 = trel.getFrom().getName().toString().substring(0, 1).toUpperCase();
+            String _plus_33 = ("modifier only" + _upperCase_1);
+            String _substring_1 = trel.getFrom().getName().toString().substring(1);
+            String _plus_34 = (_plus_33 + _substring_1);
+            String _plus_35 = (_plus_34 + " {\n");
+            String _plus_36 = (_plus_35 + "require( msg.sender == ");
+            String _string_4 = trel.getFrom().getName().toString();
+            String _plus_37 = (_plus_36 + _string_4);
+            String _plus_38 = (_plus_37 + ".");
+            String _string_5 = trel.getFrom().getName().toString();
+            String _plus_39 = (_plus_38 + _string_5);
+            String _plus_40 = (_plus_39 + "Address);\n_;\n}");
+            this.tranrel = _plus_40;
           }
-          Iterable<Transaction> _iterable_11 = IteratorExtensions.<Transaction>toIterable(Iterators.<Transaction>filter(resource.getAllContents(), Transaction.class));
-          for (final Transaction tr : _iterable_11) {
+          Iterable<Transaction> _iterable_13 = IteratorExtensions.<Transaction>toIterable(Iterators.<Transaction>filter(resource.getAllContents(), Transaction.class));
+          for (final Transaction tr : _iterable_13) {
             {
-              String _name_5 = tr.getName();
-              String _plus_24 = ((this.transaction + "function ") + _name_5);
-              String _plus_25 = (_plus_24 + "() ");
-              this.transaction = _plus_25;
+              String _name_8 = tr.getName();
+              String _plus_41 = ((this.transaction + "function ") + _name_8);
+              String _plus_42 = (_plus_41 + "() ");
+              this.transaction = _plus_42;
               this.modifiername = "";
-              Iterable<TranRel> _iterable_12 = IteratorExtensions.<TranRel>toIterable(Iterators.<TranRel>filter(resource.getAllContents(), TranRel.class));
-              for (final TranRel trel_1 : _iterable_12) {
+              Iterable<TranRel> _iterable_14 = IteratorExtensions.<TranRel>toIterable(Iterators.<TranRel>filter(resource.getAllContents(), TranRel.class));
+              for (final TranRel trel_1 : _iterable_14) {
                 Element _to = trel_1.getTo();
-                String _name_6 = tr.getName();
-                boolean _equals_2 = Objects.equal(_to, _name_6);
-                if (_equals_2) {
-                  String _name_7 = trel_1.getName();
-                  String _plus_26 = ((this.modifiername + "only") + _name_7);
-                  this.modifiername = _plus_26;
+                String _name_9 = tr.getName();
+                boolean _equals_3 = Objects.equal(_to, _name_9);
+                if (_equals_3) {
+                  String _name_10 = trel_1.getName();
+                  String _plus_43 = ((this.modifiername + "only") + _name_10);
+                  this.modifiername = _plus_43;
                 }
               }
               this.transaction = ((this.transaction + this.modifiername) + " public { \n");
               this.conditions = "";
               EList<Condition> _condition = tr.getCondition();
               for (final Condition co : _condition) {
-                String _string_2 = co.getConditionType().toString();
-                boolean _equals_3 = Objects.equal(_string_2, "Pre");
-                if (_equals_3) {
+                String _string_6 = co.getConditionType().toString();
+                boolean _equals_4 = Objects.equal(_string_6, "Pre");
+                if (_equals_4) {
                   String _condition_1 = co.getCondition();
-                  String _plus_27 = ((this.conditions + "require (") + _condition_1);
-                  String _plus_28 = (_plus_27 + "); \n");
-                  this.conditions = _plus_28;
+                  String _plus_44 = ((this.conditions + "require (") + _condition_1);
+                  String _plus_45 = (_plus_44 + "); \n");
+                  this.conditions = _plus_45;
                 }
               }
               this.transaction = ((this.transaction + this.conditions) + "} \n");
             }
           }
-          String _name_5 = s.getName();
-          String _plus_24 = (_name_5 + ".sol");
-          fsa.generateFile(_plus_24, this.generateCodeSolidity(s));
+          String _name_8 = s.getName();
+          String _plus_41 = (_name_8 + ".sol");
+          fsa.generateFile(_plus_41, this.generateCodeSolidity(s));
         }
       }
     }
@@ -381,8 +470,10 @@ public class SCDslGenerator extends AbstractGenerator {
   private CharSequence generateCodeAzure(final SContract s) {
     CharSequence _xblockexpression = null;
     {
-      final ArrayList<String> elelist1 = CollectionLiterals.<String>newArrayList(this.participant);
-      final ArrayList<String> elelist2 = CollectionLiterals.<String>newArrayList(this.tranrel);
+      final ArrayList<String> elelist1 = CollectionLiterals.<String>newArrayList(this.applicationroles);
+      final ArrayList<String> elelist2 = CollectionLiterals.<String>newArrayList(this.workflows);
+      final ArrayList<String> elelist3 = CollectionLiterals.<String>newArrayList(this.constructor);
+      final ArrayList<String> elelist4 = CollectionLiterals.<String>newArrayList(this.functions);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("{");
       _builder.newLine();
@@ -434,6 +525,47 @@ public class SCDslGenerator extends AbstractGenerator {
       _builder.newLine();
       _builder.append("\t");
       _builder.append("],");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("\"Constructor\":");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("{");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("\"Parameters\":");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("[");
+      _builder.newLine();
+      {
+        for(final String el3 : elelist3) {
+          _builder.append("\t\t\t");
+          _builder.append(el3, "\t\t\t");
+          _builder.newLineIfNotEmpty();
+        }
+      }
+      _builder.append("\t\t");
+      _builder.append("]");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("},");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("\"Functions\":");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("[");
+      _builder.newLine();
+      {
+        for(final String el4 : elelist4) {
+          _builder.append("\t\t");
+          _builder.append(el4, "\t\t");
+          _builder.newLineIfNotEmpty();
+        }
+      }
+      _builder.append("\t");
+      _builder.append("]");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("\"States\":");

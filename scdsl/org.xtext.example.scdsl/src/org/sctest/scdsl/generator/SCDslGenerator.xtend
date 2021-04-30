@@ -33,7 +33,11 @@ class SCDslGenerator extends AbstractGenerator {
 	String rel = "";
 	String modifiername = "";
 	
-	
+	String applicationroles = "";
+	String workflows = "";
+	String constructor = "";
+	String functions = "";
+	String azureProperties = "\"Properties\":" + "\n" + "{" + "\"Name\": \"State\"" + ",\n" + "\"DisplayName\": \"State\"" + ",\n" + "\"Description\": \"Holds the state of the contract.\"" + ",\n" + "\"Type\": {\n" + "\"Name\": \"state\"" + "\n" + "}" + "\n" + "}," + "\n";
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		for (s : resource.allContents.filter(SContract).toIterable) {
@@ -88,15 +92,18 @@ class SCDslGenerator extends AbstractGenerator {
 				for (t : resource.allContents.filter(Transaction).toIterable)
 				{
 					transaction = transaction + "transaction " + t.name.substring(0, 1).toUpperCase() + t.name.substring(1) + " {\n"
-					for (r : resource.allContents.filter(TranRel).toIterable)
+					for (r: t.relationship)
 					{
-						transaction = transaction + "--> " + r.from.name.substring(0, 1).toUpperCase() + r.name.toString().substring(1) + " " 
+						if(r.to.name.toString() == t.name)
+						{
+							transaction = transaction + "--> " + r.from.name.substring(0, 1).toUpperCase() + r.from.name.toString().substring(1) + " " 
 						+ r.from.name.toLowerCase() + "\n"
-					}
-					for(r : resource.allContents.filter(AssetRel).toIterable)
-					{
-						transaction = transaction + "--> " + r.to.name.substring(0, 1).toUpperCase() + r.to.name.substring(1) + " " 
-						+ r.to.name.toLowerCase() + "\n"
+						}
+						if(r.from.name.toString() == t.name)
+						{
+							transaction = transaction + "--> " + r.to.name.substring(0, 1).toUpperCase() + r.to.name.substring(1) + " " 
+							+ r.to.name.toLowerCase() + "\n"
+						}
 					}
 					transaction = transaction + "}\n";
 				}
@@ -115,24 +122,62 @@ class SCDslGenerator extends AbstractGenerator {
 					// The element is a participant. We will iterate over all the participants.
 					for(p : resource.allContents.filter(Participant).toIterable)
 					{
-						participant = participant + "{ \n" + "\"Name\": " + p.name.substring(0, 1).toUpperCase() + p.name.substring(1) 
+						applicationroles = applicationroles + "{ \n" + "\"Name\": " + "\"" + p.name.substring(0, 1).toUpperCase() + p.name.substring(1) + "\""
 						+ "\n" + "\"Description\": \"...\"" + "\n},\n" 
 					}
 					for(arel : resource.allContents.filter(AssetRel).toIterable)
 					{
-						tranrel = tranrel + "{" + "\n" "Name: " + arel.name + "\n" + "DisplayName: " + arel.name + "\n" + "\"Description\": \"...\"" + "\n"
-						tranrel = tranrel + "Initiator: ["
-						for(trel : resource.allContents.filter(TranRel).toIterable)
+						for(a: resource.allContents.filter(Asset).toIterable)
 						{
-							if(trel.to == arel.from)
+							if (a.name == arel.to.name.toString())
 							{
-								tranrel = tranrel + trel.from + ", "
+								for(par: a.parameters)
+								{
+									workflows = workflows + "{" + "\n" "\"Name\": " + "\"" + par.name + "\"" + "\n" + "\"DisplayName\": " + "\"" + par.name + "\"" + "\n" + "\"Description\": \"...\"" + "\n"
+									workflows = workflows + "Initiator: ["
+									for(trel : resource.allContents.filter(TranRel).toIterable)
+									{
+										if(trel.to.name.toString() == arel.from.name.toString())
+										{
+											workflows = workflows + trel.from.name.toString() + ", "
+										}
+									}
+									workflows = workflows + "]," + "\n"
+									workflows = workflows + "\"StartState\": \"\"" + ",\n"
+									workflows = workflows + azureProperties
+									workflows = workflows + "{\n" + "\"Name\": \"" + par.name + "\",\n" + "\"DisplayName\": \"" + par.name + "\",\n" + "\"Description\": \"...\",\n" + "\"Type\": {\n" + "\"Name\": \"" + par.type + "\"" + "\n}" + "\n}"
+								}
 							}
+							
 						}
-						tranrel = tranrel + "]"
 						
-						
+						for(a : resource.allContents.filter(Asset).toIterable)
+						{
+							
+						}
 					}
+					
+					for(arel : resource.allContents.filter(AssetRel).toIterable)
+					{
+						for(a : resource.allContents.filter(Asset).toIterable)
+						{
+							if(arel.to.name.toString() == a.name)
+							{
+								for (par: a.parameters)
+								{
+									
+                						constructor = constructor + "{\n" + "\"Name\": \"" + par.name + "\",\n" + "\"DisplayName\": \"" + par.name + "\",\n" + "\"Description\": \"...\",\n" + "\"Type\": {\n" + "\"Name\": \"" + par.type + "\"" + "\n}" + "\n}," 
+									
+								}
+							}		
+						}
+					}
+					
+					for(arel : resource.allContents.filter(AssetRel).toIterable)
+					{
+						functions = functions + "{ \n" +  "\"Name\": \"" + arel.name + "\", \n" + "\"DisplayName\":	\"" + arel.name + "\",\n" + "\"Description\": \"...\",\n" + "\"Parameters\": ['[]'/]\n" + "}\n"
+					}
+					
 					fsa.generateFile(s.name+'.json', generateCodeAzure(s))
 				}
 				//----------------------------------------------------------------------------------------------
@@ -143,9 +188,12 @@ class SCDslGenerator extends AbstractGenerator {
 				{
 					// The element is Participant. Iterate over all of them
 					// The participant are struct datatypes
+					
 					for (p : resource.allContents.filter(Participant).toIterable)
 					{
-						participant = participant + "struct " + p.name.substring(0, 1).toUpperCase() + p.name.substring(1) + '{\n'
+						participant = participant + "struct " + 
+						p.name.substring(0, 1).toUpperCase() + p.name.substring(1) + '{\n'
+						
 						for (par : p.parameters)
 						{
 							if(par.type.toLowerCase() == 'string')
@@ -161,17 +209,11 @@ class SCDslGenerator extends AbstractGenerator {
 					}
 					
 					// Only the parameters of the assets is put into the smart contract
-					for (a : resource.allContents.filter(Asset).toIterable)
-					{
-						for(par : a.parameters)
-						{
-							asset = asset + par.type + " public " + par.name + ";\n"
-						}
-					}
 					
 					for (a : resource.allContents.filter(Asset).toIterable)
 					{
-						asset = asset + "struct " + a.name.substring(0, 1).toUpperCase() + a.name.substring(1) + '{\n'
+						asset = asset + "struct " + a.name.substring(0, 1).toUpperCase() + 
+						a.name.substring(1) + '{\n'
 						for (ass : a.parameters)
 						{
 							if(ass.type.toLowerCase() == 'string')
@@ -189,20 +231,21 @@ class SCDslGenerator extends AbstractGenerator {
 					// Make events for the asset relationships using the AssetRel
 					for(arel: resource.allContents.filter(AssetRel).toIterable)
 					{
-						assetrel = assetrel + "event " + arel.name + "(" + arel.from + " " + "var);\n"
+						assetrel = assetrel + "event " + arel.name + "(" + arel.from.name.toString() + " " + "var);\n"
 					}
 					
 					// Defining the function modifiers using the TranRel
 					for (trel : resource.allContents.filter(TranRel).toIterable)
 					{
-						tranrel = "modifier only" + trel.name + " {\n" + "require( msg.sender == " + trel.name.substring(0, 1).toUpperCase() + trel.name.substring(1) 
-						+ "." + trel.name.toLowerCase() + "Address);\n_;\n}" 
+						tranrel = "modifier only" + trel.from.name.toString().substring(0, 1).toUpperCase() + trel.from.name.toString().substring(1) + " {\n" + "require( msg.sender == " + trel.from.name.toString() 
+						+ "." + trel.from.name.toString() + "Address);\n_;\n}" 
 					}
 					
 					for (tr : resource.allContents.filter(Transaction).toIterable)
 					{
 						transaction = transaction + "function " + tr.name + "() ";
 						modifiername = ""
+						
 						for (trel : resource.allContents.filter(TranRel).toIterable)
 						{
 							if (trel.to == tr.name)
@@ -241,8 +284,10 @@ class SCDslGenerator extends AbstractGenerator {
 	
 	private def generateCodeAzure(SContract s)
 	{
-		val elelist1 = newArrayList (participant);
-		val elelist2 = newArrayList (tranrel);
+		val elelist1 = newArrayList (applicationroles);
+		val elelist2 = newArrayList (workflows);
+		val elelist3 = newArrayList (constructor);
+		val elelist4 = newArrayList (functions);
 		'''
 		{
 			"ApplicationName": "«s.name.replaceAll(" ", "")»",
@@ -261,6 +306,21 @@ class SCDslGenerator extends AbstractGenerator {
 				«ENDFOR»
 				
 			],
+			"Constructor":
+			{
+				"Parameters":
+				[
+					«FOR el3 : elelist3»
+						«el3»
+					«ENDFOR»
+				]
+			},
+			"Functions":
+			[
+				«FOR el4 : elelist4»
+					«el4»
+				«ENDFOR»
+			]
 			"States":
 			[
 				{
@@ -295,8 +355,3 @@ class SCDslGenerator extends AbstractGenerator {
 		'''
 	}
 }
-//
-//class Participants{
-//	public String x;
-//	public String y;
-//}

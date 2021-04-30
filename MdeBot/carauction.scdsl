@@ -1,0 +1,42 @@
+Contract: carauction
+Platform: Solidity
+Participant {
+Name: Owner
+List: Participant_List_None_0
+Parameter {
+Name: name
+Type: String
+Identifier: T
+}
+}
+Participant
+Creator: T {
+Name: Bidder
+List: Participant_List_None_1
+Parameter {
+Name: name
+Type: String
+Identifier: T
+}
+}
+Asset
+Type: Asset_Type_None_0{
+Name: car
+List: Asset_List_None_0
+Parameter{
+Name: carnumber
+Type: String
+Identifier: T
+}
+}
+Transaction{
+}{
+Name: placeBid
+List: Transaction_List_None_0
+Relationship
+TranRel{
+Name: bidTransactionRelationship
+From: Bidder
+To: placeBid
+}
+}
