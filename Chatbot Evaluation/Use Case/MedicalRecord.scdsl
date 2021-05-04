@@ -1,0 +1,48 @@
+Contract: MedicalRecord
+Platform: IBM
+Participant
+Creator: T {
+Name: patient
+List: Participant_List_None_0
+Parameter {
+Name: name
+Type: String
+Identifier: T
+}
+}
+Asset
+Type: Asset_Type_None_0{
+Name: record
+List: Asset_List_None_0
+Parameter{
+Name: id
+Type: String
+Identifier: T
+}
+Parameter{
+Name: owner
+Type: String
+}
+}
+Transaction{
+}{
+Name: modifyPatientName
+List: Transaction_List_None_0
+Relationship
+TranRel{
+Name: patientRelationship
+From: patient
+To: modifyPatientName
+}
+}
+Transaction{
+}{
+Name: getRecord
+List: Transaction_List_None_1
+Relationship
+AssetRel{
+Name: recordRelationship
+From: getRecord
+To: record
+}
+}

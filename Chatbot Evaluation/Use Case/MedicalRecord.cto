@@ -1,0 +1,14 @@
+namespace MedicalRecord
+asset Record identified by id {
+o String id
+o String owner
+}
+participant Patient identified by name{
+o String name
+}
+transaction ModifyPatientName {
+--> Patient patient
+}
+transaction GetRecord {
+--> Record record
+}
