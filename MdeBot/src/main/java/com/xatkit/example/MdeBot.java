@@ -21,6 +21,7 @@ import java.util.*;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicReference;
 import java.lang.ProcessBuilder;
+import static com.xatkit.core.recognition.IntentRecognitionProviderFactoryConfiguration.*;
 
 public class MdeBot {
 
@@ -102,7 +103,8 @@ public class MdeBot {
             .trainingSentence("Create a contract")
             .trainingSentence("I want you to guide me to make a smart contract")
             .trainingSentence("Please create a smart contract")
-            .trainingSentence("Please make a smart contract");
+            .trainingSentence("Please make a smart contract")
+            .trainingSentence("Create smart contract");
 
         //Intent to find if the user wants to edit a contract
         val editContract = intent("EditContract")
@@ -145,7 +147,11 @@ public class MdeBot {
             .trainingSentence("I want to update an element")
             .trainingSentence("I want to change an element")
             .trainingSentence("Make changes to an element")
-            .trainingSentence("Edit an element for the contract");
+            .trainingSentence("Edit an element for the contract")
+            .trainingSentence("Edit an element")
+            .trainingSentence("Update an element")
+            .trainingSentence("Change an element")
+            .trainingSentence("Edit element");
 
         val deleteElement = intent("DeleteElement")
             .trainingSentence("I want to delete an element")
@@ -197,7 +203,10 @@ public class MdeBot {
             .trainingSentence("Create participant")
             .trainingSentence("Create another participant")
             .trainingSentence("I wish to create a participant")
-            .trainingSentence("A participant should be created");
+            .trainingSentence("A participant should be created")
+            .trainingSentence("I want to make a participant")
+            .trainingSentence("I want a new participant")
+            .trainingSentence("I want another participant");
 
         val createParticipantSetName = intent("CreateParticipantSetName")
             .trainingSentence("The name of the participant should be PARTNAME")
@@ -218,8 +227,10 @@ public class MdeBot {
             .trainingSentence("Yes, I want to have a parameter for this participant")
             .trainingSentence("Yes, I want to have more parameters for the participant")
             .trainingSentence("I want to build more parameters for this participant")
-            .trainingSentence("I want to add more parameters to the ")
-            .trainingSentence("Yes, I want to create another parameter for the participant");
+            .trainingSentence("I want to add more parameters to the participant")
+            .trainingSentence("Yes, I want to create another parameter for the participant")
+            .trainingSentence("Add more parameters to the participant")
+            .trainingSentence("Yes, I want to build more parameters for the participant");
 
         val createParticipantAssertRelationship = intent("CreateParticipantAssertRelationship")
             .trainingSentence("Yes, I want to build a relationship for this participant")
@@ -232,10 +243,14 @@ public class MdeBot {
             .trainingSentence("No, I don't want to change the participant anymore")
             .trainingSentence("The participant is complete")
             .trainingSentence("The participant is done")
-            .trainingSentence("Nothing more to add to the participant");
+            .trainingSentence("Nothing more to add to the participant")
+            .trainingSentence("That's enough for the participant")
+            .trainingSentence("I don't want to add anything to the participant");
 
         val createParticipantSetIdentifier = intent("CreateParticipantSetIdentifier")
             .trainingSentence("I want PARTID to be the identifier for the participant")
+            .trainingSentence("PARTID should be the identifier of the participant")
+            .trainingSentence("I want PARTID to be the identifier of the participant")
             .trainingSentence("PARTID should be the identifier for the participant")
             .trainingSentence("Make PARTID the identifier for the participant")
             .trainingSentence("Participant's identifier is PARTID")
@@ -287,12 +302,16 @@ public class MdeBot {
         val editParticipantChangeIdentifier = intent("EditParticipantChangeIdentifier")
             .trainingSentence("I want to change the identifier for the participant")
             .trainingSentence("I want to update the identifier for the participant")
+            .trainingSentence("I want to change the identifier of the participant")
+            .trainingSentence("I want to update the identifier of the participant")
             .trainingSentence("Change the identifier of the participant")
             .trainingSentence("The identifier of the participant should be edited");
 
         val editParticipantEditParameter = intent("EditParticipantEditParameter")
             .trainingSentence("I want to edit a parameter for the participant")
             .trainingSentence("I want to update a parameter for the participant")
+            .trainingSentence("I want to edit a parameter of the participant")
+            .trainingSentence("I want to update a parameter of the participant")
             .trainingSentence("Edit a parameter of the participant")
             .trainingSentence("A parameter of the participant has to be edited")
             .trainingSentence("I want to edit a parameter of the participant");
@@ -300,7 +319,10 @@ public class MdeBot {
         val editParticipantDeleteParameter = intent("EditParticipantDeleteParameter")
             .trainingSentence("I want to delete a parameter for the participant")
             .trainingSentence("I want to remove a parameter for the participant")
+            .trainingSentence("I want to delete a parameter of the participant")
+            .trainingSentence("I want to remove a parameter of the participant")
             .trainingSentence("Delete a parameter of the participant")
+            .trainingSentence("Remove a parameter of the participant")
             .trainingSentence("A parameter of the participant has to be deleted");
 
         val editParticipantContinueEditing = intent("EditParticipantContinueEditing")
@@ -325,13 +347,15 @@ public class MdeBot {
 
         val deleteParticipantGetName = intent("DeleteParticipantGetName")
             .trainingSentence("The name of the participant that has to be deleted is GDPARTNAME")
+            .trainingSentence("The name of the participant that I want to delete is GDPARTNAME")
             .trainingSentence("The participant to be deleted is GDPARTNAME")
             .trainingSentence("I want the participant named GDPARTNAME to be deleted")
             .parameter("gdpartname").fromFragment("GDPARTNAME").entity(any());
 
         val deleteParticipantConfirm = intent("DeleteParticipantConfirm")
             .trainingSentence("Yes, delete this participant")
-            .trainingSentence("Yes, you will have to delete this participant");
+            .trainingSentence("Yes, you will have to delete this participant")
+            .trainingSentence("Yes, this is the participant that I want to delete");
 
         //***************************************************************************************************************************
 
@@ -355,6 +379,7 @@ public class MdeBot {
 
         val readParticipantConfirm = intent("ReadParticipantConfirm")
             .trainingSentence("Yes, I want to read this participant")
+            .trainingSentence("Yes, this is the participant that I want to read")
             .trainingSentence("Yes, show me this participant")
             .trainingSentence("Yes, show this participant");
 
@@ -400,6 +425,8 @@ public class MdeBot {
             .trainingSentence("Asset's name is ASSTNAME")
             .trainingSentence("Asset's name should be ASSTNAME")
             .trainingSentence("Name of asset = ASSTNAME")
+            .trainingSentence("Name of asset is ASSTNAME")
+            .trainingSentence("Name of the asset is ASSTNAME")
             .parameter("asstname").fromFragment("ASSTNAME").entity(any());
 
         val createAssetSetList = intent("CreateAssetSetList")
@@ -427,8 +454,11 @@ public class MdeBot {
 
         val createAssetSetIdentifier = intent("CreateAssetSetIdentifier")
             .trainingSentence("I want ASSTID to be the identifier for the asset")
+            .trainingSentence("I want ASSTID to be the identifier of the asset")
             .trainingSentence("ASSTID should be the identifier for the asset")
+            .trainingSentence("ASSTID should be the identifier of the asset")
             .trainingSentence("Make ASSTID the identifier for the asset")
+            .trainingSentence("Make ASSTID the identifier of the asset")
             .trainingSentence("Asset's identifier is ASSTID")
             .trainingSentence("Asset's should be ASSTID")
             .parameter("asstid").fromFragment("ASSTID").entity(any());
@@ -472,12 +502,16 @@ public class MdeBot {
         val editAssetChangeIdentifier = intent("EditAssetChangeIdentifier")
             .trainingSentence("I want to change the identifier for the asset")
             .trainingSentence("I want to update the identifier for the asset")
+            .trainingSentence("I want to change the identifier of the asset")
+            .trainingSentence("I want to update the identifier of the asset")
             .trainingSentence("Change the identifier of the asset")
             .trainingSentence("The identifier of the asset should be edited");
 
         val editAssetEditParameter = intent("EditAssetEditParameter")
             .trainingSentence("I want to edit a parameter for the asset")
             .trainingSentence("I want to update a parameter for the asset")
+            .trainingSentence("I want to edit a parameter of the asset")
+            .trainingSentence("I want to update a parameter of the asset")
             .trainingSentence("Update a parameter of the asset")
             .trainingSentence("Edit a parameter of the asset")
             .trainingSentence("A parameter of the asset has to be edited")
@@ -486,6 +520,8 @@ public class MdeBot {
         val editAssetDeleteParameter = intent("EditAssetDeleteParameter")
             .trainingSentence("I want to delete a parameter for the asset")
             .trainingSentence("I want to remove a parameter for the asset")
+            .trainingSentence("I want to delete a parameter of the asset")
+            .trainingSentence("I want to remove a parameter of the asset")
             .trainingSentence("Delete a parameter of the asset")
             .trainingSentence("A parameter of the asset has to be deleted")
             .trainingSentence("A parameter of the asset has to be removed");
@@ -514,10 +550,12 @@ public class MdeBot {
             .trainingSentence("The name of the asset that has to be deleted is GDASSTNAME")
             .trainingSentence("The asset to be deleted is GDASSTNAME")
             .trainingSentence("I want the asset named GDASSTNAME to be deleted")
+            .trainingSentence("I want to delete the asset named GDASSTNAME")
             .parameter("gdasstname").fromFragment("GDASSTNAME").entity(any());
 
         val deleteAssetConfirm = intent("DeleteAssetConfirm")
             .trainingSentence("Yes, delete this asset")
+            .trainingSentence("Yes, this is the asset that I want to delete")
             .trainingSentence("Yes, you will have to delete this asset");
 
         //***************************************************************************************************************************
@@ -542,6 +580,7 @@ public class MdeBot {
 
         val readAssetConfirm = intent("ReadAssetConfirm")
             .trainingSentence("Yes, I want to read this asset")
+            .trainingSentence("Yes, show me this asset")
             .trainingSentence("Yes, show me this asset");
 
         //***************************************************************************************************************************
@@ -577,6 +616,8 @@ public class MdeBot {
             .trainingSentence("The name of the transaction is TRANNAME")
             .trainingSentence("I want to name the transaction as TRANNAME")
             .trainingSentence("Set the name of the transaction as TRANNAME")
+            .trainingSentence("Transaction's name is TRANNAME")
+            .trainingSentence("Name of transaction = TRANNAME")
             .parameter("tranname").fromFragment("TRANNAME").entity(any());
 
         val createTransactionSetList = intent("CreateTransactionSetList")
@@ -586,23 +627,28 @@ public class MdeBot {
 
         val createTransactionCondition = intent("CreateTransactionCondition")
             .trainingSentence("Yes, I would like to have condition for the transaction")
-            .trainingSentence("Yes, I want conditions for thr transaction");
+            .trainingSentence("Yes, I want conditions for the transaction")
+            .trainingSentence("Yes, I want to create conditions for the transaction");
 
         val createTransactionConditionName = intent("CreateTransactionConditionName")
             .trainingSentence("The name of the condition is TRANCONDNAME")
             .trainingSentence("Name the conditon as TRANCONDNAME")
             .trainingSentence("The name of the condition should be TRANCONDNAME")
+            .trainingSentence("Name of the condition is TRANCONDNAME")
+            .trainingSentence("The condition is named as TRANCONDNAME")
             .parameter("trancondname").fromFragment("TRANCONDNAME").entity(any());
 
         val createTransactionConditionCondition =  intent("CreateTransactionConditionCondition")
             .trainingSentence("The condition is TRANCONDCOND")
             .trainingSentence("The condition for the transaction should be TRANCONDCOND")
             .trainingSentence("The condition would be TRANCONDCOND")
+            .trainingSentence("The conditionf for the transaction is TRANCONDCOND")
             .parameter("trancondcond").fromFragment("TRANCONDCOND").entity(any());
 
         val createTransactionConditionType = intent("CreateTransactionConditionType")
             .trainingSentence("The condition would be of type PREPOST")
             .trainingSentence("It is a PREPOST")
+            .trainingSentence("The condition is a PREPOST")
             .parameter("prepost").fromFragment("PREPOST").entity(any());
 
         val createTransactionAssertCondition = intent("CreateTransactionAssertCondition")
@@ -621,7 +667,10 @@ public class MdeBot {
 
         val createTransactionConditionDone = intent("CreateTransactionConditionDone")
             .trainingSentence("That's all for the conditions for the transaction")
-            .trainingSentence("I don't want to have any more conditions for the transaction");
+            .trainingSentence("I don't want to have any more conditions for the transaction")
+            .trainingSentence("No, I don't want to change the condition anymore")
+            .trainingSentence("The condition is complete")
+            .trainingSentence("The condition is done");
 
         val createTransactionSetMostrar = intent("CreateTransactionSetMostrar")
             .trainingSentence("The attribute mostrar should be TRANMOST")
@@ -676,6 +725,8 @@ public class MdeBot {
 
         val createTransactionAssertRelationshipEvent = intent("CreateTransactionAssertRelationshipEvent")
             .trainingSentence("Yes, I want an event for the relationship")
+            .trainingSentence("Yes, I want more events for the relationship")
+            .trainingSentence("Yes, I want to have another relationship")
             .trainingSentence("Yes, an event for the relationship has to be created");
 
         val createTransactionDenyRelationshipEvent = intent("CreateTransactionDenyRelationshipEvent")
@@ -686,6 +737,7 @@ public class MdeBot {
         val createTransactionRelationshipEventName = intent("CreateTransactionRelationshipEventName")
             .trainingSentence("The name of the event is EVENTNAME")
             .trainingSentence("Name of the event should be EVENTNAME")
+            .trainingSentence("Set the name of the event to be EVENTNAME")
             .parameter("eventname").fromFragment("EVENTNAME").entity(any());
 
         val createTransactionRelationshipEventDescription = intent("CreateTransactionRelationshipEventDescription")
@@ -1159,7 +1211,7 @@ public class MdeBot {
         //When the user wants to create a smart contract
         handleCreateContract
             .body(context -> {
-                    reactPlatform.reply(context, "That's great. I will help you to create a smart contract. What would you like to call your contract?");
+                    reactPlatform.reply(context, "That's great. I will help you to create a smart contract. Let us first name the contract. What would you like to call your contract?");
             })
             .next()
             .when(intentIs(contractName)).moveTo(handleCreateContractName);
@@ -1178,9 +1230,12 @@ public class MdeBot {
             .body(context -> {
                     reset();
                     String contractname = (String) context.getIntent().getValue("cont");
-                    reactPlatform.reply(context, "Wow. Great Job. So we are going to create a smart contract with the name " + contractname + ".");
+                    reactPlatform.reply(context, "Wow. Great Job. So we are going to create a smart contract with the name " + contractname + ". Now, it's time to add more details to our contract!");
                     reactPlatform.reply(context, "Smart contracts are built on elements. There are three types of elements - participant, asset and transaction.");
-                    reactPlatform.reply(context, "So, would you like to create elements for the smart contract?");
+                    reactPlatform.reply(context, "Participants are members of a smart contract. They are the ones who'll be using the functionalities of the smart contract.");
+                    reactPlatform.reply(context, "Assets are tangible or intangible goods, services, or property.");
+                    reactPlatform.reply(context, "Transactions are the mechanism by which participants interact with assets.");
+                    reactPlatform.reply(context, "So, which element would you like to create for the smart contract?");
                     a1.set(contractname);
                     setContractName(a1);
             })
@@ -1188,12 +1243,11 @@ public class MdeBot {
             .when(intentIs(createElement)).moveTo(handleCreateElement)
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
             .when(intentIs(createAsset)).moveTo(handleCreateAsset)
-            .when(intentIs(createTransaction)).moveTo(handleCreateTransaction)
-            .when(intentIs(contractDone)).moveTo(handleDone);
+            .when(intentIs(createTransaction)).moveTo(handleCreateTransaction);
 
         handleCreateElement
             .body(context -> {
-                    reactPlatform.reply(context, "That's perfect. Which element would would you like to create now? Do you want to create a participant or an asset or a transaction?");
+                    reactPlatform.reply(context, "That's perfect. Which element would you like to create now? Do you want to create a participant or an asset or a transaction?");
             })
             .next()
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
@@ -1258,7 +1312,7 @@ public class MdeBot {
         // The creator attribute is being set to FALSE by default. The bot will ask in which participant is to be made the creator or owner of the smart contract
         handleCreateParticipant
             .body(context -> {
-                    reactPlatform.reply(context, "Looks like we are heading somewhere :). What would you like to name the participant?");
+                    reactPlatform.reply(context, "Looks like we are heading somewhere :). Let us add important details about the participant. What would you like to name the participant?");
                     a1.set("Participant"+"\n"+"(Creator: False) {\n");
                     funcCreateParticipant();
             })
@@ -1864,7 +1918,7 @@ public class MdeBot {
         handleReadAssetConfirm
             .body(context -> {
                     String rasstname = funcReadAsset();
-                    reactPlatform.reply(context, "That's cool. Have a look at the asset." + rasstname + "What would you like to do now?");
+                    reactPlatform.reply(context, "That's cool. Have a look at the asset.\n" + rasstname + "\nWhat would you like to do now?");
             })
             .next()
             .when(intentIs(createParticipant)).moveTo(handleCreateParticipant)
@@ -2635,7 +2689,11 @@ public class MdeBot {
         handleCreateParameterSetName
             .body(context -> {
                     String paraname = (String) context.getIntent().getValue("paraname");
-                    reactPlatform.reply(context, "Great. What is the type of the parameter that you just created?");
+                    reactPlatform.reply(context, "Great. So, every parameter has a type. Type implies the kind of value a parameter handles.");
+                    reactPlatform.reply(context, "If the parameter stores a number (such as the age of a person), then assign the type as Integer");
+                    reactPlatform.reply(context, "If the parameter stores word(s) (such as a name of a person or a sentence) or an alphanumeric (such as a car number), assign the type as String");
+                    reactPlatform.reply(context, "If the parameter is either true or false, assign the type as Boolean");
+                    reactPlatform.reply(context, "What is the type of the parameter that you just created?");
                     a1.set(paraname);
                     updateParameters(a1, 0);
             })
@@ -2790,7 +2848,7 @@ public class MdeBot {
             .body(context -> {
                     String targplat = (String) context.getIntent().getValue("targplat");
                     reactPlatform.reply(context, "The smart contract will be generated in " + targplat);
-                    reactPlatform.reply(context, "Great!! It's all done. The smart contract will be in the src-gen folder.");
+                    reactPlatform.reply(context, "Great!! It's all done. The smart contract will be in the ./xatkit/xatkit-examples/MdeBot/src-gen folder.");
                     a1.set(targplat);
                     setTargetPlatform(a1);
                     generateWholeFile();
@@ -2830,7 +2888,11 @@ public class MdeBot {
          * Note that every Xatkit bot needs a default fallback state.
          */
         val defaultFallback = fallbackState()
-                .body(context -> reactPlatform.reply(context, "Sorry, I didn't, get it"));
+                .body(context ->  {
+                    reactPlatform.reply(context, "Sorry, I didn't, get it");
+                    reactPlatform.reply(context, "This has occurred because our chatbot couldn't understand what you intended to say.");
+                    reactPlatform.reply(context, "Don't worry, you are in the same state. For proceeding further, we request you to check out the video and try to provide input to the chatbot similar to what has been shown there.");
+            });
 
         /*
          * Creates the bot model that will be executed by the Xatkit engine.
@@ -2929,6 +2991,26 @@ public class MdeBot {
         {
             targetPlatform = targetPlatform + "Solidity";
         }
+    }
+
+    public static String provideType(String str) {
+        ArrayList<String> types= new ArrayList<String>();
+        types.add("string"); 
+        types.add("integer");
+        types.add("long");
+        types.add("double");
+        types.add("datetime");
+        types.add("boolean");
+        types.add("address");
+        types.add("array");
+        types.add("contract");
+        types.add("money");
+        types.add("state");
+        types.add("mapping");
+
+        int c = findClosestStringIndex(str.toLowerCase(), types);
+
+        return types.get(c);
     }
 
     //*****************************************************************************************************************************************
@@ -3818,7 +3900,7 @@ public class MdeBot {
             {
                 stringTempParticipant = stringTempParticipant + "Parameter " + "{" + "\n";
                 stringTempParticipant = stringTempParticipant + "Name: " + contractParticipants.get(i).parameters.get(j).name + "\n";
-                stringTempParticipant = stringTempParticipant + "Type: " + contractParticipants.get(i).parameters.get(j).type + "\n";
+                stringTempParticipant = stringTempParticipant + "Type: " + provideType(contractParticipants.get(i).parameters.get(j).type) + "\n";
                 if(contractParticipants.get(i).parameters.get(j).identifier == true)
                 {
                     stringTempParticipant = stringTempParticipant + "Identifier: T" + "\n";
@@ -3837,7 +3919,7 @@ public class MdeBot {
             {
                 stringTempAsset = stringTempAsset + "Parameter" + "{" + "\n";
                 stringTempAsset = stringTempAsset + "Name: " + contractAssets.get(i).parameters.get(j).name + "\n";
-                stringTempAsset = stringTempAsset + "Type: " + contractAssets.get(i).parameters.get(j).type + "\n";
+                stringTempAsset = stringTempAsset + "Type: " + provideType(contractAssets.get(i).parameters.get(j).type) + "\n";
                 if(contractAssets.get(i).parameters.get(j).identifier == true)
                 {
                     stringTempAsset = stringTempAsset + "Identifier: T" + "\n";
@@ -3872,7 +3954,7 @@ public class MdeBot {
             {
                 stringTempTransaction = stringTempTransaction + "Parameter" + "{" + "\n";
                 stringTempTransaction = stringTempTransaction + "Name: " + contractTransactions.get(i).parameters.get(j).name + "\n";
-                stringTempTransaction = stringTempTransaction + "Type: " + contractTransactions.get(i).parameters.get(j).type + "\n";
+                stringTempTransaction = stringTempTransaction + "Type: " + provideType(contractTransactions.get(i).parameters.get(j).type) + "\n";
                 stringTempTransaction = stringTempTransaction + "}" + "\n";
             }
 
