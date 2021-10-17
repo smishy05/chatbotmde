@@ -1,0 +1,32 @@
+  pragma solidity >=0.4.22 <0.7.0;
+  contract Digital_Certificate{
+	  struct Verifier{
+    bytes32 name;
+	  }
+	  bytes32 public Hash;
+	  Verifier[] public Verifiers;
+	  bool public Verified;
+    address public issuerAddress;
+    address public verifierAddress;
+
+    modifier onlyIssuer{
+      require(msg.sender == issuerAddress);
+       _;
+    }
+    modifier onlyVerifier{
+      require(msg.sender == verifierAddress);
+      _;
+    }
+
+    constructor() public {}
+    function CreateCertificate() public onlyIssuer  {
+    }
+
+    function AcceptCertificate() public onlyVerifier  {
+     // require  Valid Verifier  ---  The verifier has to exist on the verifiers list of the digital certificate
+    }
+    function RejectCertificate() public onlyVerifier  {
+     //require Valid Certificate  ---  The verifier has to exist on the verifiers list of the digital certificate
+     }
+
+    }

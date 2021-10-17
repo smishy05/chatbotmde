@@ -1,0 +1,25 @@
+      namespace Digital_Certificate
+	    asset Certificate identified by Hash{
+  			o String Hash 
+  			o Verifier[] Verifiers 
+  			o Boolean Verified 
+		  	}
+	    participant Issuer identified by name{
+        o String name
+		 		}
+	    participant Verifier identified by name{
+        o String name
+		  	}
+	    transaction Create_Certificate{
+				--> Issuer issuer
+				--> Certificate certificate
+		  }
+	    transaction Accept_Certificate{
+				--> Verifier verifier
+				--> Certificate certificate
+		  }
+			
+	    transaction Reject_Certificate{
+				--> Verifier verifier
+				--> Certificate certificate
+		  }
