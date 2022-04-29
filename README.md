@@ -14,7 +14,7 @@
 
 1) Download the folder from the line - https://drive.google.com/drive/folders/1siM4dV1ZbragX3FPTZhWUSsk2UAwps6n?usp=sharing .
 
-2) Open the terminal inside the `installation` folder and type these commands:
+2) Open the terminal where you have the `xatkit-installation` folder and type these commands:
 
 ```
 sudo chmod +x install.sh
