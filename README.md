@@ -22,7 +22,7 @@ sudo apt install openjdk-8-jdk openjdk-8-jre
 sudo update-java-alternatives --jre-headless --jre --set java-1.8.0-openjdk-amd64
 ```
 
-2) Clone the repository using the command `git clone git@github.com:smishy05/chatbotmde.git`
+2) Clone this repository
 
 3) Go inside the `MdeBot` directory and run the jar file using `java -jar run.jar`
 
