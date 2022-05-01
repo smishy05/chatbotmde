@@ -10355,3 +10355,268 @@ java.net.SocketException: Socket closed
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_292]
 	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_292]
 2021-09-23 20:32:12 INFO  SocketIO server stopped
+2022-05-01 11:40:48 INFO  Using MapDB to store monitoring data
+2022-05-01 11:40:48 INFO  Starting intent recognition monitoring
+2022-05-01 11:40:48 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2022-05-01 11:40:48 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2022-05-01 11:40:48 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2022-05-01 11:40:48 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2022-05-01 11:40:48 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2022-05-01 11:40:48 INFO  Starting DialogFlow Client
+2022-05-01 11:40:48 INFO  Loading Google Credentials file ./sc-mde-nymmpx-d0311abe8e74.json
+2022-05-01 11:40:48 INFO  Loading Intents previously registered in the DialogFlow project sc-mde-nymmpx
+2022-05-01 11:40:50 INFO  Loading Entities previously registered in the DialogFlow project sc-mde-nymmpx
+2022-05-01 11:40:51 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2022-05-01 11:40:51 INFO  Registered REST handler  at URI /admin (method=GET)
+2022-05-01 11:40:51 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2022-05-01 11:40:51 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2022-05-01 11:40:51 INFO  Starting ReactEventProvider
+2022-05-01 11:40:51 INFO  SocketIO server started at port: 5001
+2022-05-01 11:40:51 INFO  Starting ReactIntentProvider
+2022-05-01 11:40:51 INFO  Registering execution rule events
+2022-05-01 11:40:51 WARN  Intent EditParameterChangeName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionAssertAssetRelationship already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent ReadTransactionConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent ReadAssetConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateParticipantSetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionRelationshipName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateAssetSetIdentifier already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent ReadTransactionGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditParticipantGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionRelationshipEventName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent GetCreator already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionConditionCondition already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateElement already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteAssetGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionDone already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditRelationshipConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteAssetConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditAssetChangeName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditRelationshipChangeName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionAssertTranRelationship already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteTransaction already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditAssetChangeIdentifier already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateAsset already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionSetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteParameterGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditAssetEditParameter already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditTransactionEditRelationship already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditParameterGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionTranRelationshipFrom already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteParameterConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditTransaction already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionRelationshipEventDescription already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditParameterConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateParameterSetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditAssetDeleteParameter already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateAssetDone already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteRelationshipConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditTransactionGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionAssetRelationshipFrom already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateParticipant already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditTransactionDeleteParameter already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditAsset already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent ReadAsset already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent ReadTransaction already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditAssetGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteConditionConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteAsset already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditRelationshipGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditTransactionConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteParticipant already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionAssertRelationshipEvent already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent ReadParticipant already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent ReadParticipantGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteTransactionConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditParameterChangeType already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditParticipantContinueEditing already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionConditionName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent ReadParticipantConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteParticipantConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteConditionGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateParticipantAssertParameter already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransaction already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditParticipantEditParameter already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent ContractName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditParticipantChangeName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent ContractDone already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditParticipantDeleteParameter already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionAssertRelationship already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditRelationshipChangeFrom already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditAssetContinueEditing already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionAssertParameter already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionDenyCondition already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteTransactionGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent GenerateAnotherSmartContract already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditTransactionDeleteCondition already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteParticipantGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent DeleteRelationshipGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateContract already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditParticipantConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateParameterSetType already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent GetTargetPlatform already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionConditionType already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditParticipantChangeIdentifier already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateAssetSetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionDenyRelationshipEvent already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditAssetConfirm already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateParticipantSetIdentifier already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditTransactionEditParameter already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateParticpantDone already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditTransactionContinueEditing already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent GenerateOnAnotherPlatform already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditParticipant already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditTransactionDeleteRelationship already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateTransactionAssertCondition already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent EditTransactionChangeName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent ReadAssetGetName already exists in the agent and will not be updated
+2022-05-01 11:40:51 WARN  Intent CreateAssetAssertParameter already exists in the agent and will not be updated
+2022-05-01 11:40:51 INFO  Starting XatkitServer
+2022-05-01 11:40:51 INFO  Registered REST handler  at URI /status (method=GET)
+2022-05-01 11:40:51 INFO  XatkitServer started, listening on port 5,000
+2022-05-01 11:40:51 INFO  Xatkit bot started
+2022-05-01 11:40:56 INFO  Stopping SocketIO server
+2022-05-01 11:40:56 ERROR null
+java.net.SocketException: Socket closed
+	at java.net.PlainSocketImpl.socketAccept(Native Method) ~[?:1.8.0_312]
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409) ~[?:1.8.0_312]
+	at java.net.ServerSocket.implAccept(ServerSocket.java:560) ~[?:1.8.0_312]
+	at java.net.ServerSocket.accept(ServerSocket.java:528) ~[?:1.8.0_312]
+	at org.apache.http.impl.bootstrap.RequestListener.run(RequestListener.java:74) [run.jar:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_312]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_312]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_312]
+2022-05-01 11:41:01 INFO  SocketIO server stopped
+2022-05-01 11:41:04 INFO  Using MapDB to store monitoring data
+2022-05-01 11:41:04 INFO  Starting intent recognition monitoring
+2022-05-01 11:41:04 INFO  Registered REST handler  at URI /analytics/monitoring (method=GET)
+2022-05-01 11:41:04 INFO  Registered REST handler  at URI /analytics/monitoring/session (method=GET)
+2022-05-01 11:41:04 INFO  Registered REST handler  at URI /analytics/monitoring/unmatched (method=GET)
+2022-05-01 11:41:04 INFO  Registered REST handler  at URI /analytics/monitoring/matched (method=GET)
+2022-05-01 11:41:04 INFO  Registered REST handler  at URI /analytics/monitoring/sessions/stats (method=GET)
+2022-05-01 11:41:04 INFO  Starting DialogFlow Client
+2022-05-01 11:41:04 INFO  Loading Google Credentials file ./sc-mde-nymmpx-d0311abe8e74.json
+2022-05-01 11:41:05 INFO  Loading Intents previously registered in the DialogFlow project sc-mde-nymmpx
+2022-05-01 11:41:06 INFO  Loading Entities previously registered in the DialogFlow project sc-mde-nymmpx
+2022-05-01 11:41:06 INFO  Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2022-05-01 11:41:06 INFO  Registered REST handler  at URI /admin (method=GET)
+2022-05-01 11:41:06 INFO  Registered REST handler  at URI /admin/css/xatkit.css (method=GET)
+2022-05-01 11:41:06 INFO  Registered REST handler  at URI /admin/js/xatkit.js (method=GET)
+2022-05-01 11:41:06 INFO  Starting ReactEventProvider
+2022-05-01 11:41:06 INFO  SocketIO server started at port: 5001
+2022-05-01 11:41:06 INFO  Starting ReactIntentProvider
+2022-05-01 11:41:06 INFO  Registering execution rule events
+2022-05-01 11:41:07 WARN  Intent EditParameterChangeName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionAssertAssetRelationship already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent ReadTransactionConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent ReadAssetConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateParticipantSetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionRelationshipName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateAssetSetIdentifier already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent ReadTransactionGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditParticipantGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionRelationshipEventName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent GetCreator already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionConditionCondition already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateElement already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteAssetGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionDone already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditRelationshipConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteAssetConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditAssetChangeName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditRelationshipChangeName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionAssertTranRelationship already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteTransaction already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditAssetChangeIdentifier already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateAsset already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionSetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteParameterGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditAssetEditParameter already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditTransactionEditRelationship already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditParameterGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionTranRelationshipFrom already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteParameterConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditTransaction already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionRelationshipEventDescription already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditParameterConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateParameterSetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditAssetDeleteParameter already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateAssetDone already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteRelationshipConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditTransactionGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionAssetRelationshipFrom already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateParticipant already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditTransactionDeleteParameter already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditAsset already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent ReadAsset already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent ReadTransaction already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditAssetGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteConditionConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteAsset already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditRelationshipGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditTransactionConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteParticipant already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionAssertRelationshipEvent already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent ReadParticipant already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent ReadParticipantGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteTransactionConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditParameterChangeType already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditParticipantContinueEditing already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionConditionName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent ReadParticipantConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteParticipantConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteConditionGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateParticipantAssertParameter already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransaction already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditParticipantEditParameter already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent ContractName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditParticipantChangeName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent ContractDone already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditParticipantDeleteParameter already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionAssertRelationship already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditRelationshipChangeFrom already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditAssetContinueEditing already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionAssertParameter already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionDenyCondition already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteTransactionGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent GenerateAnotherSmartContract already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditTransactionDeleteCondition already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteParticipantGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent DeleteRelationshipGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateContract already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditParticipantConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateParameterSetType already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent GetTargetPlatform already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionConditionType already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditParticipantChangeIdentifier already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateAssetSetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionDenyRelationshipEvent already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditAssetConfirm already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateParticipantSetIdentifier already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditTransactionEditParameter already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateParticpantDone already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditTransactionContinueEditing already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent GenerateOnAnotherPlatform already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditParticipant already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditTransactionDeleteRelationship already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateTransactionAssertCondition already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent EditTransactionChangeName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent ReadAssetGetName already exists in the agent and will not be updated
+2022-05-01 11:41:07 WARN  Intent CreateAssetAssertParameter already exists in the agent and will not be updated
+2022-05-01 11:41:07 INFO  Starting XatkitServer
+2022-05-01 11:41:07 INFO  Registered REST handler  at URI /status (method=GET)
+2022-05-01 11:41:07 INFO  XatkitServer started, listening on port 5,000
+2022-05-01 11:41:07 INFO  Xatkit bot started
+2022-05-01 11:41:19 ERROR No endpoint registered for GET: /favicon.ico
+2022-05-01 11:41:28 INFO  Stopping SocketIO server
+2022-05-01 11:41:28 ERROR null
+java.net.SocketException: Socket closed
+	at java.net.PlainSocketImpl.socketAccept(Native Method) ~[?:1.8.0_312]
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409) ~[?:1.8.0_312]
+	at java.net.ServerSocket.implAccept(ServerSocket.java:560) ~[?:1.8.0_312]
+	at java.net.ServerSocket.accept(ServerSocket.java:528) ~[?:1.8.0_312]
+	at org.apache.http.impl.bootstrap.RequestListener.run(RequestListener.java:74) [run.jar:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_312]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_312]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_312]
+2022-05-01 11:41:32 INFO  SocketIO server stopped
